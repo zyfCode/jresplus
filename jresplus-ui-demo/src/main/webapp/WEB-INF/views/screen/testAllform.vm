@@ -1,0 +1,487 @@
+#@screen()
+#@form({"url":"$appServer.get('/test/form/submit.htm')","name":"testForm"})
+#set($dataT='[{"id":1,"name":"根","pId":""},{"id":21,"name":"sub11","pId":1},{"id":22,"name":"sub12","pId":1},{"id":212,"name":"sub111","pId":21},{"id":221,"name":"sub211","pId":22},{"id":212,"name":"sub11sas","pId":21}]') 
+
+    #hidden({ "name":"hiddenValue","value":"1"})
+    #@panel({})
+	    #typefield({"value":0,"check": "required","hidden":false,"name":"field0","suffixNum":3,"label":"金额","inputType":"cardNo","cols":1,"split":",","bigTips":true})
+        #typefield({"value":0,"check": "required","hidden":false,"id":"t1","name":"field1","suffixNum":3,"label":"金额","inputType":"money","cols":1,"split":",","bigTips":true})
+        #textfield({"value":0,"check": "required","hidden":false,"label":"文本输入项1", "name":"field2","value":""})
+        #textarea({"value":0,"check": "required","hidden":false,"label":"多行输入项1","cols":1, "name":"field3"})
+        #password({"value":0,"check": "required","hidden":false,"label":"密码输入项", "name":"field4"})
+		#select({"value":0,"check": "required","hidden":false,"filterBy":"key","cols":1,"label":"select","name":"field5","multiple":true,"dictName": "province"})
+        #combox({"value":0,"check": "required","hidden":false,"label":"下拉输入项","headItem":{"label":"","value":"请选择"}, "name":"field6","items":[
+                {"text":"游泳","code":"1"},  
+                {"text":"骑马","code":"0"}, 
+                {"text":"网球","code":"3"}]})
+        #checkboxGroup({"value":0,"check": "required","hidden":false,"label":"多选输入项", "name":"field7","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #radiogroup({"value":0,"check": "required","hidden":false,"label":"单选输入项", "name":"field8","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #calendar({"value":0,"check": "required","hidden":false,"label":"日期输入项", "name":"field9"})
+		#calendar_group({"label":"calendargroup","check": "required","readonly":false,"disabled":false,"name1": "field10","value1":"2012-06-09","value2":"2015-07-09","name2": "field11","cols":3})		
+        #hidden({"value":0,"check": "required","label":"hidden","cols":1, "name":"field13"})
+        	#select_tree({
+	        "id":"select_tree",
+	        "name":"select_tree",
+			"label":"select_tree",
+			"disabled":false,			
+			"data":$dataT,
+			"expandFirst":false,
+			"checkMode":"checkbox",
+             "value":0,
+			"filterBy":"id",
+			"check":"required"
+			})
+			    #typefield({"value":0,"check": "required","hidden":false,"name":"f1","suffixNum":3,"label":"金额","inputType":"cardNo","cols":1,"split":",","bigTips":true})
+        #typefield({"value":0,"check": "required","hidden":false,"id":"t1","name":"f2","suffixNum":3,"label":"金额","inputType":"money","cols":1,"split":",","bigTips":true})
+        #textfield({"value":0,"check": "required","hidden":false,"label":"文本输入项1", "name":"f3","value":""})
+        #textarea({"value":0,"check": "required","hidden":false,"label":"多行输入项1","cols":1, "name":"f4"})
+        #password({"value":0,"check": "required","hidden":false,"label":"密码输入项", "name":"f5"})
+		#select({"value":0,"check": "required","hidden":false,"filterBy":"key","cols":1,"label":"select","name":"f6","multiple":true,"dictName": "province"})
+        #combox({"value":0,"check": "required","hidden":false,"label":"下拉输入项","headItem":{"label":"","value":"请选择"}, "name":"f7","items":[
+                {"text":"游泳","code":"1"},  
+                {"text":"骑马","code":"0"}, 
+                {"text":"网球","code":"3"}]})
+        #checkboxGroup({"value":0,"check": "required","hidden":false,"label":"多选输入项", "name":"f8","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #radiogroup({"value":0,"check": "required","hidden":false,"label":"单选输入项", "name":"f9","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #calendar({"value":0,"check": "required","hidden":false,"label":"日期输入项", "name":"f10"})
+		#calendar_group({"label":"calendargroup","check": "required","readonly":false,"disabled":false,"name1": "f10","value1":"2012-06-09","value2":"2015-07-09","name2": "field11","cols":3})		
+        #hidden({"value":0,"check": "required","label":"hidden","cols":1, "name":"f11"})
+        	#select_tree({
+	        "id":"select_tree",
+	        "name":"select_tree",
+			"label":"select_tree",
+			"disabled":false,			
+			"data":$dataT,
+			"expandFirst":false,
+			"checkMode":"checkbox",
+             "value":0,
+			"filterBy":"id",
+			"check":"required"
+			})
+			    #typefield({"value":0,"check": "required","hidden":false,"name":"f12","suffixNum":3,"label":"金额","inputType":"cardNo","cols":1,"split":",","bigTips":true})
+        #typefield({"value":0,"check": "required","hidden":false,"id":"t1","name":"f13","suffixNum":3,"label":"金额","inputType":"money","cols":1,"split":",","bigTips":true})
+        #textfield({"value":0,"check": "required","hidden":false,"label":"文本输入项1", "name":"f14","value":""})
+        #textarea({"value":0,"check": "required","hidden":false,"label":"多行输入项1","cols":1, "name":"f15"})
+        #password({"value":0,"check": "required","hidden":false,"label":"密码输入项", "name":"f16"})
+		#select({"value":0,"check": "required","hidden":false,"filterBy":"key","cols":1,"label":"select","name":"f17","multiple":true,"dictName": "province"})
+        #combox({"value":0,"check": "required","hidden":false,"label":"下拉输入项","headItem":{"label":"","value":"请选择"}, "name":"f18","items":[
+                {"text":"游泳","code":"1"},  
+                {"text":"骑马","code":"0"}, 
+                {"text":"网球","code":"3"}]})
+        #checkboxGroup({"value":0,"check": "required","hidden":false,"label":"多选输入项", "name":"f19","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #radiogroup({"value":0,"check": "required","hidden":false,"label":"单选输入项", "name":"f10","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #calendar({"value":0,"check": "required","hidden":false,"label":"日期输入项", "name":"f21"})
+		#calendar_group({"label":"calendargroup","check": "required","readonly":false,"disabled":false,"name1": "f22","value1":"2012-06-09","value2":"2015-07-09","name2": "f23","cols":3})		
+        #hidden({"value":0,"check": "required","label":"hidden","cols":1, "name":"f24"})
+        	#select_tree({
+	        "id":"select_tree",
+	        "name":"select_tree",
+			"label":"select_tree",
+			"disabled":false,			
+			"data":$dataT,
+			"expandFirst":false,
+			"checkMode":"checkbox",
+             "value":0,
+			"filterBy":"id",
+			"check":"required"
+			})
+	    #typefield({"value":0,"check": "required","hidden":false,"name":"v1","suffixNum":3,"label":"金额","inputType":"cardNo","cols":1,"split":",","bigTips":true})
+        #typefield({"value":0,"check": "required","hidden":false,"id":"v2","name":"field1","suffixNum":3,"label":"金额","inputType":"money","cols":1,"split":",","bigTips":true})
+        #textfield({"value":0,"check": "required","hidden":false,"label":"文本输入项1", "name":"v3","value":""})
+        #textarea({"value":0,"check": "required","hidden":false,"label":"多行输入项1","cols":1, "name":"v4"})
+        #password({"value":0,"check": "required","hidden":false,"label":"密码输入项", "name":"v5"})
+		#select({"value":0,"check": "required","hidden":false,"filterBy":"key","cols":1,"label":"select","name":"v6","multiple":true,"dictName": "province"})
+        #combox({"value":0,"check": "required","hidden":false,"label":"下拉输入项","headItem":{"label":"","value":"请选择"}, "name":"v7","items":[
+                {"text":"游泳","code":"1"},  
+                {"text":"骑马","code":"0"}, 
+                {"text":"网球","code":"3"}]})
+        #checkboxGroup({"value":0,"check": "required","hidden":false,"label":"多选输入项", "name":"v8","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #radiogroup({"value":0,"check": "required","hidden":false,"label":"单选输入项", "name":"v9","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #calendar({"value":0,"check": "required","hidden":false,"label":"日期输入项", "name":"v10"})
+		#calendar_group({"label":"calendargroup","check": "required","readonly":false,"disabled":false,"name1": "v11","value1":"2012-06-09","value2":"2015-07-09","name2": "v12","cols":3})		
+        #hidden({"value":0,"check": "required","label":"hidden","cols":1, "name":"v13"})
+        	#select_tree({
+	        "id":"select_tree",
+	        "name":"select_tree",
+			"label":"select_tree",
+			"disabled":false,			
+			"data":$dataT,
+			"expandFirst":false,
+			"checkMode":"checkbox",
+             "value":0,
+			"filterBy":"id",
+			"check":"required"
+			})
+			    #typefield({"value":0,"check": "required","hidden":false,"name":"b1","suffixNum":3,"label":"金额","inputType":"cardNo","cols":1,"split":",","bigTips":true})
+        #typefield({"value":0,"check": "required","hidden":false,"id":"t1","name":"b2","suffixNum":3,"label":"金额","inputType":"money","cols":1,"split":",","bigTips":true})
+        #textfield({"value":0,"check": "required","hidden":false,"label":"文本输入项1", "name":"b13","value":""})
+        #textarea({"value":0,"check": "required","hidden":false,"label":"多行输入项1","cols":1, "name":"b14"})
+        #password({"value":0,"check": "required","hidden":false,"label":"密码输入项", "name":"b15"})
+		#select({"value":0,"check": "required","hidden":false,"filterBy":"key","cols":1,"label":"select","name":"b16","multiple":true,"dictName": "province"})
+        #combox({"value":0,"check": "required","hidden":false,"label":"下拉输入项","headItem":{"label":"","value":"请选择"}, "name":"b17","items":[
+                {"text":"游泳","code":"1"},  
+                {"text":"骑马","code":"0"}, 
+                {"text":"网球","code":"3"}]})
+        #checkboxGroup({"value":0,"check": "required","hidden":false,"label":"多选输入项", "name":"b18","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #radiogroup({"value":0,"check": "required","hidden":false,"label":"单选输入项", "name":"b19","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #calendar({"value":0,"check": "required","hidden":false,"label":"日期输入项", "name":"b10"})
+		#calendar_group({"label":"calendargroup","check": "required","readonly":false,"disabled":false,"name1": "b11","value1":"2012-06-09","value2":"2015-07-09","name2": "b12","cols":3})		
+        #hidden({"value":0,"check": "required","label":"hidden","cols":1, "name":"b21"})
+        	#select_tree({
+	        "id":"select_tree",
+	        "name":"select_tree",
+			"label":"select_tree",
+			"disabled":false,			
+			"data":$dataT,
+			"expandFirst":false,
+			"checkMode":"checkbox",
+             "value":0,
+			"filterBy":"id",
+			"check":"required"
+			})
+			    #typefield({"value":0,"check": "required","hidden":false,"name":"bb2","suffixNum":3,"label":"金额","inputType":"cardNo","cols":1,"split":",","bigTips":true})
+        #typefield({"value":0,"check": "required","hidden":false,"id":"t1","name":"bb3","suffixNum":3,"label":"金额","inputType":"money","cols":1,"split":",","bigTips":true})
+        #textfield({"value":0,"check": "required","hidden":false,"label":"文本输入项1", "name":"bb4","value":""})
+        #textarea({"value":0,"check": "required","hidden":false,"label":"多行输入项1","cols":1, "name":"bb5"})
+        #password({"value":0,"check": "required","hidden":false,"label":"密码输入项", "name":"bb6"})
+		#select({"value":0,"check": "required","hidden":false,"filterBy":"key","cols":1,"label":"select","name":"bb7","multiple":true,"dictName": "province"})
+        #combox({"value":0,"check": "required","hidden":false,"label":"下拉输入项","headItem":{"label":"","value":"请选择"}, "name":"bb8","items":[
+                {"text":"游泳","code":"1"},  
+                {"text":"骑马","code":"0"}, 
+                {"text":"网球","code":"3"}]})
+        #checkboxGroup({"value":0,"check": "required","hidden":false,"label":"多选输入项", "name":"bb9","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #radiogroup({"value":0,"check": "required","hidden":false,"label":"单选输入项", "name":"bb10","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #calendar({"value":0,"check": "required","hidden":false,"label":"日期输入项", "name":"bb11"})
+		#calendar_group({"label":"calendargroup","check": "required","readonly":false,"disabled":false,"name1": "bb12","value1":"2012-06-09","value2":"2015-07-09","name2": "bb13","cols":3})		
+        #hidden({"value":0,"check": "required","label":"hidden","cols":1, "name":"bb14"})
+        	#select_tree({
+	        "id":"select_tree",
+	        "name":"bb51",
+			"label":"select_tree",
+			"disabled":false,			
+			"data":$dataT,
+			"expandFirst":false,
+			"checkMode":"checkbox",
+             "value":0,
+			"filterBy":"id",
+			"check":"required"
+			})
+			    #typefield({"value":0,"check": "required","hidden":false,"name":"ba1","suffixNum":3,"label":"金额","inputType":"cardNo","cols":1,"split":",","bigTips":true})
+        #typefield({"value":0,"check": "required","hidden":false,"id":"t1","name":"ba12","suffixNum":3,"label":"金额","inputType":"money","cols":1,"split":",","bigTips":true})
+        #textfield({"value":0,"check": "required","hidden":false,"label":"文本输入项1", "name":"ba13","value":""})
+        #textarea({"value":0,"check": "required","hidden":false,"label":"多行输入项1","cols":1, "name":"ba14"})
+        #password({"value":0,"check": "required","hidden":false,"label":"密码输入项", "name":"ba15"})
+		#select({"value":0,"check": "required","hidden":false,"filterBy":"key","cols":1,"label":"select","name":"ba16","multiple":true,"dictName": "province"})
+        #combox({"value":0,"check": "required","hidden":false,"label":"下拉输入项","headItem":{"label":"","value":"请选择"}, "name":"ba17","items":[
+                {"text":"游泳","code":"1"},  
+                {"text":"骑马","code":"0"}, 
+                {"text":"网球","code":"3"}]})
+        #checkboxGroup({"value":0,"check": "required","hidden":false,"label":"多选输入项", "name":"ba18","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #radiogroup({"value":0,"check": "required","hidden":false,"label":"单选输入项", "name":"ba19","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #calendar({"value":0,"check": "required","hidden":false,"label":"日期输入项", "name":"ba155"})
+		#calendar_group({"label":"calendargroup","check": "required","readonly":false,"disabled":false,"name1": "ba1333","value1":"2012-06-09","value2":"2015-07-09","name2": "ba199","cols":3})		
+        #hidden({"value":0,"check": "required","label":"hidden","cols":1, "name":"ba1888"})
+        	#select_tree({
+	        "id":"132132",
+	        "name":"121232",
+			"label":"select_tree",
+			"disabled":false,			
+			"data":$dataT,
+			"expandFirst":false,
+			"checkMode":"checkbox",
+             "value":0,
+			"filterBy":"id",
+			"check":"required"
+			})
+			    #typefield({"value":0,"check": "required","hidden":false,"name":"hh1","suffixNum":3,"label":"金额","inputType":"cardNo","cols":1,"split":",","bigTips":true})
+        #typefield({"value":0,"check": "required","hidden":false,"id":"t1","name":"hh12","suffixNum":3,"label":"金额","inputType":"money","cols":1,"split":",","bigTips":true})
+        #textfield({"value":0,"check": "required","hidden":false,"label":"文本输入项1", "name":"hh13","value":""})
+        #textarea({"value":0,"check": "required","hidden":false,"label":"多行输入项1","cols":1, "name":"hh14"})
+        #password({"value":0,"check": "required","hidden":false,"label":"密码输入项", "name":"hh15"})
+		#select({"value":0,"check": "required","hidden":false,"filterBy":"key","cols":1,"label":"select","name":"hh154","multiple":true,"dictName": "province"})
+        #combox({"value":0,"check": "required","hidden":false,"label":"下拉输入项","headItem":{"label":"","value":"请选择"}, "name":"hh123333","items":[
+                {"text":"游泳","code":"1"},  
+                {"text":"骑马","code":"0"}, 
+                {"text":"网球","code":"3"}]})
+        #checkboxGroup({"value":0,"check": "required","hidden":false,"label":"多选输入项", "name":"hh12312","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #radiogroup({"value":0,"check": "required","hidden":false,"label":"单选输入项", "name":"hh1222","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #calendar({"value":0,"check": "required","hidden":false,"label":"日期输入项", "name":"hh1666"})
+		#calendar_group({"label":"calendargroup","check": "required","readonly":false,"disabled":false,"name1": "hh12324","value1":"2012-06-09","value2":"2015-07-09","name2": "hh1555","cols":3})		
+        #hidden({"value":0,"check": "required","label":"hidden","cols":1, "name":"hh13432432423"})
+        	#select_tree({
+	        "id":"343432",
+	        "name":"hh1ee",
+			"label":"select_tree",
+			"disabled":false,			
+			"data":$dataT,
+			"expandFirst":false,
+			"checkMode":"checkbox",
+             "value":0,
+			"filterBy":"id",
+			"check":"required"
+			})
+			    #typefield({"value":0,"check": "required","hidden":false,"name":"jj1","suffixNum":3,"label":"金额","inputType":"cardNo","cols":1,"split":",","bigTips":true})
+        #typefield({"value":0,"check": "required","hidden":false,"id":"t1","name":"jj12","suffixNum":3,"label":"金额","inputType":"money","cols":1,"split":",","bigTips":true})
+        #textfield({"value":0,"check": "required","hidden":false,"label":"文本输入项1", "name":"jj13","value":""})
+        #textarea({"value":0,"check": "required","hidden":false,"label":"多行输入项1","cols":1, "name":"jj14"})
+        #password({"value":0,"check": "required","hidden":false,"label":"密码输入项", "name":"jj15"})
+		#select({"value":0,"check": "required","hidden":false,"filterBy":"key","cols":1,"label":"select","name":"jj16","multiple":true,"dictName": "province"})
+        #combox({"value":0,"check": "required","hidden":false,"label":"下拉输入项","headItem":{"label":"","value":"请选择"}, "name":"jj17","items":[
+                {"text":"游泳","code":"1"},  
+                {"text":"骑马","code":"0"}, 
+                {"text":"网球","code":"3"}]})
+        #checkboxGroup({"value":0,"check": "required","hidden":false,"label":"多选输入项", "name":"jj18","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #radiogroup({"value":0,"check": "required","hidden":false,"label":"单选输入项", "name":"jj19","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #calendar({"value":0,"check": "required","hidden":false,"label":"日期输入项", "name":"jj10"})
+		#calendar_group({"label":"calendargroup","check": "required","readonly":false,"disabled":false,"name1": "jj11","value1":"2012-06-09","value2":"2015-07-09","name2": "jj12","cols":3})		
+        #hidden({"value":0,"check": "required","label":"hidden","cols":1, "name":"jj13"})
+        	#select_tree({
+	        "id":"jj14",
+	        "name":"jj14",
+			"label":"select_tree",
+			"disabled":false,			
+			"data":$dataT,
+			"expandFirst":false,
+			"checkMode":"checkbox",
+             "value":0,
+			"filterBy":"id",
+			"check":"required"
+			})
+			    #typefield({"value":0,"check": "required","hidden":false,"name":"kk1","suffixNum":3,"label":"金额","inputType":"cardNo","cols":1,"split":",","bigTips":true})
+        #typefield({"value":0,"check": "required","hidden":false,"id":"t1","name":"kk12","suffixNum":3,"label":"金额","inputType":"money","cols":1,"split":",","bigTips":true})
+        #textfield({"value":0,"check": "required","hidden":false,"label":"文本输入项1", "name":"kk13","value":""})
+        #textarea({"value":0,"check": "required","hidden":false,"label":"多行输入项1","cols":1, "name":"kk14"})
+        #password({"value":0,"check": "required","hidden":false,"label":"密码输入项", "name":"kk15"})
+		#select({"value":0,"check": "required","hidden":false,"filterBy":"key","cols":1,"label":"select","name":"kk16","multiple":true,"dictName": "province"})
+        #combox({"value":0,"check": "required","hidden":false,"label":"下拉输入项","headItem":{"label":"","value":"请选择"}, "name":"kk17","items":[
+                {"text":"游泳","code":"1"},  
+                {"text":"骑马","code":"0"}, 
+                {"text":"网球","code":"3"}]})
+        #checkboxGroup({"value":0,"check": "required","hidden":false,"label":"多选输入项", "name":"kk18","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #radiogroup({"value":0,"check": "required","hidden":false,"label":"单选输入项", "name":"kk19","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #calendar({"value":0,"check": "required","hidden":false,"label":"日期输入项", "name":"kk20"})
+		#calendar_group({"label":"calendargroup","check": "required","readonly":false,"disabled":false,"name1": "kk1","value1":"2012-06-09","value2":"2015-07-09","name2": "field11","cols":3})		
+        #hidden({"value":0,"check": "required","label":"hidden","cols":1, "name":"kk2"})
+        	#select_tree({
+	        "id":"select_tree",
+	        "name":"select_tree",
+			"label":"select_tree",
+			"disabled":false,			
+			"data":$dataT,
+			"expandFirst":false,
+			"checkMode":"checkbox",
+             "value":0,
+			"filterBy":"id",
+			"check":"required"
+			})
+			    #typefield({"value":0,"check": "required","hidden":false,"name":"field0","suffixNum":3,"label":"金额","inputType":"cardNo","cols":1,"split":",","bigTips":true})
+        #typefield({"value":0,"check": "required","hidden":false,"id":"t1","name":"field1","suffixNum":3,"label":"金额","inputType":"money","cols":1,"split":",","bigTips":true})
+        #textfield({"value":0,"check": "required","hidden":false,"label":"文本输入项1", "name":"field2","value":""})
+        #textarea({"value":0,"check": "required","hidden":false,"label":"多行输入项1","cols":1, "name":"field3"})
+        #password({"value":0,"check": "required","hidden":false,"label":"密码输入项", "name":"field4"})
+		#select({"value":0,"check": "required","hidden":false,"filterBy":"key","cols":1,"label":"select","name":"field5","multiple":true,"dictName": "province"})
+        #combox({"value":0,"check": "required","hidden":false,"label":"下拉输入项","headItem":{"label":"","value":"请选择"}, "name":"field6","items":[
+                {"text":"游泳","code":"1"},  
+                {"text":"骑马","code":"0"}, 
+                {"text":"网球","code":"3"}]})
+        #checkboxGroup({"value":0,"check": "required","hidden":false,"label":"多选输入项", "name":"field7","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #radiogroup({"value":0,"check": "required","hidden":false,"label":"单选输入项", "name":"field8","items":[
+                {"label":"游泳","value":1},  
+                {"label":"骑马","value":0}, 
+                {"label":"网球","value":3}]})
+        #calendar({"value":0,"check": "required","hidden":false,"label":"日期输入项", "name":"field9"})
+		#calendar_group({"label":"calendargroup","check": "required","readonly":false,"disabled":false,"name1": "field10","value1":"2012-06-09","value2":"2015-07-09","name2": "field11","cols":3})		
+        #hidden({"value":0,"check": "required","label":"hidden","cols":1, "name":"field13"})
+        	#select_tree({
+	        "id":"select_tree",
+	        "name":"select_tree",
+			"label":"select_tree",
+			"disabled":false,			
+			"data":$dataT,
+			"expandFirst":false,
+			"checkMode":"checkbox",
+             "value":0,
+			"filterBy":"id",
+			"check":"required"
+			})
+			
+#end
+    #button_panel_ex({"buttons":[
+	            {"label":"设置不可用","event":"setDisabled1()"},
+				{"label":"设置可用","event":"setDisabled3()"},
+				{"label":"设置不可用的时间","event":"setDisabled2()"},
+            	{"label":"提交","event":"submit()"},
+				{"label":"获取表单值","event":"getValues()"},
+				{"label":"清空值","event":"clearValue()"},
+            	{"label":"置0","event":"resetDataForm()"},
+				{"label":"调用每个控件的setvalue方法-string","event":"comsetValues()"},
+				{"label":"调用每个控件的setvalue方法-int","event":"comsetValues1()"},
+            	{"label":"设置为整形","event":"setValues()"}
+            ]})
+#end
+#end
+
+#jscode()
+
+
+function setDisabled2(){
+var s1=new Date();
+Horn.getComp("field3").setDisabled(true);
+console.log("执行时间setdisable为："+(new Date().getTime()-s1.getTime()));
+}
+
+function submit() {
+	Horn.getComp("testForm").submit();
+}
+
+function clearValue() {
+	Horn.getComp("testForm").clearValue();
+}
+
+function resetDataForm(){
+Horn.getComp("testForm").setValues({"select_tree":"22","field13":"0","field0":"0","field1":"0","field2":"0","field3":"0","field4":"0","field5":"1,3","field6":"3","field7":"0","field8":"0","field9":"201314","field10":"201314"})
+}
+
+function setValues(){
+Horn.getComp("testForm").setValues({"select_tree":22,"field13":0,"field0":0,"field1":0,"field2":0,"field3":0,"field4":0,"field5":0,"field6":3,"field7":0,"field8":0,"field9":0,"field10":0})
+}
+
+function comsetValues(){
+Horn.getComp("select_tree").setValue("22");
+Horn.getComp("field13").setValue("0");
+Horn.getComp("field0").setValue("0");
+Horn.getComp("field1").setValue("0");
+Horn.getComp("field2").setValue("0");
+Horn.getComp("field3").setValue("0");
+Horn.getComp("field4").setValue("0");
+Horn.getComp("field5").setValue("1,0");
+Horn.getComp("field6").setValue("0");
+Horn.getComp("field7").setValue("0");
+Horn.getComp("field8").setValue("0");
+Horn.getComp("field9").setValue("0");
+Horn.getComp("field10").setValue({"field10":"0","field11":"0"});
+
+}
+
+function setDisabled1(){
+Horn.getComp("select_tree").setDisabled(true);
+Horn.getComp("field13").setDisabled(true);
+Horn.getComp("field0").setDisabled(true);
+Horn.getComp("field1").setDisabled(true);
+Horn.getComp("field2").setDisabled(true);
+Horn.getComp("field3").setDisabled(true);
+Horn.getComp("field4").setDisabled(true);
+Horn.getComp("field5").setDisabled(true);
+Horn.getComp("field6").setDisabled(true);
+Horn.getComp("field7").setDisabled(true);
+Horn.getComp("field8").setDisabled(true);
+Horn.getComp("field9").setDisabled(true);
+Horn.getComp("field10").setDisabled(true);
+
+}
+
+function setDisabled3(){
+Horn.getComp("select_tree").setDisabled(false);
+Horn.getComp("field13").setDisabled(false);
+Horn.getComp("field0").setDisabled(false);
+Horn.getComp("field1").setDisabled(false);
+Horn.getComp("field2").setDisabled(false);
+Horn.getComp("field3").setDisabled(false);
+Horn.getComp("field4").setDisabled(false);
+Horn.getComp("field5").setDisabled(false);
+Horn.getComp("field6").setDisabled(false);
+Horn.getComp("field7").setDisabled(false);
+Horn.getComp("field8").setDisabled(false);
+Horn.getComp("field9").setDisabled(false);
+Horn.getComp("field10").setDisabled(false);
+
+}
+
+function comsetValues1(){
+Horn.getComp("select_tree").setValue(22);
+Horn.getComp("field13").setValue(0);
+Horn.getComp("field0").setValue(0);
+Horn.getComp("field1").setValue(0);
+Horn.getComp("field2").setValue(0);
+Horn.getComp("field3").setValue(0);
+Horn.getComp("field4").setValue(0);
+Horn.getComp("field5").setValue(0);
+Horn.getComp("field6").setValue(0);
+Horn.getComp("field7").setValue(0);
+Horn.getComp("field8").setValue(0);
+Horn.getComp("field9").setValue(0);
+Horn.getComp("field10").setValue({"field10":0,"field11":0});
+}
+
+function getValues() {
+	var result = Horn.getComp("testForm").getValues();
+	var comValue="";
+		for (var i in result) {
+		comValue += i+":"+result[i]+"\n"; 
+	}
+	alert(comValue);
+}
+#end

@@ -1,0 +1,23 @@
+#@screen()
+    #@case_desc({"title":"相同name的窗口"})
+	包含用例（8994）<br/>
+	两个窗口使用同样的name
+	<br/>
+    <b>预期：</b>正常显示最好一个。
+    #end
+    #button_panel_ex({"buttons":[{"label":"显示","name":"btnShow","event":"showWin()"}]})
+    #@window({"name":"w1","title":"标题1","width":"300","height":"300"})
+		#button_panel_ex({"buttons":[{"label":"隐藏","name":"btnHide","event":"hideWin()"}]})
+    #end
+	#@window({"name":"w1","title":"标题2","width":"400","height":"100"})
+		#button_panel_ex({"buttons":[{"label":"隐藏","name":"btnHide","event":"hideWin()"}]})
+    #end
+#end
+#jscode()
+	function showWin(){
+		Horn.getComp("w1").show();
+	}
+	function hideWin(){
+		Horn.getComp("w1").hide();
+	}
+#end

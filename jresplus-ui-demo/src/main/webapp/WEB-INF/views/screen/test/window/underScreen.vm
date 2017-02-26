@@ -1,0 +1,17 @@
+#@screen({})
+   #@case_desc({"title":"将window的声明放在screen后面"})
+	包含用例（暂缺）<br/>
+	1、将window的声明放在screen后面<br/>
+    <b>预期:</b>js错误<br/>
+    #end
+   #button_panel_ex({"buttons":[{"label":"新增岗位","event":"addPos()"}]})
+#end
+#@window({"title":"新增岗位","name":"addPos","width":"800","height":"260"})
+    #parse("/screen/test/window/add.vm")
+#end
+#jscode()
+ var addPos = function(){
+     Horn.getComp("addPos").show();
+ }
+
+#end

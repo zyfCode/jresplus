@@ -1,0 +1,53 @@
+﻿body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr {margin: 0; padding: 0;}
+body {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    font-size: 12px;
+}
+.h_login-w{width:1000px; margin:0 auto;}
+
+/*---------------头部样式--------------------------*/
+.h_login-top{ height:90px; padding:20px 0; overflow:hidden;}
+.h_login-top .h_login-logo{background:#fff url('img/h_login-logo.gif') no-repeat; height:90px; width:700px; float:left;}
+
+.h_top-friendlink{width:180px; margin-top:15px; margin-right:10px; z-index:9999; float:right; display:none;}
+.h_top-friendlink .h_top-friendlink-content{background:#fff; line-height:20px; cursor:pointer; width:140px; overflow:hidden; padding:0 20px 0 5px; background:#fff url('img/h_topsearchbtn.gif') no-repeat 150px 7px; border:1px #ccc solid; border-radius: 3px;
+-moz-box-shadow:0 0 2px #eee inset;/* For Firefox3.6+ */-webkit-box-shadow:0 0 2px #eee inset;/* For Chrome5+, Safari5+ */box-shadow:0 0 2px #eee inset;/* For Latest Opera */}
+.h_top-friendlink .h_top-friendlink-content a{color:#666;}
+.h_top-friendlink .h_top-friendlink-content a:hover{text-decoration:none;}
+.h_top-friendlink .h_top-friendlink-content:hover{background:#fff url('img/h_topsearchbtn.gif') no-repeat 150px -38px;}
+.h_top-friendlink .h_top-friendlink-content:hover ul{display:block;}
+.h_top-friendlink .h_top-friendlink-content ul{display:none;}
+.h_top-friendlink .h_top-friendlink-content:hover ul li a{color:#333;}
+
+
+
+.h_login-con{background-color:#d1e7ff; height:325px; margin:20px 0;}
+.h_login-con .h_login-conimgbg{background:transparent url('img/h_loginbg.jpg') no-repeat; height:100%;}
+
+.h_logindiv{width:234px; padding:100px 50px 25px 40px; height:300px; background:transparent url('img/h_logindivbg.gif') no-repeat; overflow:hidden; position:absolute; margin-top:-39px; margin-left:676px;}
+.h_logindiv dl{overflow:hidden; padding:0px 0 10px 0;}
+.h_logindiv dt{font:14px/100% '幼圆'; color:#900;text-shadow:1px 1px 0 #fff; padding:5px 0 2px;}
+.h_logindiv dd{padding:3px 0;}
+.h_logindiv dd input{border:1px #ccc solid; height:24px; width:200px; border-radius: 3px;
+-moz-box-shadow:0 0 2px #ccc inset;/* For Firefox3.6+ */-webkit-box-shadow:0 0 2px #ccc inset;/* For Chrome5+, Safari5+ */box-shadow:0 0 2px #ccc inset;}
+.h_logindiv p{overflow:hidden; padding:10px 0; display:none;}
+.h_logindiv p.h_cred{color:#900;}
+.h_login-txt{padding:10px 0 0 0; color:#666; line-height:200%;}
+
+.h_logindiv dd.h_validcode input{width:80px; margin-right:5px;vertical-align:middle;}
+.h_logindiv dd.h_validcode img{vertical-align:middle; width:60px; height:25px;}
+
+.h_login-btn{padding:10px 0;}
+.h_login-btn button{background:transparent url('img/h_login-btn.gif') no-repeat;border-radius: 3px; width:89px; height:30px; cursor:pointer; border:0; color:#fff; font-size:13px; font-weight:bold;}
+
+/*登录尾部*/
+.h_login-foot{}
+.h_login-foot p{color:#666; padding:10px;}
+
+
+
+
+
+
+
+

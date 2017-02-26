@@ -1,0 +1,27 @@
+#foreach($foo in [0..15])
+	#*
+	#@window({"title":"窗口$foo", "name":"w$foo", "width":"800", "height":"320","scroll":true,"buttons":[
+        	{"label":"提交","className":"u-btn-primary","event":"saveData()"},
+        	{"label":"重置","event":"resetDataForm()"}
+        ]})
+	#end
+*#
+#end
+#@screen({})
+    #@panel({"name":"mainPanel"})
+	#set($dataT='[{"id":"1","name":"根","pId":""},{"id":"21","name":"sub11","pId":"1"},{"id":"22","name":"sub12","pId":"1"},{"id":"212","name":"sub111","pId":"21"},{"id":"221","name":"sub211","pId":"22"},{"id":"212","name":"sub11sas","pId":"21"}]') 
+        #foreach($foo in [0..100])
+			##combox({"selectAll": false,"multiple": true, "name":"test${foo}","label":"combox${foo}", "defValue":"1", "dictName": "province","check": "required","showLabel":"true"})
+		#end
+		 ##foreach($foo in [0..100])
+			##select_tree({"id":"select_tree$foo","name":"select_tree$foo","label":"select_tree$foo","disabled":false,"data":$dataT,"expandFirst":false,"filterBy":"id","checkMode":"radio","check":"required","onCheck":"onCheck"})
+		##end
+		#calendar({"label":"calendar", "name":"test1622", "defValue": "", "value": "20160406", "cols": 1, "check": "","hidden":false,"focusShowCalendar":false, "cols":1})
+		#calendar({"label":"da","id":"birthday","name":"birthday22","value":"20131223","config":"{minDate:'20131223',noToday:true,format:'yyyy-MM-dd'}","readonly":false,"disabled":false, "cols":1})
+		#calendar({"label":"da","id":"birthday","name":"birthday33","value":"20131223","config":"{minDate:'20131223',noToday:true,format:'yyyy-MM-dd'}","readonly":false,"disabled":false, "cols":1})
+		##calendar_group({"label":"calendargroup","name1": "calendargroup22","value1":"","value2":"","name2": "calendargroup222","check": "","hidden":false,"cols":2,"disabled":false,"focusShowCalendar":true})
+		#foreach($foo in [0..100])
+			##textfield({"name":"test$foo", "label":"textfield$foo", "defValue": "textfield$foo", "check": "required"})
+		#end
+    #end
+#end

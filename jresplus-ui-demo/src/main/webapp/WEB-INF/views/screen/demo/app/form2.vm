@@ -1,0 +1,68 @@
+#@screen()
+	<div class="g-grid-3">
+		#@panel({"name":"mainPanel","title":"树结构"})
+            #set($dataT='[{"id":"1","name":"浙江省"},{"id":"21","name":"杭州市","pId":"1"},{"id":"22","name":"宁波市","pId":"1"},{"id":"33","name":"温州市","pId":"1"},
+			{"id":"44","name":"嘉兴市","pId":"1"},{"id":"55","name":"湖州市","pId":"1"},{"id":"66","name":"绍兴市","pId":"1"},{"id":"77","name":"金华市","pId":"1"},
+			{"id":"88","name":"衢州市","pId":"1"},{"id":"99","name":"丽水市","pId":"1"},{"id":"211","name":"西湖区","pId":"21"},{"id":"212","name":"滨江区","pId":"21"},
+			{"id":"213","name":"上城区","pId":"21"},{"id":"214","name":"下城区","pId":"21"},{"id":"222","name":"宁海县","pId":"22"},{"id":"333","name":"鹿城区","pId":"33"},
+			{"id":"3333","name":"莲池街道","pId":"333"},{"id":"3334","name":"南门街道","pId":"333"},{"id":"444","name":"南湖区","pId":"44"},{"id":"445","name":"秀州区","pId":"44"},
+			{"id":"555","name":"南浔区","pId":"55"},{"id":"556","name":"吴兴区","pId":"55"}]')  
+            #ztree({  
+                "id":"tree1",  
+                "name":"ztree1",
+            	"toolbar":false,
+            	"filterBy":"id",
+            	"expandFirst":true,
+				"toolbar":true,
+            	"search":true,
+            	"checkMode":"checkbox",
+                "beforeDblClick":"beforeDblClick",
+                "onDblClick":"onDblClick",
+                "data":$dataT})  
+    	#end
+	</div>
+	<div class="g-grid-9">
+		#@panel({"name":"panel2","expandable":false,"isExpand":true,"title":"基础信息","cols":"3"})
+			#combox({"value":"","label":"存款类型","multiple":true,"name":"mtype","items":[{"text":"类型一","code":"0"},  
+			{"text":"类型二","code":"1"},{"text":"类型三","code":"2"},{"text":"类型四","code":"3"}]})
+
+			#textfield({"label":"投资明细名称","name":"detail1"})
+			#textfield({"label":"投资明细编号","name":"detail2"})
+			#calendar({"label":"签约日期","name":"dedate","check": "required","emptyText":"请输入日期"})
+			
+			#textfield({"label":"金额大写","name":"money2"})
+			#typefield({"id":"t2","name":"typefield2","label":"投资金额(元)","inputType":"money","split":",","bigTips":true})
+			#calendar({"label":"开始日期","name":"stdate","check": "required","emptyText":"请输入日期"})
+			#radiogroup({"name":"radio1","label":"存款期限","items":[{"code":"1","text":"短期"},{"code":"2","text":"长期"}], "value":1})  
+
+			#calendar({"label":"到期日期","name":"enddate","check": "required","emptyText":"请输入日期"})
+
+			#combox({"value":"","label":"五级分类","name":"class","headItem":{"label":"","value":"请选择"},"check": "required","items":[{"text":"1.正常","code":"0"},  
+			{"text":"苹果","code":"1"}]})
+
+			
+			#textfield({"label":"备注信息","name":"details","cols":"2"})
+
+		#end
+		#@panel({"name":"panel3","expandable":true,"isExpand":true,"cols":"2"})
+			#combox({"value":"","label":"存款类型","name":"mtype","check":"required","items":[{"text":"RMB","code":"0"},  
+			{"text":"dollar","code":"1"}]})
+			#combox({"value":"","label":"五级分类","name":"class","check": "required","dictName": "province"})
+
+			#checkboxGroup({"label":"存款银行","name":"bank","value":"0","items":[    
+						 {"label":"招商银行","value":"0"},
+						 {"label":"中国银行","value":"1"},
+						 {"label":"工商银行","value":"2"} 
+						 ]}) 
+			#textfield({"label":"存款单号","name":"formNUM","check":"required"})
+
+			#combox({"value":"","label":"投向行业","name":"combo1","check": "required","items":[{"text":"项目一","code":"0"},  
+			{"text":"项目二","code":"1"}]})
+
+			#combox({"value":"","label":"结算方式","name":"combo2","items":[{"text":"方式一","code":"0"},  
+			{"text":"方式二","code":"1"}]})
+			#textarea({"label":"备注信息","name":"details2","cols":"2","rows":"4"})
+			
+		#end
+	</div>
+#end

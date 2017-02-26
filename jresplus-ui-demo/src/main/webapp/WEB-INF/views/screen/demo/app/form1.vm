@@ -1,0 +1,266 @@
+#@screen({})
+	
+	<div class="g-grid-12">
+		#@panel({"title":"添加员工"})
+    		#textfield({"label":"员工姓名:","name":"empName"})
+    		#textfield({"label":"工号:","name":"empNum"})
+    		#button_group({"name":"btns","buttons":[{"label":"添加","className":"u-btn-success"},{"label":"删除选中项","className":"u-btn-warning"}]})
+    	#end
+	</div>
+		
+	<div class="g-grid-12">
+	#@tab_panel({"id":"tp1","name":"tp1", "isFormValidate":true})
+	  #@tab_panel_content({"name":"tab1","title":"员工01信息"})  
+		#@panel({"cols":3}) 
+		  #set($index=1)
+			#textfield({"label":"姓名","name":"eName$index","check":"required","value":"张三"})
+			#textfield({"label":"年龄","name":"eAge$index","check":"intege;range(18,60)"}) 
+			#radiogroup({"name":"eSex$index","label":"性别","items":[{"code":"1","text":"男"},{"code":"2","text":"女"}], "value":1})  
+			#calendar({"label":"出生日期","name":"birthday","check": "required","emptyText":"请输入日期"})
+			#combox({"defValue": "","emptyText":"请选择","label":"所在部门","check": "required","enableFieldSearch":false,"name":"department$index","disabled":false,"headItem":{"label":"","value":"请选择"},"items":[{"text":"研发中心","code":"0"},  
+					{"text":"测试中心11111111111111111111111111111","code":"1"},  
+					{"text":"人力资源","code":"2"}]})
+			#combox({"label":"省份","id":"vc_province_no","enableFieldSearch":true,
+            "name":"vc_province_name","multiple":true,"items":[
+                {"code":"0","text":"葡萄"},
+				{"code":"1","text":"苹果"},
+                {"code":"2","text":"桔子"},
+                {"code":"3","text":"香蕉"}]})
+    
+			#combox({"enableFieldSearch":true,"headItem":{"label":"", "value":"请选择..."},"id":"test1","multiple":true, "name":"hjhdc","label":"combox多选","dictName": "country"})
+
+			#textfield({"label":"邮箱","name":"email$index","check":"required;email","value":"zhangs@hundsun.com"})
+			#textfield({"label":"联系电话","name":"telphone$index","check":"required;mobile","value":"18600000000"})
+			#checkboxGroup({"label":"当前状态","value":"1","name":"status$index","cols":1,"items":[    
+			 {"label":"实习","value":"0"},
+			 {"label":"试用","value":"1"},
+			 {"label":"转正","value":"2"} 
+								 ]}) 
+			#combox({"label":"工作地点","defValue": "","multiple": true,"emptyText":"请选择","headItem":{"label":"","value":"请选择"},"name":"workPlace$index","check": "required","dictName": "province"})
+			#textarea({"label":"备注","name":"details$index","cols":3,"emptyText":"备注信息"})
+		#end  
+	  #end
+
+	  #@tab_panel_content({"name":"tab2","title":"员工02信息"})  
+		#@panel({"cols":3}) 
+			#set($index=$index+1)
+			#textfield({"label":"姓名","name":"eName$index","check":"required","value":"李四"})
+			#textfield({"label":"年龄","name":"eAge$index","check":"intege;range(18,60)"}) 
+			#radiogroup({"name":"eSex$index","label":"性别","items":[{"code":"1","text":"男"},{"code":"2","text":"女"}], "value":1})  
+			#calendar({"label":"出生日期","name":"birthday","check": "required","emptyText":"请输入日期"})
+			#combox({"defValue": "","emptyText":"请选择","label":"所在部门","check": "required","name":"department$index","disabled":false,"headItem":{"label":"","value":"请选择"},"items":[{"text":"研发中心","code":"0"},  
+					{"text":"测试中心","code":"1"},  
+					{"text":"人力资源","code":"2"}]})
+			#textfield({"label":"邮箱","name":"email$index","check":"required;email","value":"zhangs@hundsun.com"})
+			#textfield({"label":"联系电话","name":"telphone$index","check":"required;mobile","value":"18600000000"})
+			#checkboxGroup({"label":"当前状态","name":"status$index","cols":1,"items":[    
+			 {"label":"实习","value":"0"},
+			 {"label":"试用","value":"1"},
+			 {"label":"转正","value":"2"} 
+								 ]}) 
+			#combox({"label":"工作地点","defValue": "","emptyText":"请选择","headItem":{"label":"","value":"请选择"},"name":"workPlace$index","check": "required","dictName": "province"})
+			#textarea({"label":"备注","name":"details$index","cols":3,"emptyText":"备注信息"})
+		#end  
+	  #end
+
+	  #@tab_panel_content({"name":"tab3","title":"员工03信息"})  
+		#@panel({"cols":3}) 
+			#set($index=$index+2)
+			#textfield({"label":"姓名","name":"eName$index","check":"required","value":"张三"})
+			#textfield({"label":"年龄","name":"eAge$index","check":"intege;range(18,60)"}) 
+			#radiogroup({"name":"eSex$index","label":"性别","items":[{"code":"1","text":"男"},{"code":"2","text":"女"}], "value":1})  
+			#calendar({"label":"出生日期","name":"birthday","check": "required","emptyText":"请输入日期"})
+			#combox({"defValue": "","emptyText":"请选择","label":"所在部门","check": "required","name":"department$index","disabled":false,"headItem":{"label":"","value":"请选择"},"items":[{"text":"研发中心","code":"0"},  
+					{"text":"测试中心","code":"1"},  
+					{"text":"人力资源","code":"2"}]})
+			#textfield({"label":"邮箱","name":"email$index","check":"required;email","value":"zhangs@hundsun.com"})
+			#textfield({"label":"联系电话","name":"telphone$index","check":"required;mobile","value":"18600000000"})
+			#checkboxGroup({"label":"当前状态","name":"status$index","cols":1,"items":[    
+			 {"label":"实习","value":"0"},
+			 {"label":"试用","value":"1"},
+			 {"label":"转正","value":"2"} 
+								 ]}) 
+			#combox({"label":"工作地点","defValue": "","emptyText":"请选择","headItem":{"label":"","value":"请选择"},"name":"workPlace$index","check": "required","dictName": "province"})
+			#textarea({"label":"备注","name":"details$index","cols":3,"emptyText":"备注信息"})
+		#end  
+	  #end
+	  
+	  #@tab_panel_content({"name":"tab4","title":"员工04信息"})  
+		#@panel({"cols":3}) 
+			#set($index=$index+3)
+			#textfield({"label":"姓名","name":"eName$index","check":"required","value":"张三"})
+			#textfield({"label":"年龄","name":"eAge$index","check":"intege;range(18,60)"}) 
+			#radiogroup({"name":"eSex$index","label":"性别","items":[{"code":"1","text":"男"},{"code":"2","text":"女"}], "value":1})  
+			#calendar({"label":"出生日期","name":"birthday","check": "required","emptyText":"请输入日期"})
+			#combox({"defValue": "","emptyText":"请选择","label":"所在部门","check": "required","name":"department$index","disabled":false,"headItem":{"label":"","value":"请选择"},"items":[{"text":"研发中心","code":"0"},  
+					{"text":"测试中心","code":"1"},  
+					{"text":"人力资源","code":"2"}]})
+			#textfield({"label":"邮箱","name":"email$index","check":"required;email","value":"zhangs@hundsun.com"})
+			#textfield({"label":"联系电话","name":"telphone$index","check":"required;mobile","value":"18600000000"})
+			#checkboxGroup({"label":"当前状态","name":"status$index","cols":1,"items":[    
+			 {"label":"实习","value":"0"},
+			 {"label":"试用","value":"1"},
+			 {"label":"转正","value":"2"} 
+								 ]}) 
+			#combox({"label":"工作地点","defValue": "","emptyText":"请选择","headItem":{"label":"","value":"请选择"},"name":"workPlace$index","check": "required","dictName": "province"})
+			#textarea({"label":"备注","name":"details$index","cols":3,"emptyText":"备注信息"})
+		#end  
+	  #end
+
+	  #@tab_panel_content({"name":"tab5","title":"员工05信息"})  
+		#@panel({"cols":3}) 
+			#set($index=$index+4)
+			#textfield({"label":"姓名","name":"eName$index","check":"required","value":"张三"})
+			#textfield({"label":"年龄","name":"eAge$index","check":"intege;range(18,60)"}) 
+			#radiogroup({"name":"eSex$index","label":"性别","items":[{"code":"1","text":"男"},{"code":"2","text":"女"}], "value":1})  
+			#calendar({"label":"出生日期","name":"birthday","check": "required","emptyText":"请输入日期"})
+			#combox({"defValue": "","emptyText":"请选择","label":"所在部门","check": "required","name":"department$index","disabled":false,"headItem":{"label":"","value":"请选择"},"items":[{"text":"研发中心","code":"0"},  
+					{"text":"测试中心","code":"1"},  
+					{"text":"人力资源","code":"2"}]})
+			#textfield({"label":"邮箱","name":"email$index","check":"required;email","value":"zhangs@hundsun.com"})
+			#textfield({"label":"联系电话","name":"telphone$index","check":"required;mobile","value":"18600000000"})
+			#checkboxGroup({"label":"当前状态","name":"status$index","cols":1,"items":[    
+			 {"label":"实习","value":"0"},
+			 {"label":"试用","value":"1"},
+			 {"label":"转正","value":"2"} 
+								 ]}) 
+			#combox({"label":"工作地点","defValue": "","emptyText":"请选择","headItem":{"label":"","value":"请选择"},"name":"workPlace$index","check": "required","dictName": "province"})
+			#textarea({"label":"备注","name":"details$index","cols":3,"emptyText":"备注信息"})
+		#end  
+	  #end
+
+	  #@tab_panel_content({"name":"tab6","title":"员工06信息"})  
+		#@panel({"cols":3}) 
+			#set($index=$index+5)
+			#textfield({"label":"姓名","name":"eName$index","check":"required","value":"张三"})
+			#textfield({"label":"年龄","name":"eAge$index","check":"intege;range(18,60)"}) 
+			#radiogroup({"name":"eSex$index","label":"性别","items":[{"code":"1","text":"男"},{"code":"2","text":"女"}], "value":1})  
+			#calendar({"label":"出生日期","name":"birthday","check": "required","emptyText":"请输入日期"})
+			#combox({"defValue": "","emptyText":"请选择","label":"所在部门","check": "required","name":"department$index","disabled":false,"headItem":{"label":"","value":"请选择"},"items":[{"text":"研发中心","code":"0"},  
+					{"text":"测试中心","code":"1"},  
+					{"text":"人力资源","code":"2"}]})
+			#textfield({"label":"邮箱","name":"email$index","check":"required;email","value":"zhangs@hundsun.com"})
+			#textfield({"label":"联系电话","name":"telphone$index","check":"required;mobile","value":"18600000000"})
+			#checkboxGroup({"label":"当前状态","name":"status$index","cols":1,"items":[    
+			 {"label":"实习","value":"0"},
+			 {"label":"试用","value":"1"},
+			 {"label":"转正","value":"2"} 
+								 ]}) 
+			#combox({"label":"工作地点","defValue": "","emptyText":"请选择","headItem":{"label":"","value":"请选择"},"name":"workPlace$index","check": "required","dictName": "province"})
+			#textarea({"label":"备注","name":"details$index","cols":3,"emptyText":"备注信息"})
+		#end  
+	  #end
+
+	  #@tab_panel_content({"name":"tab7","title":"员工07信息"})  
+		#@panel({"cols":3}) 
+			#set($index=$index+6)
+			#textfield({"label":"姓名","name":"eName$index","check":"required","value":"张三"})
+			#textfield({"label":"年龄","name":"eAge$index","check":"intege;range(18,60)"}) 
+			#radiogroup({"name":"eSex$index","label":"性别","items":[{"code":"1","text":"男"},{"code":"2","text":"女"}], "value":1})  
+			#calendar({"label":"出生日期","name":"birthday","check": "required","emptyText":"请输入日期"})
+			#combox({"defValue": "","emptyText":"请选择","label":"所在部门","check": "required","name":"department$index","disabled":false,"headItem":{"label":"","value":"请选择"},"items":[{"text":"研发中心","code":"0"},  
+					{"text":"测试中心","code":"1"},  
+					{"text":"人力资源","code":"2"}]})
+			#textfield({"label":"邮箱","name":"email$index","check":"required;email","value":"zhangs@hundsun.com"})
+			#textfield({"label":"联系电话","name":"telphone$index","check":"required;mobile","value":"18600000000"})
+			#checkboxGroup({"label":"当前状态","name":"status$index","cols":1,"items":[    
+			 {"label":"实习","value":"0"},
+			 {"label":"试用","value":"1"},
+			 {"label":"转正","value":"2"} 
+								 ]}) 
+			#combox({"label":"工作地点","defValue": "","emptyText":"请选择","headItem":{"label":"","value":"请选择"},"name":"workPlace$index","check": "required","dictName": "province"})
+			#textarea({"label":"备注","name":"details$index","cols":3,"emptyText":"备注信息"})
+		#end  
+	  #end
+
+	  #@tab_panel_content({"name":"tab8","title":"员工08信息"})  
+		#@panel({"cols":3}) 
+			#set($index=$index+7)
+			#textfield({"label":"姓名","name":"eName$index","check":"required","value":"张三"})
+			#textfield({"label":"年龄","name":"eAge$index","check":"intege;range(18,60)"}) 
+			#radiogroup({"name":"eSex$index","label":"性别","items":[{"code":"1","text":"男"},{"code":"2","text":"女"}], "value":1})  
+			#calendar({"label":"出生日期","name":"birthday","check": "required","emptyText":"请输入日期"})
+			#combox({"defValue": "","emptyText":"请选择","label":"所在部门","check": "required","name":"department$index","disabled":false,"headItem":{"label":"","value":"请选择"},"items":[{"text":"研发中心","code":"0"},  
+					{"text":"测试中心","code":"1"},  
+					{"text":"人力资源","code":"2"}]})
+			#textfield({"label":"邮箱","name":"email$index","check":"required;email","value":"zhangs@hundsun.com"})
+			#textfield({"label":"联系电话","name":"telphone$index","check":"required;mobile","value":"18600000000"})
+			#checkboxGroup({"label":"当前状态","name":"status$index","cols":1,"items":[    
+			 {"label":"实习","value":"0"},
+			 {"label":"试用","value":"1"},
+			 {"label":"转正","value":"2"} 
+								 ]}) 
+			#combox({"label":"工作地点","defValue": "","emptyText":"请选择","headItem":{"label":"","value":"请选择"},"name":"workPlace$index","check": "required","dictName": "province"})
+			#textarea({"label":"备注","name":"details$index","cols":3,"emptyText":"备注信息"})
+		#end  
+	  #end
+
+	  #@tab_panel_content({"name":"tab9","title":"员工09信息"})  
+		#@panel({"cols":3}) 
+			#set($index=$index+8)
+			#textfield({"label":"姓名","name":"eName$index","check":"required","value":"张三"})
+			#textfield({"label":"年龄","name":"eAge$index","check":"intege;range(18,60)"}) 
+			#radiogroup({"name":"eSex$index","label":"性别","items":[{"code":"1","text":"男"},{"code":"2","text":"女"}], "value":1})  
+			#calendar({"label":"出生日期","name":"birthday","check": "required","emptyText":"请输入日期"})
+			#combox({"defValue": "","emptyText":"请选择","label":"所在部门","check": "required","name":"department$index","disabled":false,"headItem":{"label":"","value":"请选择"},"items":[{"text":"研发中心","code":"0"},  
+					{"text":"测试中心","code":"1"},  
+					{"text":"人力资源","code":"2"}]})
+			#textfield({"label":"邮箱","name":"email$index","check":"required;email","value":"zhangs@hundsun.com"})
+			#textfield({"label":"联系电话","name":"telphone$index","check":"required;mobile","value":"18600000000"})
+			#checkboxGroup({"label":"当前状态","name":"status$index","cols":1,"items":[    
+			 {"label":"实习","value":"0"},
+			 {"label":"试用","value":"1"},
+			 {"label":"转正","value":"2"} 
+								 ]}) 
+			#combox({"label":"工作地点","defValue": "","emptyText":"请选择","headItem":{"label":"","value":"请选择"},"name":"workPlace$index","check": "required","dictName": "province"})
+			#textarea({"label":"备注","name":"details$index","cols":3,"emptyText":"备注信息"})
+		#end  
+	  #end
+
+	  #@tab_panel_content({"name":"tab10","title":"员工10信息"})  
+		#@panel({"cols":3}) 
+			#set($index=$index+9)
+			#textfield({"label":"姓名","name":"eName$index","check":"required","value":"张三"})
+			#textfield({"label":"年龄","name":"eAge$index","check":"intege;range(18,60)"}) 
+			#radiogroup({"name":"eSex$index","label":"性别","items":[{"code":"1","text":"男"},{"code":"2","text":"女"}], "value":1})  
+			#calendar({"label":"出生日期","name":"birthday","check": "required","emptyText":"请输入日期"})
+			#combox({"defValue": "","emptyText":"请选择","label":"所在部门","check": "required","name":"department$index","disabled":false,"headItem":{"label":"","value":"请选择"},"items":[{"text":"研发中心","code":"0"},  
+					{"text":"测试中心","code":"1"},  
+					{"text":"人力资源","code":"2"}]})
+			#textfield({"label":"邮箱","name":"email$index","check":"required;email","value":"zhangs@hundsun.com"})
+			#textfield({"label":"联系电话","name":"telphone$index","check":"required;mobile","value":"18600000000"})
+			#checkboxGroup({"label":"当前状态","name":"status$index","cols":1,"items":[    
+			 {"label":"实习","value":"0"},
+			 {"label":"试用","value":"1"},
+			 {"label":"转正","value":"2"} 
+								 ]}) 
+			#combox({"label":"工作地点","defValue": "","emptyText":"请选择","headItem":{"label":"","value":"请选择"},"name":"workPlace$index","check": "required","dictName": "province"})
+			#textarea({"label":"备注","name":"details$index","cols":3,"emptyText":"备注信息"})
+		#end  
+	  #end
+	  
+	  #@tab_panel_content({"name":"tab11","title":"员工11信息"})  
+		#@panel({"cols":3}) 
+			#set($index=$index+10)
+			#textfield({"label":"姓名","name":"eName$index","check":"required","value":"张三"})
+			#textfield({"label":"年龄","name":"eAge$index","check":"intege;range(18,60)"}) 
+			#radiogroup({"name":"eSex$index","label":"性别","items":[{"code":"1","text":"男"},{"code":"2","text":"女"}], "value":1})  
+			#calendar({"label":"出生日期","name":"birthday","check": "required","emptyText":"请输入日期"})
+			#combox({"defValue": "","emptyText":"请选择","label":"所在部门","check": "required","name":"department$index","disabled":false,"headItem":{"label":"","value":"请选择"},"items":[{"text":"研发中心","code":"0"},  
+					{"text":"测试中心","code":"1"},  
+					{"text":"人力资源","code":"2"}]})
+			#textfield({"label":"邮箱","name":"email$index","check":"required;email","value":"zhangs@hundsun.com"})
+			#textfield({"label":"联系电话","name":"telphone$index","check":"required;mobile","value":"18600000000"})
+			#checkboxGroup({"label":"当前状态","name":"status$index","cols":1,"items":[    
+			 {"label":"实习","value":"0"},
+			 {"label":"试用","value":"1"},
+			 {"label":"转正","value":"2"} 
+								 ]}) 
+			#combox({"label":"工作地点","defValue": "","emptyText":"请选择","headItem":{"label":"","value":"请选择"},"name":"workPlace$index","check": "required","dictName": "province"})
+			#textarea({"label":"备注","name":"details$index","cols":3,"emptyText":"备注信息"})
+			 
+		#end  
+	  #end
+	#end
+	</div>
+#end

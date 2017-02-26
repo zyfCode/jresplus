@@ -1,0 +1,61 @@
+#@screen({})
+ #button_panel_ex({
+	"buttons" : [{"label":"根据name加载值","event":"loadData1()"},{"label":"根据id加载值","event":"loadData2()"}
+	]
+})
+
+#datagrid({
+	"id":"testDataGridId",
+	"name":"DataGrid",
+	"title":"测试DataGrid",
+	"autoLoad":true,	
+	"autoWidth":true,	
+	"data":$!data,
+	"selectModel":"multi",
+	"url":"/test/dataGrid/getdata.htm",
+	 "items":[
+	 {"name":"name1",
+   "text":"字段1",
+   "hAlign":"center",
+   "tAlign":"center",
+      "renderer":"domrender",
+   "dictName":"province"
+   },{
+		"name":"name2",
+		"text":"字段2(静态字典)",
+		"hAlign":"center",
+		"tAlign":"center",
+
+		"renderer":"",
+		"items":[{"label":"杭州总部","value":"1"},{"label":"上海分部1","value":"11"},{"label":"上海分部2","value":"21"}]
+		},{
+		"name":"name3",
+		"text":"字段3"
+		},
+		{
+		"name":"name4",
+		"text":"字段4",
+		"hAlign":"right",
+		"tAlign":"right"
+		}
+	],
+	"numbercolumn":true,
+	"rowSelect":true,
+	"hasPage":"true"
+})
+ 
+#end
+
+#jscode()
+ 
+	function loadData1(){
+      var data = {"total":50,"rows":[{"name1":"1","name2":"1","name3":"通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过","name4":"20130101"},{"name1":"2","name2":"11","name3":"通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过通过","name4":"20130101"}]};
+      Horn.getComp("DataGrid").loadData(data);
+    }
+	
+	function loadData2(){
+      var data = {"total":50,"rows":[{"name1":"1","name2":"1","name3":"测测测额鹅鹅鹅呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃额鹅鹅鹅饿","name4":"20130101"},{"name1":"2","name2":"11","name3":"测测测额鹅鹅鹅呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃额鹅鹅鹅饿","name4":"20130101"},]};
+      Horn.getCompById("testDataGridId").loadData(data);
+    }
+
+	#end

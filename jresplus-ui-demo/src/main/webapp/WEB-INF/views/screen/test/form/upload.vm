@@ -1,0 +1,5 @@
+#@screen()
+	#@form({"name":"uploadForm","fileupload":true,"url":"${appServer}/test/form/upload.htm"})
+	
+	#end
+#end

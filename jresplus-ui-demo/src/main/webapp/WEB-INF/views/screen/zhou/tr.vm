@@ -1,0 +1,6 @@
+#set($layout="")
+<tr>
+	<td style="width:40px;"><div style="TEXT-aLIGN: center;width:40px;" title="1">1</div></td>
+	<td style="width:36px;"><div class="hc-datagrid-cell-check" style="TEXT-aLIGN: center;width:36px;" title=""><input type="checkbox" id="cb_testDataGridId_1"></div></td>
+	<td>#calendar({"label":"日期","id":"birthday","name":"birthday3","value":"20131223","config":"{minDate:'20131223',noToday:true,format:'yyyy-MM-dd'}","readonly":false,"disabled":false, "cols":1,"hiddenLabel":true})</td>
+</tr>

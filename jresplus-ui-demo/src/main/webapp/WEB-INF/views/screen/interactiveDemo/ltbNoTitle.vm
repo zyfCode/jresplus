@@ -1,0 +1,134 @@
+#@screen({})
+<!-- 左上下结构   querytable 无序列号 单选框 有查询条件交互  按钮操作-->
+	<!-- left begin-->
+    <div class="g-grid-3">
+		#@panel({"name":"mainPanel"})
+            #set($dataT='[{"id":"1","name":"浙江省"},{"id":"21","name":"杭州市","pId":"1"},{"id":"22","name":"宁波市","pId":"1"},{"id":"33","name":"温州市","pId":"1"},
+			{"id":"44","name":"嘉兴市","pId":"1"},{"id":"55","name":"湖州市","pId":"1"},{"id":"66","name":"绍兴市","pId":"1"},{"id":"77","name":"金华市","pId":"1"},
+			{"id":"88","name":"衢州市","pId":"1"},{"id":"99","name":"丽水市","pId":"1"},{"id":"211","name":"西湖区","pId":"21"},{"id":"212","name":"滨江区","pId":"21"},
+			{"id":"213","name":"上城区","pId":"21"},{"id":"214","name":"下城区","pId":"21"},{"id":"222","name":"宁海县","pId":"22"},{"id":"333","name":"鹿城区","pId":"33"},
+			{"id":"3333","name":"莲池街道","pId":"333"},{"id":"3334","name":"南门街道","pId":"333"},{"id":"444","name":"南湖区","pId":"44"},{"id":"445","name":"秀州区","pId":"44"},
+			{"id":"555","name":"南浔区","pId":"55"},{"id":"556","name":"吴兴区","pId":"55"},{"id":"666","name":"越城区（市区）","pId":"66"},{"id":"667","name":"上虞市","pId":"66"},
+			{"id":"668","name":"新昌县","pId":"66"},{"id":"669","name":"诸暨市","pId":"66"},{"id":"777","name":"义乌市","pId":"77"},{"id":"778","name":"金东区","pId":"77"}]')  
+                #ztree({  
+                "id":"tree1",  
+                "name":"ztree1",
+            	"toolbar":true,
+            	"filterBy":"id",
+            	"expandFirst":true,
+            	"search":true,
+            	"checkMode":"checkbox",
+             "beforeDblClick":"beforeDblClick",
+             "onDblClick":"onDblClick",
+            "data":$dataT})  
+    	#end
+	</div>
+	<!-- right begin-->
+    <div class="g-grid-9">
+		<!-- right top begin -->
+		#@form({"name":"paramform"})
+        	#@panel({"expandable":true,"isExpand":true})
+        		#combox({"label":"机构22","name":"branchNo","dictName": "province",
+        			"headItem":{"label":"","value":"请选择"}
+        		})
+    			#button_group({"buttons":[
+                	{"label":"查询","event":"queryData()"}
+                ]})
+        	#end
+        #end
+		<!-- right botton begin -->
+		#query_table({"name":"dataTable","url":"/demo/query_table/getTableData.htm?format=json",
+                "rowSelect" : true,
+                "cols" : 20,
+				"titleButtons":[{"label":"添加","cls":"add","event":"add()"},
+    		    {"label":"修改","cls":"edit","event":"edit()"},
+    		    {"label":"删除","cls":"del","event":"del()","disabled":true}],
+                "position_str":"position_str",
+                "requestMethod":"post",
+                "numbercolumn":false,
+                "selectModel":"multi",
+				"bindFormName":"paramform",
+                "request_num":"10",
+                "autoLoad":true,
+                "hasPage":true,
+                "items":[
+                {"name":"initDate","text":"发生日期"},
+                {"name":"branchNo", "text":"机构（静态字典）","items":[{"label":"0","value":"金华总部"},{"label":"1","value":"杭州总部"},{"label":"2","value":"宁波总部"},{"label":"3","value":"温州总部"}]},
+                {"name":"branchNo", "dictName":"branch", "text":"机构（动态字典）"},
+                {"name":"clientId","text":"客户编号" },
+                {"name":"clientName","text":"客户名称"},
+                {"name":"taskStatus","text":"任务状态","renderer" : "clientIdRender"},
+                {"name":"taskFlag","text":"任务标志"}
+                ],
+				"events":[  
+                {"event" : "rowclick" , "function" : "queryTableClick"},  
+                {"event":"rowdblclick","function":"queryTableDbClick"}  
+                ]})
+	</div>
+	<!-- windows begin -->
+	#@window({"title":"编辑窗口", "name":"windowPart", "width":"800", "height":"300",
+		"buttons":[ {"label":"确定","name":"btnOk","event":"todo()","className":"u-btn-primary"}
+         ,{"label":"取消","name":"btnCancel","event":"todo2()"} ]})  
+        #@form({"name":"dataForm"})  
+            #@panel({"cols":2})  
+                #calendar({"label":"发生日期", "name":"initDate","value":"","defValue":"20140401","check":"required"})  
+                #textfield({"label":"客户编号","name":"clientId","value":""})  
+                #textfield({"label":"客户名称","name":"clientName","value":"","renderer" : "clientIdRender"})  
+                #textfield({"label":"任务状态","name":"taskStatus","value":""})  
+                #textfield({"label":"任务标志","name":"taskFlag","value":""})  
+                #combox({"label":"机构","name":"branchNo","dictName": "branch","check": "required",  
+                    "headItem":{"label":"","value":"请选择"},"events":[{"event":"onchange","function":""}]  
+                })  
+            #end  
+        #end  
+    #end  
+#end
+#jscode()
+	var action = "";  
+	
+	function queryData(){
+		Horn.getComp("dataTable").loadByForm();
+	}
+	function clientIdRender(data){  
+       return '<font style="color:red;">'+data.val+'</font>';  
+    }  
+	function queryTableClick(rowData){  
+      
+    }  
+    function queryTableDbClick(rowData){  
+        edit(rowData);  
+    }  
+	function add(rowData){  
+        Horn.getComp("dataForm").reset();  
+        Horn.getComp("windowPart").show();  
+        action = "add";  
+    }  
+      
+     function edit(rowData){  
+        rowDatarowData = rowData || Horn.getComp('dataTable').getSelecteds().length && (Horn.getComp('dataTable').getSelecteds())[0];  
+        Horn.getComp("dataForm").setValues(rowDatarowData);  
+        Horn.getComp("windowPart").show();  
+        action = "edit";  
+    }  
+      
+    function del(rowData){  
+       Horn.Tip.info("删除成功");  
+    }  
+    function todo() {  
+        Horn.getComp("windowPart").hide();  
+        if (action == "add") {  
+            Horn.Tip.info("新增成功");  
+        } else if (action == "edit") {  
+            Horn.Tip.info("更新成功");  
+        } else {  
+              
+        }  
+    }  
+	function todo2() {  
+        Horn.getComp("windowPart").hide();
+    }  
+      
+    function resetDataForm() {  
+        Horn.getComp("dataForm").reset();  
+    }  
+#end

@@ -1,0 +1,42 @@
+$contain.get('/contain/head.htm')
+<style>
+	h2{
+		padding:10px;
+		margin:10px;
+		border:0px;
+		color:#256fa6;
+		border-bottom:1px solid #256fa6;
+	}
+	h3,h4,h5{
+		color:#256fa6;
+		padding-left:20px;
+		margin-left:10px;
+	}
+	p{
+		padding-left:20px;
+		padding-rignt:20px;
+		font-size:14px;
+	}
+	ul,li{
+		margin:10px;
+		margin-left:40px;
+		list-style: inherit;
+	}
+	a{
+		color: #0000ff;
+	}
+	a:hover{
+		color: #0000ff;
+		text-decoration: underline;
+	}
+	pre{
+		background-color:#eee;
+	}
+</style>
+    <div class="h_screen">
+    	$screen_content
+    </div>
+#jscode()
+Horn.Calendar.DEFAULT_FORMAT = 'yyyyMMdd';
+#end
+$contain.get('/contain/end.htm')

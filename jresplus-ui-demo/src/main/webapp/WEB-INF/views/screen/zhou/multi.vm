@@ -1,0 +1,190 @@
+#set($dataT='[{"id":"1","name":"根","pId":""},{"id":"21","name":"sub11111111111","pId":"1"},{"id":"22","name":"sub12","pId":"1"},{"id":"212","name":"sub111","pId":"21"},{"id":"221","name":"sub211","pId":"22"},{"id":"212","name":"sub11sas","pId":"21"}]') 
+#@window({"scroll":true,"id":"window","name":"w0","title":"窗口","height":300,"width":900,"isDrag":true,"buttons":[ {"label":"确定","name":"btnOk","event":"todo()","className":"u-btn-primary"},{"label":"取消","name":"btnCancel","event":"cancle()"} ]})
+        #@panel({"name":"mainPanel","cols":2})
+              #textfield({"label":"客户编号客户编号","name":"clientId","value":"", "check": "required"})
+              #textfield({"label":"客户名称","name":"clientName","value":""})
+    		  #textfield({"label":"客户编号","name":"clientId1","value":""})
+              #textfield({"label":"客户名称","name":"clientName1","value":""})
+    		  #textfield({"label":"客户编号","name":"clientId2","value":""})
+              #textfield({"label":"客户名称","name":"clientName2","value":""})
+    		  #textfield({"label":"客户编号","name":"clientId3","value":""})
+              #textfield({"label":"客户名称","name":"clientName3","value":""})
+    		  #textfield({"label":"客户编号","name":"clientId4","value":""})
+    		  #select({"name":"select","multiple": true,"value":"1","label":"静态单选","items":[{"label":"1","value":"上海"},{"label":"2","value":"广州"},{"label":"3","value":"重庆"},{"label":"11","value":"杭州"}], "cols":1,  "check": "required","showLabel":"true","filterBy":"key"})
+    		  #combox({"name":"combox","multiple": true,"label":"静态单选","items":[{"label":"1","value":"上海"},{"label":"2","value":"广州"},{"label":"3","value":"重庆"},{"label":"11","value":"杭州"}], "cols":1,  "check": "required","showLabel":"true","filterBy":"key"})
+    		  #password({"name":"test111", "label":"password","value":"123456", "defValue": "1111111" ,"check": "required","hidden":false})
+    		  #passwordgroup({"name":"passwordgroup", "label":"passwordgroup" ,"check": "required","hidden":false})
+    		  #checkboxGroup({"name":"checkboxGroup","label":"checkboxGroup","defValue":"1,3","items":[{"text":"葡萄","code":"0"},{"text":"苹果","code":"1"},{"label":"香蕉","code":"2"},{"label":"桔子","value":"3"}], "cols":1, "check": "required","hidden":false})
+    		  #checkbox({"name":"checkbox","label":"checkbox", "cols":1, "check": "required","hidden":false})
+    		  #radiogroup({"name":"radiogroup","label":"性别","defValue":"1", "items":[{"label":"男","value":"1"},{"label":"女","value":"0"},{"label":"不男不女","value":"0.5"}], "cols":1, "check": "required","hidden":false})
+    		  #calendar({"label":"calendar", "name":"test16", "defValue": "", "value": "20160406", "cols": 1, "check": "required;","hidden":false,"focusShowCalendar":false})
+    		  #calendar({"label":"da","id":"birthday","name":"birthday","value":"20131223","config":"{minDate:'20131223',noToday:true,format:'yyyyMMdd'}","readonly":false})
+    		  #calendar_group({"label":"calendargroup","name1": "calendargroup","value1":"","value2":"","name2": "calendargroup2","check": "required","config":{"format":"yyyyMMdd"},"hidden":false,"cols":1})
+			  #textarea({"label":"客户名称","name":"textarea","value":""})
+        #end
+#end
+#@window({"scroll":true,"id":"window","name":"w1","title":"所属组织","height":400,"width":300,"isDrag":true})
+        #@panel({"name":"mainPanel"})
+              #ztree({  
+                "id":"tree1",  
+                "name":"ztree1",
+				"toolbar":true,
+				"search":true,
+				"expandFirst":true,
+				"nodeclick":"nodeclick",
+                "data":$dataT}) 
+        #end
+#end
+#@screen({})
+    #@form({"name":"testForm","postName": false})
+    	#@panel({"name":"mainPanel2","cols":3,"expandable":true,"isExpand":true,"title":"查询条件"})
+    		  #select_tree({
+        	        "id":"select_tree",
+        	        "name":"select_tree",
+        			"label":"下拉选择树",
+        			"disabled":false,			
+        			"data":$dataT,
+        			"expandFirst":false,
+        			"checkMode":"checkbox",
+    				"cols":1,
+        			"filterBy":"id",
+        			"check":"required"
+        			})
+    			  #textfield({"label":"客户编号","name":"clientId22","value":"", "check": "required"})
+        		  #combox({"name":"combox22","multiple": true,"value":"","label":"下拉菜单","items":[{"label":"1","value":"上海"},{"label":"2","value":"广州"},{"label":"3","value":"重庆"},{"label":"11","value":"杭州"}], "cols":1,  "check": "required","showLabel":"true","filterBy":"key"})
+        		  #calendar({"label":"日期","id":"birthday","name":"birthday22","value":"20131223","config":"{minDate:'20131223',noToday:true,format:'yyyy-MM-dd'}","readonly":false,"disabled":false, "cols":1})
+        		  #calendar_group({"label":"日期组","name1": "calendargroup22","value1":"","value2":"","name2": "calendargroup222","check": "","hidden":false,"cols":2,"disabled":false,"focusShowCalendar":true})
+				  #targetselect({"label": "所属组织：", "name": "org", "id": "orgId", "check":"","event":"orgSelector()"})
+    		#end
+    		#button_panel_ex({"buttons":[{"label":"查询","event":"formQuery()","className":"u-btn-primary"},{"label":"清空","event":"resetForm()"}]})
+    #end
+
+#datagrid({
+	"title":"datagrid",
+	"id":"testDataGridId",
+	"name":"testDataGrid",
+	"selectModel":"multi",
+	"autoLoad":true,
+	"autoHeight":true,
+	"isBackSort":false,
+	"buttons":[{"label":"新增","cls":"add","event":"showWin()"},
+		              {"label":"修改","cls":"edit","event":"showWin()","disabled":true},
+					  {"label":"删除","cls":"del","event":"showWin()"},
+					  {"label":"保存","cls":"save","event":"showWin()"},
+					  {"label":"查询","cls":"query","event":"showWin()"},
+					  {"label":"刷新","cls":"refresh","event":"refresh()"},
+					  {"label":"操作","cls":"open","refmenu":"test11","disabled":false}
+					  ],
+	"url":"/demo/query_table/getTableData.json",
+	"items":[{"name":"initDate",
+		"text":"初始化日期",
+		"hAlign":"center",
+		"tAlign":"center"
+		},{
+		"name":"branchNo",
+		"text":"分支代码",
+		"hAlign":"center",
+		"tAlign":"center",
+		"isSort":true
+		},{
+		"name":"scanType",
+		"text":"扫描类型",
+		"hAlign":"center",
+		"tAlign":"center"
+		},{
+		"name":"clientId",
+		"text":"客户ID",
+		"hAlign":"center",
+		"tAlign":"center"
+		},{
+		"name":"clientName",
+		"text":"客户名称",
+		"hAlign":"center",
+		"tAlign":"center",
+		"isSort":true
+		},{
+		"name":"branchNo",
+		"text":"分支类型",
+		"hAlign":"center",
+		"tAlign":"center",
+		"hidden":false
+		},{
+		"name":"desc",
+		"text":"描述",
+		"hAlign":"center",
+		"tAlign":"center",
+		"width":400
+		}
+	],
+	"numbercolumn":"true",
+	"pageConfig":{"pageSize":10,"pageNo":1},
+	"rowSelect":"true",
+	"hasPage":"true",
+	"frozen":["initDate"],
+	"events":[{"event":"rowClick","function":"testRowClick"},
+         {"event":"rowDblclick","function":"testRowDblClick"},
+         {"event":"beforeLoad","function":"testbeforeLoad"},
+         {"event":"loadSuccess","function":"testloadSuccess"},
+         {"event":"loadError","function":"testloadError"}]
+     })
+#menu({  "id":"test11",
+	     "name":"test11",
+         "opendir":"R",
+         "items":[
+		   {"label":"test","hasLine":true,"icon":"http://www.baidu.com/img/bdlogo.png",
+		      "items":[{"label":"test"},
+			           {"label":"test",
+					    "items":[{"label":"test"},
+						         {"label":"test"},
+								 {"label":"test"}]},
+								 {"label":"test"}]
+						},
+			{"label":"test2","items":[{"label":"test"}]},
+						{"label":"test"}]
+			})
+#end
+#jscode()
+	function orgSelector(){
+		Horn.getComp("w1").show();
+	}
+	function nodeclick(event, treeId, treeNode, clickFlag){
+		Horn.getComp("org").setValue({"label":""+treeNode.name+"","key":""+treeNode.id+""})
+		Horn.getComp("w1").hide();
+	}
+	function refresh(){
+		Horn.getComp("testDataGrid").load();
+	}
+	function resetForm(){
+		Horn.getComp("testForm").reset();
+	}
+	function testRowClick(){
+	}
+	function testRowDblClick(){
+	}
+	function testbeforeLoad(){
+	}
+	function testloadError(){
+	}
+    function testloadSuccess(){
+		
+    }
+    
+    function showWin() {
+		//Horn.getComp("w0").setTitle("aaa");
+		Horn.getComp("w0").show();
+	}
+	$(function(){
+		comp = Horn.getComp("testDataGrid");
+		
+	});
+	function formQuery(){	
+		var params = Horn.getComp("testForm").getValues();
+		Horn.getComp("testDataGrid").load(null,params);
+	};
+	
+	$(document).ready(function () { 
+    	 
+	
+
+	});
+#end

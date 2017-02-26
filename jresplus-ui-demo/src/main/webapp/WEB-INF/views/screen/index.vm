@@ -1,0 +1,9 @@
+<html>
+</head>
+<body>
+<script language="javascript" type="text/javascript"> 
+window.location.href='index/index.html';
+//window.location.href='index/index.html';
+</script>
+</body>
+</html>

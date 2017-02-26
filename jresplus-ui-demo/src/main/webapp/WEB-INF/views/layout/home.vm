@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+$horn.addGlobal("headScriptLinks","/plugins/jquery/jquery-1.8.3.min.js")
+$horn.addGlobal("headScriptLinks","/plugins/jquery/jquery.cookie.js")
+$horn.addGlobal("headScriptLinks", "/plugins/datetimepicker/bootstrap-datetimepicker.js")	
+$horn.addGlobal("headScriptLinks","/components/components.js")
+$horn.addGlobal("headScriptLinks","/scripts/frame/frame.js")
+$horn.addGlobal("headScriptLinks","/scripts/login/index.js")
+$horn.addGlobal("headScriptLinks","/scripts/login/rlogin.js")
+$horn.addGlobal("headScriptLinks","/scripts/lockScreen.js")
+$horn.addGlobal("headScriptLinks","/plugins/bigpipe.mini.js")
+$horn.addGlobal("headStyleLinks","/components/components.css")
+$horn.addGlobal("headStyleLinks","/css/frame/frame.css")
+##$horn.addGlobal("headStyleLinks","/css/frame/${theme}_frame.css")
+$horn.addGlobal("headStyleLinks","/css/${theme}/h_theme.css")
+$horn.addGlobal("headStyleLinks", "/plugins/datetimepicker/datetimepicker.css")
+#parse("/screen/contain/frame/head.vm")
+#parse("/screen/contain/frame/top.vm")
+#parse("/screen/contain/frame/main.vm")
+$screen_content
+#parse("/screen/contain/frame/end.vm")
+</html>

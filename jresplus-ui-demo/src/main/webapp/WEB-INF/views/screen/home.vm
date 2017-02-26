@@ -1,0 +1,178 @@
+﻿#set($frame={
+	"lock":false,
+	"logo":{"title":"$!{title}","img":"${imageServer}/css/${theme}/img/logo.png"}
+	,"toolbar":{"items":[
+		{"title":"收件箱","icon":"envelope","onclick":"","num":5}
+		,{"title":"锁屏","icon":"lock","onclick":"index.lockWin()"}
+		,{"title":"系统管理员","icon":"user","onclick":"","items":[
+		{"title":"修改密码","onclick":"updatePassword()"},
+		{"title":"编辑资料","onclick":"index.editInfo()"}
+		]}
+		,{"title":"退出","icon":"sign-out","onclick":"index.exit()"}
+	]}
+	,"screen":{
+		"limit":10,
+		"homePage":{"title":"欢迎使用","icon":"home fa fa-home","url":"${appServer}/home/index.htm"}
+		,"tools":[{"title":"宽松版","url":"${appServer}/home.htm?theme=horn"},{"title":"经典灰","url":"${appServer}/home.htm?theme=classic"},{"title":"紧凑版","url":"${appServer}/home.htm?theme=mini"}]
+	}
+	,"navigation":{"items":[
+		{"id":"30","title":"主页","icon":"home"}
+		,{"id":"10","title":"DEMO","icon":"th-large"}
+	]}
+	,"menu":{"items":[
+		{"id":"30","title":"主页","items":[
+			{"id":"301","title":"获取UI资源","icon":"file fa fa-laptop","items":[
+				{"id":"30101","title":"获取UI资源","icon":"inbox","url":"${appServer}/home/use/getUI.htm"}
+			]}
+			,{"id":"302","title":"UI介绍","icon":"inbox fa fa-suitcase","items":[
+				{"id":"30201","title":"UI体系介绍","icon":"inbox","url":"${appServer}/home/tutorial/overview.htm"}
+				,{"id":"30204","title":"UI主题介绍","icon":"inbox","url":"${appServer}/home/use/custom.htm"}
+				,{"id":"30205","title":"界面响应式介绍","icon":"inbox","url":"${appServer}/home/use/response.htm"}
+				,{"id":"30202","title":"页面结构介绍","icon":"inbox","url":"${appServer}/home/tutorial/pageDom.htm"}
+			]}
+		]}
+		,{"id":"10","title":"DEMO","items":[
+			{"id":"101","title":"基础应用","icon":"user fa fa-laptop","items":[
+				{"id":"10101","title":"查询列表","url":"${appServer}/demo/view/app/queryList.htm"}
+				,{"id":"10102","title":"多标签页表单","url":"${appServer}/demo/view/app/tabForm.htm"}
+				,{"id":"10103","title":"弹出窗口","url":"${appServer}/demo/view/app/window.htm"}
+				,{"id":"10104","title":"面板(panel)各种布局展示","url":"${appServer}/demo/view/app/panel.htm"}
+				,{"id":"10105","title":"表单基础应用","url":"${appServer}/demo/view/app/form1.htm"}
+				,{"id":"10106","title":"表单布局应用","url":"${appServer}/demo/view/app/form2.htm"}
+				,{"id":"10107","title":"多选表格列表","url":"${appServer}/demo/view/app/lrMulti.htm"}
+				,{"id":"10108","title":"带标题单选表格","url":"${appServer}/demo/view/app/ltbSingle.htm"}
+				,{"id":"10109","title":"datagrid表格","url":"${appServer}/demo/view/app/tbDatagrid.htm"}
+				,{"id":"10110","title":"多表格列表","url":"${appServer}/demo/view/app/ltlrQuerytable.htm"}
+				,{"id":"10111","title":"多标签页表格列表","url":"${appServer}/demo/view/app/add3.htm"}
+			]}
+			,{"id":"102","title":"表单应用","icon":"th-list fa fa-suitcase","items":[
+				{"id":"10201","title":"表单与校验","url":"${appServer}/demo/view/form/validForm.htm"}
+				,{"id":"10208","title":"标签页","url":"${appServer}/demo/view/form/tabForm.htm"}
+				,{"id":"10202","title":"文本录入","url":"${appServer}/demo/view/form/textfield.htm"}
+				,{"id":"10203","title":"多行文本","url":"${appServer}/demo/view/form/textarea.htm"}
+				,{"id":"10204","title":"下拉选择","url":"${appServer}/demo/view/form/combox.htm"}
+				,{"id":"10205","title":"单选","url":"${appServer}/demo/view/form/radio.htm"}
+				,{"id":"10206","title":"多选","url":"${appServer}/demo/view/form/checkbox.htm"}
+				,{"id":"10207","title":"日期录入","url":"${appServer}/demo/view/form/calendar.htm"}
+				,{"id":"10208","title":"金额录入","url":"${appServer}/demo/view/form/typefield_m.htm"}
+				,{"id":"10209","title":"卡号录入","url":"${appServer}/demo/view/form/typefield_c.htm"}
+				,{"id":"10210","title":"下拉选择树","url":"${appServer}/demo/view/form/selectTree.htm"}
+				,{"id":"10211","title":"目标选择器","url":"${appServer}/demo/view/form/targetSelect.htm"}
+				,{"id":"10212","title":"表单分组","url":"${appServer}/demo/view/form/formGroups.htm"}
+				
+			]}
+			,{"id":"104","title":"静态表格","icon":"th-list fa fa-th","items":[
+				{"id":"10401","title":"单选列表","url":"${appServer}/demo/view/grid/single.htm"}
+				,{"id":"10402","title":"多选列表","url":"${appServer}/demo/view/grid/multi.htm"}
+			]}
+			,{"id":"107","title":"可冻结列表格","icon":"th-list fa fa-th-list","items":[
+				{"id":"10701","title":"单选列表(无冻结列)","url":"${appServer}/demo/view/datagrid/single.htm"}
+				,{"id":"10702","title":"多选列表(有冻结列)","url":"${appServer}/demo/view/datagrid/multi.htm"}
+			]}
+			,{"id":"105","title":"信息提示","icon":"th-list fa fa-envelope","items":[
+				{"id":"10501","title":"非阻断提示","url":"${appServer}/demo/view/message/tip.htm"}
+				,{"id":"10502","title":"阻断式提示","url":"${appServer}/demo/view/message/messageBox.htm"}
+			]}
+			,{"id":"106","title":"弹出窗口","icon":"th-list fa fa-commenting","items":[
+				{"id":"10601","title":"普通弹窗","url":"${appServer}/demo/view/window/window.htm"}
+			]}
+			,{"id":"107","title":"树展示","icon":"th-list fa fa-commenting","items":[
+				{"id":"10701","title":"树组件","items":[
+				        {"id":"1070101","title":"ztree树","url":"${appServer}/demo/view/app/ztree.htm"}
+					   ,{"id":"1070102","title":"下拉选择树","url":"${appServer}/demo/view/form/selectTree.htm"}
+					]}
+					
+			]}
+			
+		]}
+		,{"id":"20","title":"API","items":[
+			{"id":"201","title":"基础与辅助","icon":"file fa fa-laptop","items":[
+				{"id":"20101","title":"基础Horn","url":"${appServer}/doc/symbols/Horn.html"}
+				,{"id":"20102","title":"校验Validate","url":"${appServer}/doc/symbols/Horn.Validate.html"}
+			]}
+			,{"id":"202","title":"容器","icon":"inbox fa fa-suitcase","items":[
+				{"id":"20201","title":"面板Panel","url":"${appServer}/doc/symbols/Horn.Panel.html"}
+				,{"id":"20202","title":"标签面板TabPanel","url":"${appServer}/doc/symbols/Horn.TabPanel.html"}
+				,{"id":"20203","title":"窗口Window","url":"${appServer}/doc/symbols/Horn.Window.html"}
+			]}
+			,{"id":"203","title":"表单录入","icon":"inbox fa fa-file-o","items":[
+				{"id":"20301","title":"表单Form","url":"${appServer}/doc/symbols/Horn.Form.html"}
+				,{"id":"20310","title":"按钮Button","url":"${appServer}/doc/symbols/Horn.ButtonPanel.html"}
+				,{"id":"20302","title":"单行文本Textfield","url":"${appServer}/doc/symbols/Horn.Textfield.html"}
+				,{"id":"20303","title":"多行文本Textarea","url":"${appServer}/doc/symbols/Horn.Textarea.html"}
+				,{"id":"20304","title":"下拉Combox","url":"${appServer}/doc/symbols/Horn.Combox.html"}
+				,{"id":"20305","title":"多选组CheckboxGroup","url":"${appServer}/doc/symbols/Horn.CheckboxGroup.html"}
+				,{"id":"20306","title":"单选组RadioGroup","url":"${appServer}/doc/symbols/Horn.RadioGroup.html"}
+				,{"id":"20307","title":"隐藏域Hiddenfield","url":"${appServer}/doc/symbols/Horn.HiddenField.html"}
+				,{"id":"20308","title":"密码域Password","url":"${appServer}/doc/symbols/Horn.Password.html"}
+				,{"id":"20309","title":"日期选择域Calendar","url":"${appServer}/doc/symbols/Horn.Calendar.html"}
+				,{"id":"20310","title":"日期组选择域CalendarGroup","url":"${appServer}/doc/symbols/Horn.CalendarGroup.html"}
+				,{"id":"20311","title":"金额卡号输入域TypeField","url":"${appServer}/doc/symbols/Horn.TypeField.html"}
+			]}
+			,{"id":"204","title":"数据列表","icon":"inbox fa fa-th","items":[
+				{"id":"20401","title":"查询表格QueryTable","url":"${appServer}/doc/symbols/Horn.QueryTable.html"}
+				,{"id":"20402","title":"数据表格Grid","url":"${appServer}/doc/symbols/Horn.Grid.html"}
+				,{"id":"20403","title":"分页栏Pagebar","url":"${appServer}/doc/symbols/Horn.PageBar.html"}
+				,{"id":"20404","title":"可冻结数据列表DataGrid","url":"${appServer}/doc/symbols/Horn.DataGrid.html"}
+			]}
+			,{"id":"205","title":"信息提示","icon":"inbox fa fa-th-list","items":[
+				{"id":"20501","title":"顶部提示Tip","url":"${appServer}/doc/symbols/Horn.Tip.html"}
+				,{"id":"20502","title":"消息提示MessageBox","url":"${appServer}/doc/symbols/Horn.MessageBox.html"}
+			]}
+			
+		]}
+	]}
+})
+#@screen()
+	
+#end
+#@window({"name":"lock","closeable":false,"title":"输入解锁密码","width":"300","height":"100","buttons":[{"label":"确定","className":"u-btn-primary","event":"index.lockSubmit()"}]})
+	    #@panel({"cols":1})
+				#@form({"url":"","name":"lockForm"})
+				#password({"emptyText":"请输入解锁密码", "id":"lock_vc_op_password","name":"vc_op_password","check": "required;","hiddenLabel":false})
+			#end		
+		#end
+#end
+    
+    
+    #@window({"name":"updatePassword","closeable":true,"title":"密码修改","width":"500","height":"200","buttons":[{"label":"确定","className":"u-btn-primary","event":"index.updatePassword()"}]})
+	   
+			#@form({"url":"","name":"updatePaForm"})
+				#@panel({"cols":1})
+					#password({"emptyText":"旧密码：", "name":"vc_op_password_old","check":"required;Stringreg.reg_string(16,6)","hiddenLabel":false})
+					#password({"emptyText":"新密码：", "name":"vc_op_password_new","check":"required;Stringreg.reg_string(16,6)","hiddenLabel":false})
+					#password({"emptyText":"确认密码：", "name":"c_password_confirm","check":"required;Stringreg.reg_string(16,6)","hiddenLabel":false})
+				#end
+			#end	
+    #end
+    
+    ## 修改窗口
+	#@window({"title":"用户信息设置", "name":"editWin","id":"editWin", "width":"800", "height":"270","buttons":[  
+                {"label":"确定","className":"u-btn-primary","event":"index.doEdit()"},  
+                {"label":"取消","event":"query_operate.closeWin('editWin')"}  
+            ]})  
+        #@form({"name":"editForm","postName": false})  
+            #@panel({"cols":3})  
+       			#combox({"id":"vc_branch_id","name":"vc_branch_id","label":"部门编号","showLabel":"true", "check": "required","readonly":"true","cols":1})
+				#textfield({"label":"用户编号", "name":"vc_op_code","check": "required","readonly":"true"})	
+				#textfield({"label":"用户名称", "name":"vc_op_name","check": "required;","cols":1})	
+				#textfield({"label":"用户别名", "name":"vc_bm_name","check": "","cols":1})	
+				#hidden({"id":"c_op_status","name":"c_op_status","alias":"c_op_status","value":"1","cols":1})  
+				#textfield({"id":"vc_op_phoneno","label":"手机号码", "name":"vc_op_phoneno","check":"mobile","cols":1})
+				#textfield({"label":"联系地址", "name":"vc_op_address","check": "Stringreg.reg_string(36)","cols":1})
+				#textfield({"id":"vc_op_email","label":"电子邮件", "name":"vc_op_email","check":"email","cols":1})
+            #end  
+        #end    
+	#end
+#jscode()
+   Horn.Frame.lockFun=function(){
+	Horn.getComp("lock").show();
+	Horn.getComp("lockForm").reset();
+	$("div[name=lock] > div:eq(1)").css("height",80);
+	}
+
+	function updatePassword(){
+		Horn.getComp("updatePassword").show();
+	}
+
+#end

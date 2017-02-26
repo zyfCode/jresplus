@@ -1,0 +1,48 @@
+#set($view=true)
+#@screen()
+    #@form({"url":"$appServer.get('/test/form/submit.htm')","name":"demoForm","postName": false})
+	
+		#@tab_panel({})
+    	    #@tab_panel_content({"name":"content1","title":"页签1","lazy":"${appServer}/demo/form/combox.htm"})  
+            	
+             #end
+             #@tab_panel_content({"name":"content2","title":"页签2"})  
+                #@panel({})
+        			#textfield({"label":"文本框", "name":"key1","value":"","defValue":""})
+        			#textfield({"label":"文本框", "name":"key1","value":"","defValue":"","readonly":"true"})
+            		#label({"label":"label","name":"key5","value":"标签内容","defValue":""})
+        			#textfield({"label":"文本框", "name":"key1","value":"","defValue":"","cols":"2"})
+        		
+        			
+                    #calendargroup({"label":"日历组", "name1":"key8", "name2":"key9","value1":"20140401","value2":"20140402","defValue1":"19861223","defValue2":"19861224"})
+            		#passwordgroup({"label":"密码组", "name":"key4","value":"","defValue":""})
+            		#password({"label":"密码", "name":"key3","value":"","defValue":""})
+            		
+                    #calendar({"label":"日期", "name":"key7","value":"19861223","defValue":"20140401"})
+                    #select({"label":"选择框","name":"key10","multiple":false,"dictName": "country","value":"","defValue":"2","headItem":{"label":"","value":"请选择..."}})
+                    #combox({"label":"Combox","name":"key11","multiple":true,"dictName": "province","value":"3","defValue":"4"})
+            		#checkbox({"label": "复选框", "name":"key12", "static":"key12value-checkbox"})
+                    #checkboxGroup({"label":"CheckboxGroup","name":"key13","items":[
+                        {"label":"游泳","value":"1"},  
+                        {"label":"骑马","value":"2"}, 
+                        {"label":"网球","value":"3"}]
+                    ,"value":"1,2","defValue":"2,3"})
+            		#radiogroup({"label":"Radiogroup", "name":"key14", "items":[
+            			{"label":"投机","value":"A"},
+            			{"label":"套保","value":"B"},
+            			{"label":"套利","value":"C"}
+            		],"value":"B","defValue":"C"})
+					#textarea({"label":"文本域", "name":"key6","value":"","defValue":"","check":"required"})
+            	#end
+    		 #end
+         #end
+	
+	
+	
+    #end
+#end
+#jscode()
+	function reset() {
+    	Horn.getComp("demoForm").reset();
+    }
+#end

@@ -1,0 +1,10 @@
+#@screen()
+	#@form({"url":"", "name":"testForm"})
+		#hidden({"name":"test0", "defValue": "hidden默认值"})
+    	#@panel({})
+			#radiogroup({"name":"test1","label":"字典","dictName": "country", "value":1})
+			#radiogroup({"name":"test2","label":"静态数据","items":[{"code":"1","text":"上海"},{"code":"2","text":"广州"},{"code":"3","text":"重庆"}],"value":1})
+			#radiogroup({"name":"test4","label":"禁用","disabled":true,"dictName": "country", "value":1})
+    	#end
+	#end
+#end

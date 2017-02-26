@@ -1,0 +1,101 @@
+.g-panel {
+  margin-bottom: 20px;
+}
+/* View Model begin */
+.g-view {
+  background: #fff;
+  padding-bottom: 1px;
+}
+.g-view .m-panel-body {
+  border-right: 1px solid #ccd0d4;
+  border-top: 1px solid #ccd0d4;
+  padding: 0;
+  margin: 10px;
+}
+.g-view .g-unit-wrap {
+  border-left:1px solid #ccd0d4;
+  border-bottom:1px solid #ccd0d4;
+}
+.g-view .g-unit-wrap .unit-label {
+  padding: 10px;
+  height: 40px;
+  background: #e7ebef;
+}
+.g-view .g-unit-wrap > div {
+  border-left:1px solid #ccd0d4;
+  padding: 10px;
+  height: 40px;
+}
+/* View Model end */
+.m-panel-header {
+  padding: 10px 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom: 1px solid transparent;
+  color: #fff;
+  background: #7F93AA;
+}
+.m-panel-box {
+  height: 20px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  position: relative;
+  background: #fff;
+}
+.m-panel-box .m-btn-default {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0;
+  position: absolute;
+  left: 50%;
+  margin-left: -10px;
+  bottom: -8px;
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  color: #999;
+  background: #fff;
+  border:1px solid #ddd;
+}
+.m-panel-box .m-btn-default i {
+  line-height: 18px;
+}
+.m-panel-box .m-btn-default:hover,
+.m-panel-box .m-btn-default:focus {
+  color:#666;
+  background: #fff;
+  border:1px solid #ccc;
+}
+.m-panel-header > h4 {
+  font-size: 12px;
+  line-height: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: inherit;
+}
+.m-panel-body {
+  padding: 10px;
+  border-radius: 3px;
+  border: 0;
+  background: #fff;
+}
+.m-brt-block {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.m-brt-none {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.m-brb-none {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}

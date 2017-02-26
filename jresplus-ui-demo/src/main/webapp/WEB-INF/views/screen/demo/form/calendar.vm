@@ -1,0 +1,13 @@
+#@screen()
+#@panel()
+    #calendar({"label":"日期", "name":"d1","check":"required","emptyText":"日期类型","focusShowCalendar":true})
+    #calendar({"label":"日期格式化", "name":"d2","check":"required","config":"{format:'yyyyMMdd HHmmss'}"})
+    #calendar_group({"label":"日期区间", "name1":"d1", "name2":"d2","check":"","value1":"","value2":"","emptyText":["开始日期","结束日期"],"config":"{format:'yyyy-MM-dd HH:mm:ss'}","focusShowCalendar":true})
+#end
+#end
+
+#jscode()
+	function test(){
+		return "aaa";
+	}
+#end

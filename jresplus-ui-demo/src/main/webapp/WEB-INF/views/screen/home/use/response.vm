@@ -1,0 +1,25 @@
+<h2>界面响应式处理</h2>
+<p>
+	JRES UI在设计上考虑到，不同设备下的显示分辨率不一样，在组织界面展示时需要提供更大空间给工作台<br/>
+	JRES UI的界面响应式，分别适应三种分辨率状态:<br>
+<p>
+<ul>
+	<li>PC----可视范围≥1000px</li>
+	<li>PAD----700px ≤ 可视范围 ＜ 1000px</li>
+	<li>MOBIL----可视范围 ＜ 700px</li>
+</ul>
+<h3>PC状态下：</h3>
+<p>
+	系统导航栏、用户工具栏以及菜单栏都处于展开状态</br>
+	<img height="400" src="${appServer}/images/home/theme_default_pc.png"/>
+</p>
+<h3>PAD状态下：</h3>
+<p>
+	系统导航栏仅显示图标、用户工具栏折叠为下拉方式、菜单栏折叠为侧边栏方式<br>
+	<img height="400" src="${appServer}/images/home/theme_default_pad.png"/>
+</p>
+<h3>MOBIL状态下：</h3>
+<p>
+	系统导航折叠为下拉方式、用户工具栏为下拉方式、菜单栏为侧边栏方式<br/>
+<img height="400" src="${appServer}/images/home/theme_default_mobil.png"/>
+</p>

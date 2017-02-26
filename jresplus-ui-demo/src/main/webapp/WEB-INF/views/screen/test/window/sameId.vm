@@ -1,0 +1,41 @@
+#@screen()
+    #@case_desc({"title":"相同id的窗口"})
+	包含用例（9186,9185,9190）<br/>
+	1,两个窗口使用同样的id
+	<br/>
+    <b>预期：</b>正常显示先定义的。<br/>
+	2,使用特殊字符id如"w 1"<br/>
+	<b>预期：</b>js错误<br/>
+	3,没有id，name"<br/>
+	<b>预期：</b>无法控制该窗口
+    #end
+    #button_panel_ex({"buttons":[
+	{"label":"显示","name":"btnShow","event":"showWin()"}
+	,{"label":"显示特殊id窗口","name":"btnShow2","event":"showWin2()"}
+	]})
+    #@window({"id":"w1","name":"w1","title":"标题","width":"300","height":"300"})
+		#button_panel_ex({"buttons":[{"label":"隐藏","name":"btnHide","event":"hideWin()"}]})
+    #end
+	#@window({"id":"w1","name":"w2","title":"标题","width":"400","height":"100"})
+		#button_panel_ex({"buttons":[{"label":"隐藏","name":"btnHide","event":"hideWin()"}]})
+    #end
+	
+	#@window({"id":"w 1","name":"w2","title":"特殊id","width":"400","height":"100"})
+		#button_panel_ex({"buttons":[{"label":"隐藏","name":"btnHide","event":"hideWin2()"}]})
+    #end
+
+	#@window({"width":"400","height":"100"})
+		#button_panel_ex({"buttons":[{"label":"隐藏","name":"btnHide","event":"hideWin()"}]})
+    #end
+#end
+#jscode()
+	function showWin(){
+		Horn.getCompById("w1").show();
+	}
+	function showWin2(){
+		Horn.getCompById("w 1").show();
+	}
+	function hideWin(){
+		Horn.getCompById("w1").hide();
+	}
+#end

@@ -1,0 +1,25 @@
+.h-logo a:hover{
+	color:#fff;
+}
+
+body{
+	background: #d9e0e7;
+}
+
+/*fieldset*/
+fieldset {
+  border: 1px solid #fff;
+  background: #fff;
+  margin-bottom: 5px; 
+}
+/* 2.3 @Panel */
+.g-panel {
+  margin-bottom: 10px;
+}
+.datetimepicker-days{
+	padding-left: 15px;
+}
+.u-tab-cnt {
+    margin-bottom: 10px;
+    padding: 1px;
+}

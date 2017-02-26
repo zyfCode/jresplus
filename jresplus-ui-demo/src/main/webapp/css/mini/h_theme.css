@@ -1,0 +1,625 @@
+.h-logo a:hover{
+	color:#fff;
+}
+
+body{
+	background: #fff;
+}
+
+/*fieldset*/
+fieldset {
+  border: 1px solid #fff;
+  background: #fff;
+  margin-bottom: 5px; 
+}
+/* 2.3 @Panel */
+.g-panel {
+  margin-bottom: 5px;
+}
+.datetimepicker-days{
+	padding-left: 15px;
+}
+
+.u-button-group {
+    padding: 2px;
+}
+
+.u-btn.h_btn-submit {
+    color: #fff;
+    background-color: #348fe2;
+    border-color: #348fe2;
+}
+
+.table>thead>tr>th {
+    border-bottom: 0px solid #e2e7eb!important;
+}
+.table > tbody > tr > th {
+  text-align: center;
+  border-bottom: 0px solid #e2e7eb !important;
+}
+
+table {border-collapse: collapse;}
+
+.m-panel-body {
+    padding: 5px;
+}
+.g-screen {
+    padding: 2px 2px 0 2px;
+}
+
+.h-screen-tab .h-screen-tab-con ul li.active {
+    background-color: #fff;
+}
+
+
+/*
+ * Template Name: Mini JresUI - Simple Frame For JresUI
+ * Version: 0.9.0
+ * Author: Leon Cui
+ * Email: cuiyu@hundsun.com
+ *
+ * 1.0 @Frame
+ *   1.1 @Main
+ *   1.2 @Header
+ *   1.3 @Nav
+ *   1.4 @Nav-mini 
+ *   1.5 @Content
+ * 2.0 @VM
+ *   2.1 @Base
+ *   2.2 @Screen
+ *   2.3 @Panel
+ * 3.0 @Components
+ *   3.1 @textfield
+ *   3.2 @textarea
+ *   3.3 @password
+ *   3.4 @password-group
+ *   3.5 @radio
+ *   3.6 @checkbox
+ *   3.7 @typefield
+ *   3.8 @select
+ *   3.9 @button
+ *   3.10 @menu
+ *   3.11 @message
+ *   3.12 @tip
+ *   3.13 @pagebar
+ *   3.14 @tab
+ *   3.15 @calendar
+ *   3.16 @calendar-group
+ *   3.17 @datagrid
+ *   3.18 @ztree
+ *   3.19 @verify
+ *        
+ */
+
+/* 1.0 @Frame */
+/* 1.1 @Main */
+/* 1.2 @Header */
+/* 1.3 @Nav */
+/* 1.4 @Nav-mini */
+/* 1.5 @Content */
+/* 2.0 @VM */
+/* 2.1 @Base */
+.g-unit-wrap .unit-label {
+  padding: 11px 0 5px;
+}
+/* 2.2 @Screen */
+.g-screen {
+  padding: 0px 0px 0 0px;
+}
+.g-screen > .g-grid-1, 
+.g-screen > .g-grid-2,
+.g-screen > .g-grid-3,
+.g-screen > .g-grid-4,
+.g-screen > .g-grid-5,
+.g-screen > .g-grid-6,
+.g-screen > .g-grid-7,
+.g-screen > .g-grid-8,
+.g-screen > .g-grid-9,
+.g-screen > .g-grid-10,
+.g-screen > .g-grid-11,
+.g-screen > .g-grid-12,
+.g-row > .g-grid-1, 
+.g-row > .g-grid-2,
+.g-row > .g-grid-3,
+.g-row > .g-grid-4,
+.g-row > .g-grid-5,
+.g-row > .g-grid-6,
+.g-row > .g-grid-7,
+.g-row > .g-grid-8,
+.g-row > .g-grid-9,
+.g-row > .g-grid-10,
+.g-row > .g-grid-11,
+.g-row > .g-grid-12 {
+  padding: 0 5px;
+}
+/* 2.3 @Panel */
+.g-panel {
+  margin-bottom: 5px;
+}
+/* View Model begin */
+.g-view .g-unit-wrap .unit-label {
+  padding: 5px;
+  height: 28px;
+}
+.g-view .g-unit-wrap > div {
+  padding: 5px;
+  height: 28px;
+}
+/* View Model end */
+.m-panel-header {
+  padding: 5px 10px;
+  margin-top: 5px;
+}
+
+/* 3.0 @Components */
+/* 3.1 @textfield */
+.u-textfield {
+  height: 28px;
+  padding: 0 5px;
+}
+/* 3.2 @textarea */
+/* 3.3 @password */
+.u-password {
+  height: 28px;
+  padding: 0 5px;
+}
+/* 3.4 @password-group */
+.u-password-group {
+  height: 28px;
+  padding: 0 5px;
+}
+/* 3.5 @radio */
+.u-radio-group {
+  padding: 5px 0;
+}
+.u-radio {
+  margin: 0 5px;
+}
+/* 3.6 @checkbox */
+.u-checkbox-group {
+  padding: 5px 0;
+}
+.u-checkbox {
+  margin: 0 5px;
+}
+.u-select {
+    height: 28px;
+}
+/* 3.7 @typefield */
+.u-typefield {
+  height: 28px;
+  padding: 0 5px;
+}
+.u-typefield-capital {
+  padding: 2px 5px 0 5px;
+}
+.u-typefield-tip {
+  position: absolute;
+  top: 32px;
+  padding: 2px 5px;
+}
+/* 3.8 @select */
+.u-select-box {
+  height: 28px;
+  padding: 2px 20px 0 5px;
+  background-position: right -4px;
+}
+.u-select-box.disabled {
+  background-position: right -4px;
+}
+/* 3.9 @button */
+.u-button-group {
+  padding: 4px;
+}
+
+.u-btn.h_btn-cencel {
+  color: #fff;
+  background: #b6c2c9;
+  border-color: #b6c2c9;
+}
+.h_btn-cencel:hover, 
+.h_btn-cencel:focus, 
+.h_btn-cencel:active, 
+.h_btn-cencel.active {
+  background: #929ba1;
+  border-color: #929ba1;
+}
+.u-btn-default.disabled:hover, 
+.u-btn-default.disabled:focus {
+  background: #b6c2c9\0;
+  border-color: #b6c2c9\0;
+}
+.u-btn.h_btn-submit {
+  color: #fff;
+  background-color: #348fe2;
+  border-color: #348fe2;
+}
+.h_btn-submit:hover, 
+.h_btn-submit:focus, 
+.h_btn-submit:active, 
+.h_btn-submit.active {
+  background: #2a72b5;
+  border-color: #2a72b5;
+}
+.h_btn-submit.disabled:hover, 
+.h_btn-submit.disabled:focus {
+  background: #348fe2\0;
+  border-color: #348fe2\0;
+}
+/* 3.10 @menu */
+.u-menu-btn {
+  padding: 2px 6px;
+  font-size: 12px;
+}
+.u-dropdown-menu .u-menu-txt {
+  height: 24px;
+}
+.u-dropdown-menu .u-menu-arrow {
+  top: 6px;
+}
+.u-dropdown-menu > li > a {
+  line-height: 24px;
+}
+/* 3.11 @message */
+.m-message-header {
+  padding: 5px 10px;
+}
+.m-message-header .m-message-btn > a {
+  margin-top: 2px;
+}
+.m-message-header .m-btn-default {
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 11px;
+}
+.m-message-header .m-btn-default i {
+  line-height: 16px;
+}
+.m-message-footer {
+  padding: 4px;
+}
+.m-message-footer .u-btn {
+  padding: 5px 20px;
+  margin-left: 5px;
+  font-size: 12px;
+}
+/* 3.12 @tip */
+.m-tip-box {
+  padding: 5px 8px;
+  margin-bottom: 10px;
+}
+/* 3.13 @pagebar */
+.m-pagebar > li > a {
+  padding: 5px 10px;
+}
+.m-pagebar > li > span {
+  padding: 2px;
+}
+.m-pagebar > li > input {
+  width: 30px;
+  padding: 2px;
+  text-align: center;
+}
+.m-pagebar-all {
+  padding-top: 2px;
+}
+
+/* 3.15 @calendar */
+.u-calendar {
+  height: 28px;
+  padding: 0 28px 0 5px;
+}
+.u-calendar-down {
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+}
+/* 3.16 @calendar-group */
+.u-calendar-group {
+  height: 28px;
+  padding: 0 28px 0 5px;
+}
+.u-calendar-group-down {
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+}
+/* 3.17 @datagrid */
+.u-datagrid-header {
+  padding: 5px 10px;
+}
+.u-datagrid-toolbar {
+  padding: 5px 10px;
+}
+.u-datagrid-btn > li > a {
+  padding: 5px 15px;
+  margin-right: 3px;
+}
+.table > tbody > tr > th,
+.table > tbody > tr > td {
+  padding: 5px 8px;
+}
+
+.datagrid-table>thead>tr>td {
+    border-bottom: 1px solid #eee;
+}
+/* 3.18 @ztree */
+.u-ztree-toolbar {
+  padding: 8px 5px;
+}
+.u-ztree-btn > li > a {
+    padding: 5px 10px;
+    margin-right: 4px;
+}
+.u-ztree-search:before {
+  right: 15px;
+  top: 15px;
+}
+.u-ztree-search {
+  padding: 8px 5px;
+}
+.u-ztree-search > a {
+  right: 35px;
+  top: 15px;
+}
+.u-ztree-search .u-ztree-search-input {
+  height: 28px;
+  padding: 0 5px;
+}
+.u-ztree {
+  padding: 0 5px;
+}
+/* 3.19 @verify */
+.m-verify-tip.bottom {
+  margin-top: 1px;
+}
+.m-verify-tip .verify-tip-inner {
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+
+
+.h_formgridtitle {
+    clear: both;
+    color: #000;
+    font-weight: bold;
+    overflow: hidden;
+    margin-bottom: 5px;
+    border-top: 1px #eee dashed;
+    border-bottom: 1px #eee dashed;
+}
+.h_formgridtitle span {
+    float: left;
+    display: block;
+    padding: 10px 20px;
+     background-color: #fff;
+    border-bottom: 0px solid #d9dcde;
+}
+
+.h_formgridtitle .h_btn-confirm {
+    background-position: 0 -35px;
+}
+
+.h_formgridtitle .h_btn-add {
+    background-position: 0 5px;
+}
+
+.h_formgridtitle .h_btn-add, .h_formgridtitle .h_btn-confirm, .h_formgridtitle .h_btn-edit, .h_formgridtitle .h_btn-del, .h_formgridtitle .h_btn-save, .h_formgridtitle .h_btn-query, .h_formgridtitle .h_btn-refresh, .h_formgridtitle .h_btn-open {
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin-top: 8px;
+    background-image: url('hc_extendcon/img/hc_extendcon.gif');
+    background-repeat: no-repeat;
+    line-height: 100%;
+    padding: 6px 20px 2px 20px;
+    font-weight: normal;
+    color: #2e2e2e;
+}
+
+.h_formtable {
+    overflow: hidden;
+    padding: 0 10px;
+    clear: both;
+}
+.h_formtable table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px #ddd solid;
+}
+
+
+/* 3.14 @tab */
+.u-tab-nav {
+  background: transparent url("img/10x1.gif") repeat-x scroll 0 39px;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+.u-tab-nav > li > a {
+  line-height: 19px;
+  margin-right: 6px;
+  background: #fff;
+  border-left: 1px solid #dee1e2;
+  border-right: 1px solid #dee1e2;
+  border-top: 1px solid #dee1e2;
+}
+.u-tab-nav > li > a:hover, 
+.u-tab-nav > li > a:focus {
+  background-color: #efefef;
+}
+.u-tab-nav > li.active > a,
+.u-tab-nav > li.active > a:hover,
+.u-tab-nav > li.active > a:focus {
+  color: #000;
+  font-weight: 700;
+}
+.g-tab-left .u-tab-nav {
+  border: 0;
+  background: none;
+}
+.g-tab-right .u-tab-nav {
+  border: 0;
+  background: none;
+}
+.g-tab-left .u-tab-nav > li > a {
+  border: 1px solid #dee1e2;
+  margin: 0 0 6px 4px;
+}
+.g-tab-right .u-tab-nav > li > a {
+  border: 1px solid #dee1e2;
+  margin: 0 4px 6px 0;
+}
+.u-tab-left, 
+.u-tab-right,
+.u-tab-top, 
+.u-tab-bottom {
+  border: 0;
+}
+.u-tab-left:hover,
+.u-tab-right:hover, 
+.u-tab-top:hover,
+.u-tab-bottom:hover, 
+.u-tab-left:focus,
+.u-tab-right:focus,
+.u-tab-top:focus,
+.u-tab-bottom:focus {
+  border: 0;
+  background: transparent;
+}
+/* 3.14 @tab updata */
+.h_tabpanel-wrap-li {
+  padding: 0;
+}
+.h_tabpanel-wrap-li.h_cur {
+  background: none;
+}
+.h_tabs-pos-top .h_tabpanel-wrap-li {
+  margin: 0;
+}
+.h_tabs-pos-top .h_tabpanel-wrap-ul {
+  border: 0;
+  margin-bottom: 0;
+}
+.u-tab-nav > li > a {
+  margin-top: 3px;
+}
+.h_tabpanel-wrap-li:hover {
+    background-color: transparent;
+}
+.u-tab-nav > li > a:hover, 
+.u-tab-nav > li > a:focus {
+  border-left: 1px solid #dee1e2;
+  border-right: 1px solid #dee1e2;
+  border-top: 1px solid #dee1e2;
+}
+.u-tab-nav > li.h_cur > a,
+.u-tab-nav > li.h_cur > a:hover,
+.u-tab-nav > li.h_cur > a:focus {
+  margin-top: 3px;
+  border-left: 1px solid #DEE1E2;
+  border-right: 1px solid #DEE1E2;
+  border-top: 1px solid #DEE1E2;
+  border-bottom: 1px solid #fff;
+}
+.u-tab-left, 
+.u-tab-right {
+  background: #fff;
+  height: 37px;
+  top: 2px;
+}
+.u-tab-left:hover, 
+.u-tab-right:hover, 
+.u-tab-top:hover, 
+.u-tab-bottom:hover, 
+.u-tab-left:focus, 
+.u-tab-right:focus, 
+.u-tab-top:focus, 
+.u-tab-bottom:focus {
+  background: #d9e0e7;
+}
+/* tab left&right */
+.h_tabs-pos-left .u-tab-cnt {
+  border-left: 1px solid #dee1e2;
+}
+.h_tabs-pos-left .u-tab-nav {
+  border: 0;
+  background: none;
+}
+.h_tabs-pos-left .u-tab-nav > li > a {
+  border-radius: 0;
+  border: 0;
+  margin: 0 15px 6px 4px;
+  padding-right: 10px;
+  text-align: right;
+  position: relative;
+  overflow: visible;
+}
+.h_tabs-pos-left {
+  border: 0;
+}
+.h_tabs-pos-left:hover,
+.h_tabs-pos-left:focus {
+  border: 0;
+  background: transparent;
+}
+.h_tabs-pos-left .u-tab-nav > li > a:hover > .h_tab-icon, 
+.h_tabs-pos-left .u-tab-nav > li > a:focus > .h_tab-icon {
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px dashed #efefef;
+  display: inline-block;
+  height: 0;
+  width: 0;
+  top: 1px;
+  right: -7px;
+  margin-left: 2px;
+  margin-top: 9px;
+  vertical-align: middle;
+  position: absolute;
+}
+.h_tabs-pos-left .u-tab-nav > li.h_cur > a,
+.h_tabs-pos-left .u-tab-nav > li.h_cur > a:hover,
+.h_tabs-pos-left .u-tab-nav > li.h_cur > a:focus {
+  margin-top: 0;
+  border: 0;
+  background: #3A91E0;
+  color: #fff;
+}
+.h_tabs-pos-left .u-tab-nav > li.h_cur > a > .h_tab-icon {
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px dashed #3A91E0;
+  display: inline-block;
+  height: 0;
+  width: 0;
+  top: 1px;
+  right: -7px;
+  margin-left: 2px;
+  margin-top: 9px;
+  vertical-align: middle;
+  position: absolute;
+}
+
+.h_tabs-pos-left {
+  position: relative;
+}
+.h_tabs-pos-left .h_tabpanel-tabs {
+  position: absolute;
+  float: none;
+  margin-bottom: 0;
+}
+.u-tab-cnt {
+    margin-bottom: 10px;
+    padding: 1px;
+}
+
+.m-panel-box {
+    border-top: 1px solid #ddd;
+}
+.m-panel-box .m-btn-default {
+    bottom: 0;
+    top: -10px;
+}

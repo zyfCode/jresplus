@@ -1,0 +1,356 @@
+$horn.addGlobal("headStyleLinks", "/css/style1.css")
+#@screen({})
+    #@tab_panel({"name":"tabview"})
+    	    #@tab_panel_content({"name":"tab1","title":"存款"}) 
+                #@panel({"name":"panel1","cols":"4","expandable":false,"isExpand":true})    
+        			   #textfield({"name":"field1","label":"投资明细代码"})
+        			   #combox({"label":"投资明细状态","name":"branchNo","multiple":true,
+                			"headItem":{"label":"","value":"请选择"},"items":[{"text":"正常","code":"0"},  {"text":"待确认","code":"1"}]})
+            			
+        			   #textfield({"name":"field2","label":"基金代码"})
+        			   #textfield({"name":"field3","label":"基金名称"})
+        			   #textfield({"name":"field4","label":"投资明细编号"})
+        			   #textfield({"name":"field5","label":"对手名称"})
+        			   #textfield({"name":"field6","label":"投资明细名称"})
+        			   #textfield({"name":"field7","label":"项目名称"})
+    			      			 
+                #end
+				#button_panel({"cols":4,"id":"b1","buttons" : [{"name":"btn2","className":"u-btn-success","label":"查询"},{"name":"btn5","className":"u-btn-danger","label":"查询条件设置"}]})
+					#datagrid({
+                    	"id":"dataTable",
+                    	"name":"dataTable",
+            			"bindFormName":"testForm",
+                    	"selectModel":"single",
+                    	"autoLoad":true,
+                    	"url":"/demo/datagrid/getDatas.json",
+            			"buttons":[{"label":"新增","cls":"add","event":"showWin()"},
+            		              {"label":"修改","cls":"edit","event":"showWin()","disabled":true},
+            					  {"label":"删除","cls":"del","event":"showWin()"},
+            					  {"label":"保存","cls":"save","event":"showWin()"},
+            					  {"label":"查询","cls":"query","event":"showWin()"},
+            					  {"label":"刷新","cls":"refresh","event":"showWin()"},
+            					  {"label":"操作","cls":"open","refmenu":"test11","disabled":false}
+            					  ],
+                    	"items":[{
+                    		"name":"operation",
+                    		"text":"操作",
+                    		"hAlign":"center",
+                    		"tAlign":"center",
+            				"hidden":false,
+                    	    "renderer":"showOperates",
+            				"width":"100"
+                    		},
+            				{"name":"projectName",
+                    		"text":"项目名称",
+                    		"hAlign":"center",
+                    		"tAlign":"center",
+							"width":150
+                    		},
+            				{"name":"projectType",
+                    		"text":"项目类型",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		},
+            				{"name":"projTotalAmount",
+                    		"text":"项目总金额",
+                    		"hAlign":"center",
+                    		"tAlign":"center",
+							"width":150
+                    		},
+            				{"name":"beginDate",
+                    		"text":"开始日期",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		},
+            				{"name":"endDate",
+                    		"text":"到期日期",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		},
+            				{"name":"investAmount",
+                    		"text":"投资金额",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		},
+            				{"name":"investDetailCode",
+                    		"text":"投资明细代码",
+                    		"hAlign":"center",
+                    		"tAlign":"center",
+							"width":150,
+				            "renderer":"investDetailCodeRender"
+							
+                    		},
+            				{"name":"investProperty",
+                    		"text":"投资性质",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		},
+            				{"name":"counterpartyName",
+                    		"text":"对手方名称",
+                    		"hAlign":"center",
+                    		"tAlign":"center",
+							"width":300
+                    		},
+            				{"name":"position",
+                    		"text":"持仓",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		},
+            				{"name":"realizedGains",
+                    		"text":"实现收益",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		}
+            				
+                    	],
+                    	"numbercolumn":"true",
+                    	"pageConfig":{"pageSize":10,"pageNo":1},
+                    	"rowSelect":"false",
+                    	"hasPage":"true",
+            			"frozen":["operation"],
+            			"events":[{"event":"rowClick","function":"testRowClick"},
+            		             {"event":"rowDblclick","function":"testRowDblClick"},
+            					 {"event":"beforeLoad","function":"testbeforeLoad"},
+            					 {"event":"loadSuccess","function":"fren_loadSuccess"},
+            					 {"event":"loadError","function":"testloadError"}]
+                       })
+            
+				
+            #end
+
+            #@tab_panel_content({"name":"tab2","title":"指令管理"})
+				#@panel({"name":"panel2","cols":"3","expandable":false,"isExpand":true})    
+        			   #textfield({"name":"field1","label":"投资明细代码"})
+        			   #combox({"label":"投资明细状态","name":"branchNo","multiple":true,
+                			"headItem":{"label":"","value":"请选择"},"items":[{"text":"正常","code":"0"},  {"text":"待确认","code":"1"}]})
+            			
+        			   #textfield({"name":"field2","label":"基金代码"})
+        			   #textfield({"name":"field3","label":"基金名称"})
+        			   #textfield({"name":"field4","label":"投资明细编号"})
+    			      			 
+                #end
+				#button_panel({"cols":3,"id":"b2","buttons" : [{"name":"btnaa","className":"u-btn-success","label":"查询"}]})
+                    #datagrid({
+                    	"id":"dataTable2",
+                    	"name":"dataTable2",
+            			"bindFormName":"testForm",
+						"title":"查询列表",
+                    	"selectModel":"multi",
+                    	"autoLoad":true,
+                    	"url":"/demo/datagrid/getDatas.json",
+            			"buttons":[{"label":"新增","cls":"add","event":"showWin()"},
+            		              {"label":"修改","cls":"edit","event":"showWin()","disabled":true},
+            					  {"label":"删除","cls":"del","event":"showWin()"},
+            					  {"label":"保存","cls":"save","event":"showWin()"}
+            					  ],
+                    	"items":[
+            				{"name":"projectName",
+                    		"text":"项目名称",
+                    		"hAlign":"center",
+                    		"tAlign":"center",
+							"width":150
+                    		},
+            				{"name":"projectType",
+                    		"text":"项目类型",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		},
+            				{"name":"projTotalAmount",
+                    		"text":"项目总金额",
+                    		"hAlign":"center",
+                    		"tAlign":"center",
+							"width":150
+                    		},
+            				{"name":"beginDate",
+                    		"text":"开始日期",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		},
+            				{"name":"endDate",
+                    		"text":"到期日期",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		},
+            				{"name":"investAmount",
+                    		"text":"投资金额",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		},
+            				{"name":"investDetailCode",
+                    		"text":"投资明细代码",
+                    		"hAlign":"center",
+                    		"tAlign":"center",
+							"width":150,
+							"renderer":"investDetailCodeRender"
+
+                    		},
+            				{"name":"investProperty",
+                    		"text":"投资性质",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		},
+            				{"name":"counterpartyName",
+                    		"text":"对手方名称",
+                    		"hAlign":"center",
+                    		"tAlign":"center",
+							"width":300
+                    		},
+            				{"name":"position",
+                    		"text":"持仓",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		},
+            				{"name":"realizedGains",
+                    		"text":"实现收益",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		}
+            				
+                    	],
+                    	"numbercolumn":"true",
+                    	"pageConfig":{"pageSize":10,"pageNo":1},
+                    	"rowSelect":"false",
+						"hasPage":"true",
+            			"events":[{"event":"rowClick","function":"testRowClick"},
+            		             {"event":"rowDblclick","function":"testRowDblClick"},
+            					 {"event":"beforeLoad","function":"testbeforeLoad"},
+            					 {"event":"loadSuccess","function":"loadSuccess"},
+            					 {"event":"loadError","function":"testloadError"}]
+                       })
+            
+    		#end 
+        #end
+	#@window({"title":"编辑窗口", "name":"windowPart", "width":"800", "height":"300",
+		"buttons":[ {"label":"确定","name":"btnOk","event":"todo()","className":"u-btn-primary"}
+         ,{"label":"取消","name":"btnCancel","event":"todo2()"} ]})  
+        #@form({"name":"dataForm"})  
+            #@panel({"cols":2})  
+                #calendar({"label":"发生日期", "name":"initDate","value":"","defValue":"20140401","check":"required"})  
+                #textfield({"label":"客户编号","name":"clientId","value":""})  
+                #textfield({"label":"客户名称","name":"clientName","value":"","renderer" : "clientIdRender"})  
+                #textfield({"label":"任务状态","name":"taskStatus","value":""})  
+                #textfield({"label":"任务标志","name":"taskFlag","value":""})  
+                #combox({"label":"机构","name":"branchNo","dictName": "branch",  
+                    "headItem":{"label":"","value":"请选择"},"events":[{"event":"onchange","function":""}]  
+                })  
+            #end  
+        #end  
+    #end  
+
+#end
+
+#jscode() 
+     $(function(){
+    	 formquery();
+		 formquery2();
+     }); 
+	function formquery(){
+		Horn.getComp("dataTable").load();
+	}
+	function formquery2(){
+		Horn.getComp("dataTable2").load();
+	}
+	##非冻结列的渲染
+	function loadSuccess(){
+		$("#body_dataTable").prepend("<ul class=\"tableoptli hor\"></ul>");
+		var ul_show = $("#body_dataTable > ul");
+		$("#body_dataTable > tr").each(function(){
+			$(this).find(".tableopt-btn").mouseover(function(){
+				var top = $(this).position().top;
+				var left = $(this).position().left;
+				var ul_hide = $(this).find("ul").children("li");
+				var _show_ul = ul_hide.clone(true);
+				ul_show.children("li").remove();
+				ul_show.css({"top":top,"left":left+70});
+				ul_show.prepend(_show_ul);
+				ul_show.show();
+			});
+			$(this).find(".tableopt-btn").mouseout(function(){
+				ul_show.hide();
+			});	
+			
+			ul_show.mouseover(function(){
+				$(this).show();
+			});
+			
+			ul_show.mouseout(function(){
+				$(this).hide();
+			});
+		});
+	}
+	##渲染在冻结列的按钮
+	function fren_loadSuccess(){
+		$("#freez_tbody_dataTable").prepend("<ul class=\"tableoptli hor\"></ul>");
+		var ul_show = $("#freez_tbody_dataTable > ul");
+		$("#freez_tbody_dataTable > tr").each(function(){
+			$(this).find(".tableopt-btn").mouseover(function(){
+				var top = $(this).position().top;
+				var left = $(this).position().left;
+				var ul_hide = $(this).find("ul").children("li");
+				var _show_ul = ul_hide.clone(true);
+				ul_show.children("li").remove();
+				ul_show.css({"top":top,"left":left+70});
+				ul_show.prepend(_show_ul);
+				hideDiv(false);
+				ul_show.show();
+			});
+			$(this).find(".tableopt-btn").mouseout(function(){
+				hideDiv(true);
+				ul_show.hide();
+			});	
+			
+			ul_show.mouseover(function(){
+				hideDiv(false);
+				$(this).show();
+			});
+			
+			ul_show.mouseout(function(){
+				hideDiv(true);
+				$(this).hide();
+			});
+		});
+	}
+	
+	function hideDiv(flag){
+		var style = $("#freeze_data_dataTable").attr("style");
+		if(flag){
+			style = style.replace("visible","hidden");
+		}else{
+			style = style.replace("hidden","visible");
+		}
+		$("#freeze_data_dataTable").attr("style",style);
+	}
+	//操作按钮绑定事件
+	function showOperates(data){
+		var _html = "<div class=\"tableopt-btn\">操作" + "<ul class=\"tableopt-li\">";
+		targetButtonArr=[{"buttonId":"1","buttonName":"股权投资"},{"buttonId":"2","buttonName":"股权收益"},{"buttonId":"3","buttonName":"股权到期"}]
+		for(var i=0,j=targetButtonArr.length;i<j;i++){
+			_html += "<li><a href=\"javascript:void(0)\" onclick=\"equity_investment.show_equity('" 
+				+ targetButtonArr[i].buttonId + "','" + data.rowidx +"')\">" +targetButtonArr[i].buttonName + "</a></li>";
+		}
+		_html += "</ul></div>";
+		return _html;
+	}
+	function doAdd() {
+		var item=[{operate_ype:'10',vc_stock_code:'测试3',vc_stock_name:'测试3',l_begin_date:'测试3'},{operate_ype:'11',vc_stock_code:'测试4',vc_stock_name:'测试4',l_begin_date:'测试4'}];
+		Horn.getComp("dataTable").loadData(item);
+	}
+   function add(){
+	   Horn.Msg.alert("新增","新增一条信息" );
+	};
+	
+	function edit(obj){
+		//console.info(obj);
+    	var clientId = obj.rowdata.branchNo;
+    	//console.log(clientId);
+	   //Horn.Msg.alert("edit 编辑","修改一条信息" );
+	};
+	
+	function del(obj){
+	   Horn.Msg.alert("del 删除","删除一条信息"); 
+	};
+  function investDetailCodeRender(data){  
+	   return "<a href=\"javascript:void(0);\" onclick=\"parent.Horn.Frame.openMenu('60109','/ui/demo/view/form/formGroups.htm','表单分组','')\"><font color=blue>"+data.val+"</font></a>";
+    }
+	
+#end

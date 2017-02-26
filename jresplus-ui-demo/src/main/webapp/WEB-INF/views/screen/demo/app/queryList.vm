@@ -1,0 +1,168 @@
+#@screen({"title":"查询表格示例"})
+    #@form({"name":"searchForm"})
+    	#@panel({"title":"查询条件"})
+			#combox({"label":"机构","name":"branchNo","dictName": "province","check": "",
+    			"headItem":{"label":"","value":"请选择"},"events":[{"event":"onchange","function":""}]
+    		})
+			#button_group({"buttons":[
+            	{"label":"查询","event":"queryData()","className":"u-btn-primary"}
+            ]})
+    	#end
+    #end
+	#datagrid({
+    	"id":"dataTable",
+    	"name":"dataTable",
+		"bindFormName":"searchForm",
+		"title":"查询列表",
+    	"selectModel":"single",
+    	"autoLoad":true,
+    	"url":"/demo/datagrid/getDatas.json",
+		"buttons":[{"label":"新增","cls":"add","event":"add()"},
+	              {"label":"修改","cls":"edit","event":"edit()","disabled":false},
+				  {"label":"删除","cls":"del","event":""},
+				  {"label":"保存","cls":"save","event":""}
+				  ],
+    	"items":[
+			{"name":"projectName",
+    		"text":"项目名称",
+    		"hAlign":"center",
+    		"tAlign":"center",
+			"width":150
+    		},
+			{"name":"projectType",
+    		"text":"项目类型",
+    		"hAlign":"center",
+    		"tAlign":"center"
+    		},
+			{"name":"projTotalAmount",
+    		"text":"项目总金额",
+    		"hAlign":"center",
+    		"tAlign":"center",
+			"width":150
+    		},
+			{"name":"beginDate",
+    		"text":"开始日期",
+    		"hAlign":"center",
+    		"tAlign":"center"
+    		},
+			{"name":"endDate",
+    		"text":"到期日期",
+    		"hAlign":"center",
+    		"tAlign":"center"
+    		},
+			{"name":"investAmount",
+    		"text":"投资金额",
+    		"hAlign":"center",
+    		"tAlign":"center"
+    		},
+			{"name":"investDetailCode",
+    		"text":"投资明细代码",
+    		"hAlign":"center",
+    		"tAlign":"center",
+			"width":150,
+			"renderer":"investDetailCodeRender"
+    		},
+			{"name":"investProperty",
+    		"text":"投资性质",
+    		"hAlign":"center",
+    		"tAlign":"center"
+    		},
+			{"name":"counterpartyName",
+    		"text":"对手方名称",
+    		"hAlign":"center",
+    		"tAlign":"center",
+			"width":300
+    		},
+			{"name":"position",
+    		"text":"持仓",
+    		"hAlign":"center",
+    		"tAlign":"center"
+    		},
+			{"name":"realizedGains",
+    		"text":"实现收益",
+    		"hAlign":"center",
+    		"tAlign":"center"
+    		}
+			
+    	],
+    	"numbercolumn":"true",
+    	"pageConfig":{"pageSize":10,"pageNo":1},
+    	"rowSelect":"false",
+		"hasPage":"true",
+		"events":[{"event":"rowClick","function":"queryTableClick"},
+	             {"event":"rowDblclick","function":"queryTableDbClick"}]
+       })
+		  
+    #@window({"title":"编辑窗口", "name":"w1", "width":"750", "height":"250",
+		    "buttons":[
+            	{"label":"提交","event":"saveData()","className":"u-btn-primary"},
+            	{"label":"重置","event":"resetDataForm()"}
+            ]})
+    	#@form({"name":"dataForm","url":""})
+			#@panel({})
+				#textfield({"label":"项目名称", "name":"projectName","value":"","defValue":"","check":"required"})
+        		#textfield({"label":"项目类型","name":"projectType","value":""})
+        		#textfield({"label":"项目总金额","name":"projTotalAmount","value":""})
+				#calendar({"label":"开始日期", "name":"beginDate","value":"","defValue":"","check":"required"})
+				#calendar({"label":"结束日期", "name":"endDate","value":"","defValue":"","check":"required"})
+        		#textfield({"label":"投资金额","name":"investAmount","value":""})
+        		#textfield({"label":"实现收益","name":"realizedGains","value":""})
+			#end
+    	#end
+    #end
+#end
+
+
+#jscode()
+    var action = "";
+
+    function investDetailCodeRender(data){
+       return '<font style="color:red;">'+data.val+'</font>';
+    }
+    
+    function queryTableClick(rowData){
+	
+    }
+    function queryTableDbClick(rowData){
+    	edit(rowData);
+    }
+    
+    function successCallback() {
+		
+    }
+	
+	function add(rowData){
+		Horn.getComp("dataForm").reset();
+		Horn.getComp("w1").show();
+		action = "add";
+	}
+	
+	function edit(rowData){
+		rowData = rowData || Horn.getComp('dataTable').getSelecteds().length && (Horn.getComp('dataTable').getSelecteds())[0];
+		Horn.getComp("dataForm").setValues(rowData);
+		Horn.getComp("w1").show();
+		action = "edit";
+	}
+	
+	function del(rowData){
+	   Horn.Tip.info("删除成功");
+	}
+	function saveData() {
+		Horn.getComp("w1").hide();
+		if (action == "add") {
+			Horn.Tip.info("新增成功");
+		} else if (action == "edit") {
+			Horn.Tip.info("更新成功");
+		} else {
+			
+		}
+	}
+	
+	function resetDataForm() {
+		Horn.getComp("paramform").reset();
+	}
+	
+	function queryData() {
+		Horn.getComp("dataTable").loadByForm();
+	}
+#end

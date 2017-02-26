@@ -1,0 +1,83 @@
+#@screen({})
+<!-- querytable 有序列号 复选框 -->
+	<div class="g-grid-3">
+		#@panel({"name":"mainPanel","title":"树结构"})
+            #set($dataT='[{"id":"1","name":"浙江省"},{"id":"21","name":"杭州市","pId":"1"},{"id":"22","name":"宁波市","pId":"1"},{"id":"33","name":"温州市","pId":"1"},
+			{"id":"44","name":"嘉兴市","pId":"1"},{"id":"88","name":"衢州市","pId":"1"},{"id":"99","name":"丽水市","pId":"1"},{"id":"211","name":"西湖区","pId":"21"},{"id":"212","name":"滨江区","pId":"21"},
+			{"id":"213","name":"上城区","pId":"21"},{"id":"214","name":"下城区","pId":"21"},{"id":"222","name":"宁海县","pId":"22"},{"id":"333","name":"鹿城区","pId":"33"},
+			{"id":"3333","name":"莲池街道","pId":"333"},{"id":"3334","name":"南门街道","pId":"333"},{"id":"444","name":"南湖区","pId":"44"},{"id":"445","name":"秀州区","pId":"44"},
+			{"id":"555","name":"南浔区","pId":"55"}]')  
+            #ztree({  
+                "id":"tree1",  
+                "name":"ztree1",
+            	"toolbar":true,
+            	"filterBy":"id",
+            	"expandFirst":true,
+            	"search":true,
+            	"checkMode":"checkbox",
+                "beforeDblClick":"beforeDblClick",
+                "onDblClick":"onDblClick",
+                "data":$dataT})  
+    	#end
+	</div>
+	<div class="g-grid-9">
+		#datagrid({
+                	"id":"queryTable",
+                	"name":"queryTable",
+                	"selectModel":"multi",
+                	"autoLoad":true,
+                	"url":"/demo/datagrid/getDatas.json",
+        			"buttons":[{"label":"新增","cls":"add","event":"showWin()"},
+        		              {"label":"修改","cls":"edit","event":"showWin()","disabled":true},
+        					  {"label":"删除","cls":"del","event":"showWin()"}
+        					  ],
+					"title":"查询列表",
+                	"items":[
+        				{"name":"projectName",
+                		"text":"项目名称",
+                		"hAlign":"center",
+                		"tAlign":"center",
+    					"width":150
+                		},
+        				{"name":"projectType",
+                		"text":"项目类型",
+                		"hAlign":"center",
+                		"tAlign":"center"
+                		},
+        				{"name":"investAmount",
+                		"text":"投资金额",
+                		"hAlign":"center",
+                		"tAlign":"center",
+						"width":200
+                		},
+        				{"name":"investDetailCode",
+                		"text":"投资明细代码",
+                		"hAlign":"center",
+                		"tAlign":"center",
+    					"width":150,
+    		            "renderer":"investDetailCodeRender"
+    					
+                		},
+        				{"name":"investProperty",
+                		"text":"投资性质",
+                		"hAlign":"center",
+                		"tAlign":"center"
+                		}
+                	],
+                	"numbercolumn":"true",
+                	"pageConfig":{"pageSize":10,"pageNo":1},
+                	"rowSelect":"true",
+                	"hasPage":"true"
+                   })
+            
+	</div>
+#end
+#jscode()
+	 $(function(){
+    	 formquery();
+     }); 
+	function formquery(){
+		Horn.getComp("queryTable").load();
+	}
+	
+#end

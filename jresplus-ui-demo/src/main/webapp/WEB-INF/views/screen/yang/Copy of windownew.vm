@@ -1,0 +1,97 @@
+#set($view=false)
+<iframe tabid="10101" id="jresplus_iframe_10101" style="display: inline;" frameborder="0" width="100%" height="500" scrolling="auto" src="/demo/demo/view/app/queryList.htm"></iframe>
+#@screen()
+
+#@form({"url":"$appServer.get('/test/form/submit.htm')","name":"testForm11"})
+	
+		#button_panel({"buttons":[
+		{"label":"显示window", "event": "showWin()"},
+			{"label":"提交表单", "event": "submit1()"},
+			{"label":"清空表单", "event": "resetForm11()"},
+			{"label":"过滤combox", "event": "filter()"},
+			{"label":"隐藏iframe", "event": "setRequired()"},
+			{"label":"显示iframe", "event": "getCompById()"},
+			{"label":"过滤combox2", "event": "filter2()"}
+			]})
+#end
+#@window({"scroll":true,"id":"w0","name":"w0","title":"窗口二","height":300,"width":900})
+    #@form({"url":"$appServer.get('/test/form/submit.htm')","name":"testForm1"})
+		#panel_start({"id":"p1","name":"p1"})
+		#radiogroup({"name":"test4","label":"radiogroup", "dictName": "country", "cols":3, "check": "required"})
+		#combox({"selectAll": false,"multiple": true, "name":"test3","label":"combox", "cols":3,"defValue":"1", "dictName": "province", "cols":3,"check": "required","showLabel":"true"})
+		#combox({"name":"test20","label":"静态单选","items":[{"code":"1","text":"上海"},{"code":"2","text":"广州"},{"code":"3","text":"重庆"}], "cols":3,  "check": "required","showLabel":"true"})  
+		#typefield({"check": "required;","value":"333333","defValue":"11111","maxlength":" ","id":"t2","name":"typefield2","label":"测试金额测试金额测试金额测试金额测试金额测试金额", "cols":3,"split":",","bigTips":true}) 
+		#checkboxGroup({"name":"test5","label":"checkboxGroup","defValue":"1,3","items":[
+                {"text":"葡萄","code":"0"},
+				{"text":"苹果","code":"1"},
+                {"label":"香蕉","code":"2"},
+                {"label":"桔子","value":"3"}
+            ], "cols":3, "check": "required"})
+			#select({"label":"select","name":"provinceItems1","dictName":"province","multiple":false})  
+			#textfield({"name":"test3", "label":"textfield", "defValue": "textfield默认值", "maxlength": 10, "check": "required"})
+			#textfield({"name":"test4", "label":"textfield", "defValue": "textfield默认值", "maxlength": 10, "check": "required"})
+			#textfield({"name":"test1", "label":"textfield", "defValue": "textfield默认值", "maxlength": 10, "check": "required"})
+			#textarea({"name":"test2", "label":"textarea", "defValue": "textarea默认值", "cols": 3, "check": "required"})
+			#calendar({"label":"calendar", "name":"test6", "defValue": "20140404", "cols": 3, "check": "required"})
+			#select({"label":"select","name":"provinceItems1","dictName":"province","multiple":true,"cols": 3})
+    	#panel_end
+    	#button_panel_ex({"buttons":[
+    		{"label":"提交表单", "event": "submit()"},
+    		{"label":"清空表单", "event": "resetForm()"}
+    	]})
+	#end
+#end
+	
+#end
+#jscode()
+var scollPos;
+var iframeWin = document.getElementById("jresplus_iframe_10101").contentWindow;
+function getCompById(){
+	$("#jresplus_iframe_10101").show();
+	$("#jresplus_iframe_10101").contents().find("html").css("overflow","auto");
+	iframeWin.document.documentElement.scrollTop=scollPos.Y;
+	//console.info(Horn.getCompById("test13_edit").getValue());
+}
+function setRequired(){
+	
+	$("#jresplus_iframe_10101").contents().find("html").css("overflow","hidden");
+	scollPos = getPageScroll(iframeWin);
+	$("#jresplus_iframe_10101").hide();
+	//scollPos = {Y:iframeWin.screenTop};
+	 //Horn.getComp("test15").setRequired(false);
+}
+
+//滚动条位置
+function getPageScroll(win) {
+    var x, y;
+    if (win.document.documentElement && win.document.documentElement.scrollTop>=0) {
+		y = win.document.documentElement.scrollTop;
+		x = win.document.documentElement.scrollLeft;
+    }
+    return {X : x,Y : y};
+}
+
+
+function submit() {
+	Horn.getComp("testForm1").submit();
+}
+
+function resetForm() {
+	Horn.getComp("testForm1").reset();
+}
+function resetForm11() {
+	Horn.getComp("testForm11").reset();
+}
+function submit1() {
+	Horn.getComp("testForm11").submit();
+}
+	function showWin(){
+		Horn.getCompById("w0").show();
+	}
+	function filter(){
+		Horn.getComp("test19").filter([ '1', '3'], false,true);
+	}
+	function filter2(){
+		Horn.getComp("test19").filter([ ''], false,true);
+	}
+#end

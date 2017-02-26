@@ -1,0 +1,23 @@
+#@screen()
+ #button_panel_ex({"buttons":[
+	{"label":"beforeClose","name":"beforeClose","event":"showWin('w6')"}
+	,{"label":"afterClose","name":"afterClose","event":"showWin('w7')"}
+	]})
+#@window({"id":"w6","title":"test","beforeClose":"beforeC()","afterClose":"afterC()"})
+#end
+#@window({"id":"w7","title":"test","afterClose":"afterC()","beforeClose":"beforeC()"})
+#end
+#end
+#jscode()
+ function showWin(id){
+		Horn.getCompById(id).show();
+	}
+ function beforeC(e){
+    	alert("关闭之前");
+    	return true;
+    };
+   function afterC(e){
+    	alert("关闭之后");
+    }
+	
+#end

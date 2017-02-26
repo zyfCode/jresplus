@@ -1,0 +1,39 @@
+#@screen()
+	#button_panel_ex({"buttons":[
+	{"label":"提示信息","event":"show1()"}
+	,{"label":"警告信息","event":"show2()"}
+	,{"label":"错误信息","event":"show3()"}
+	,{"label":"确认信息","event":"show4()"}
+	]})
+	#@panel()
+		#textarea({"label":"信息展示","name":"log","cols":3})
+	#end
+#end
+
+#jscode()
+	function show1(){
+		Horn.Msg.alert("提示","这是一条普通信息",function(){
+			log("提示信息确认了");
+		});
+	}
+	function show2(){
+		Horn.Msg.warning("警告","这是一条警告信息",function(){
+			log("警告信息确认了");
+		});
+	}
+	function show3(){
+		Horn.Msg.error("错误","这是一条错误信息",function(){
+			log("错误信息确认了");
+		});
+	}
+	function show4(){
+		Horn.Msg.confirm("确认","这是一条确认信息",function(){
+			log("确认框的确定执行了")
+		},function(){
+			log("确认框的取消执行了")
+		});
+	}
+	function log(msg){
+		Horn.getComp("log").setValue(msg);
+	}
+#end

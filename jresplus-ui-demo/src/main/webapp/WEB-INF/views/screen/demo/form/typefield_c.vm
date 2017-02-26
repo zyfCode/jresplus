@@ -1,0 +1,7 @@
+#@screen({})
+   #@panel({})
+		   #typefield({"id":"t2","name":"typefield2","label":"卡号","inputType":"cardNo","bigTips":true,"emptyText":"卡号"})
+		   #typefield({"id":"t2","name":"typefield3","label":"卡号(只读)","inputType":"cardNo","bigTips":true,"emptyText":"卡号","readonly":true})
+		   #typefield({"id":"t2","name":"typefield4","label":"卡号(禁用)","inputType":"cardNo","bigTips":true,"emptyText":"卡号","disabled":true})
+   #end
+#end

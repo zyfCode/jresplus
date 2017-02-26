@@ -1,0 +1,10 @@
+<h2>JRES UI体系</h4>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jresplus-UI依赖jresplus-mvc构建，提供基于velocity开发的视图UI组件，
+	这些组件主要是在服务端生成展示所需的html结构代码，
+	因此相比市面上使用js渲染html结构代码的方式，使用Jresplus UI开发对客户端的性能影响更小，
+	可以更加快速的展示视图内容;<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jresplus-UI除了提供基础通用组件之外，
+	还提供了UI开发、视图开发所需的支撑特性：字典、缓存、校验、属性等，这些特性采用可扩展的机制，提供了相应的接口。<br/>
+	<img src="${appServer}/images/home/ui_overview.png"/>
+</p>

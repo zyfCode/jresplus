@@ -1,0 +1,19 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="JresUI" />
+  <meta name="keywords" content="JresUI" />
+  <meta name="author" content="JresUI" />
+   <link href="$appServer/plugins/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="$appServer/plugins/jquery/jquery.mini.js"></script>
+  <script type="text/javascript" src="$appServer/plugins/uploadify/swfobject.js"></script>
+  <script type="text/javascript" src="$appServer/plugins/uploadify/jquery.uploadify.v2.1.4.min.js"></script>
+  <title>JresPlus快速开发平台</title>
+</head>
+<body>
+  $screen_content
+</body>
+</html>

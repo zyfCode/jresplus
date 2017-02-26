@@ -1,0 +1,45 @@
+#@screen({"showLabel":"true"})
+
+#@form({"url":"$appServer.get('/test/form/submit.htm')", "name":"testForm", "postName": false})
+
+	#@panel({})
+	#set($dataT='[{"id":"1","name":"根","pId":""},{"id":"21","name":"sub11","pId":"1"},{"id":"22","name":"sub12","pId":"1"},{"id":"212","name":"sub111","pId":"21"},{"id":"221","name":"sub211","pId":"22"},{"id":"212","name":"sub11sas","pId":"21"}]') 
+	#select_tree({
+	        "id":"select_tree",
+	        "name":"select_tree",
+			"label":"select_tree",
+			"disabled":false,			
+			"data":$dataT,
+			"expandFirst":false,
+			"checkMode":"radio",
+			"check":"required"
+			})
+	#select_tree({
+	        "id":"select_tree2",
+	        "name":"select_tree2",
+			"label":"select_tree2",
+			"disabled":false,			
+			"data":$dataT,
+			"expandFirst":false,
+			"checkMode":"checkbox",
+			"filterBy":"id",
+			"check":"required"
+			})
+	#end
+	#end
+    #button_panel_ex({"buttons":[
+
+	    {"label":"表单提交","event":"submit()"}
+	]})
+    #end
+#jscode()
+function onCheck(){
+	console.info(Horn.getComp("select_tree2").getSelectedNodes());
+}
+function submit() {
+	Horn.getComp("testForm").submit();
+}
+
+
+#end
+

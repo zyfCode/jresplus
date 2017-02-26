@@ -1,0 +1,126 @@
+#set($view=false)
+#@screen({})
+#@form({})
+    	#@panel({"name":"projectInfo","expandable":true,"isExpand":true,"cols":1,"title":"1列布局"})
+    	   #combox({"label":"项目代码","name":"projectCode","dictName": "branch","check": "required",  
+                    "headItem":{"label":"","value":"请选择"},"events":[{"event":"onchange","function":""}]  
+                  })  
+           #textfield({"label":"归属部门","name":"department"})
+    	   #combox({"label":"项目类型","name":"projectType","dictName": "branch", "readonly": true, 
+                    "headItem":{"label":"","value":"请选择"}  
+                  }) 
+    	   #combox({"label":"项目属性","name":"projectProperties","dictName": "branch", "readonly": true,  
+                    "headItem":{"label":"","value":"请选择"}
+           }) 
+           #textfield({"label":"项目总金额（元）","name":"projectTotalAmount"})
+    	   #textfield({"label":"金额大写","name":"totalAmountInWords"})
+    	   #textfield({"label":"项目经理","name":"projectManager"})
+        #end
+    	#@panel({"name":"basicInfo","expandable":true,"isExpand":true,"cols":2,"title":"2列布局"})
+    	   #combox({"label":"存款类型","name":"depositType","check": "required", "events":[{"event":"onchange","function":""}],
+    				"items":[{"text":"协议存款","code":"n"},
+    				 {"text":"个人存款","code":"m"}]
+                  })  
+    	   #textfield({"label":"投资明细名称","name":"investmentDetails"})
+    	   #textfield({"label":"投资明细编号","name":"investmentDetailCoded"})
+           #textfield({"label":"投资金额（元）","name":"investmentAmount","check":"required"})
+    	   #textfield({"label":"金额大写","name":"amountInWords"})
+    	   #calendar({"label":"签约日期", "name":"signingDate","check":"required","config":"{format:'yyyy-MM-dd'}"})  
+    	   #calendar({"label":"开始日期", "name":"startDate","check":"required","config":"{format:'yyyy-MM-dd'}"})  
+    	   #combox({"label":"存款期限","name":"TermDeposit","dictName": "branch","check": "required",  
+                    "headItem":{"label":"","value":"请选择"},"events":[{"event":"onchange","function":""}]  
+                  })
+    	   #calendar({"label":"到期日期", "name":"endDate","check":"required","config":"{format:'yyyy-MM-dd'}"})  
+    	   #combox({"label":"五级分类","name":"TermDeposit","check": "required",  
+    				"items":[{"text":"正常","code":"1"},
+    				 {"text":"异常","code":"2"}] 
+                  })
+    	   #combox({"label":"存款银行","name":"depositBank","check": "required", 
+                    "headItem":{"label":"","value":"请选择"},"editable": false, "events":[{"event":"onchange","function":""}]  
+                  })  
+    	   #textfield({"label":"存款单号","name":"depositNum","check":"required","value":"CK000026"})
+    	   #combox({"label":"投向行业","name":"investmentInstitutions","check": "required",  
+    				"items":[{"text":"行政机构","code":"1"},
+    				 {"text":"纺织机构","code":"2"},
+    				 {"text":"企业机构","code":"3"},
+    				 {"text":"金融机构","code":"4"}] 
+                  })	  
+    	   #combox({"label":"结算方式","name":"settlement","headItem":{"label":"","value":"请选择"},
+    				"items":[{"text":"现金结算","code":"1"},
+    				 {"text":"转帐结算","code":"2"}] 
+                  })
+    	   #textfield({"label":"独占2列","name":"remarkInfo","cols":2})
+        #end
+		#@panel({"name":"basicInfo","expandable":true,"isExpand":true,"cols":3,"title":"3列布局"})
+    	   #combox({"label":"存款类型","name":"depositType","check": "required", "events":[{"event":"onchange","function":""}],
+    				"items":[{"text":"协议存款","code":"n"},
+    				 {"text":"个人存款","code":"m"}]
+                  })  
+    	   #textfield({"label":"投资明细名称","name":"investmentDetails"})
+    	   #textfield({"label":"投资明细编号","name":"investmentDetailCoded"})
+           #textfield({"label":"投资金额（元）","name":"investmentAmount","check":"required"})
+    	   #textfield({"label":"独占2列","name":"amountInWords","cols":2})
+    	   #calendar({"label":"签约日期", "name":"signingDate","check":"required","config":"{format:'yyyy-MM-dd'}"})  
+    	   #calendar({"label":"开始日期", "name":"startDate","check":"required","config":"{format:'yyyy-MM-dd'}"})  
+    	   #combox({"label":"存款期限","name":"TermDeposit","dictName": "branch","check": "required",  
+                    "headItem":{"label":"","value":"请选择"},"events":[{"event":"onchange","function":""}]  
+                  })
+    	   #calendar({"label":"到期日期", "name":"endDate","check":"required","config":"{format:'yyyy-MM-dd'}"})  
+    	   #combox({"label":"五级分类","name":"TermDeposit","check": "required",  
+    				"items":[{"text":"正常","code":"1"},
+    				 {"text":"异常","code":"2"}] 
+                  })
+    	   #combox({"label":"存款银行","name":"depositBank","check": "required", 
+                    "headItem":{"label":"","value":"请选择"},"editable": false, "events":[{"event":"onchange","function":""}]  
+                  })  
+    	   #textfield({"label":"存款单号","name":"depositNum","check":"required","value":"CK000026"})
+    	   #combox({"label":"投向行业","name":"investmentInstitutions","check": "required",  
+    				"items":[{"text":"行政机构","code":"1"},
+    				 {"text":"纺织机构","code":"2"},
+    				 {"text":"企业机构","code":"3"},
+    				 {"text":"金融机构","code":"4"}] 
+                  })	  
+    	   #combox({"label":"结算方式","name":"settlement","headItem":{"label":"","value":"请选择"},
+    				"items":[{"text":"现金结算","code":"1"},
+    				 {"text":"转帐结算","code":"2"}] 
+                  })
+    	   #textfield({"label":"独占3列","name":"remarkInfo","cols":3})
+        #end
+		#@panel({"name":"basicInfo","expandable":true,"isExpand":true,"cols":4,"title":"4列布局"})
+    	   #combox({"label":"存款类型","name":"depositType","check": "required", "events":[{"event":"onchange","function":""}],
+    				"items":[{"text":"协议存款","code":"n"},
+    				 {"text":"个人存款","code":"m"}]
+                  })  
+    	   #textfield({"label":"投资明细名称","name":"investmentDetails"})
+    	   #textfield({"label":"投资明细编号","name":"investmentDetailCoded"})
+           #textfield({"label":"投资金额（元）","name":"investmentAmount","check":"required"})
+    	   #textfield({"label":"独占两列","name":"amountInWords","cols":2})
+    	   #calendar({"label":"签约日期", "name":"signingDate","check":"required","config":"{format:'yyyy-MM-dd'}"})  
+    	   #calendar({"label":"开始日期", "name":"startDate","check":"required","config":"{format:'yyyy-MM-dd'}"})  
+    	   #calendar({"label":"独占3列", "name":"endDate","check":"required","config":"{format:'yyyy-MM-dd'}"})  
+		   #combox({"label":"存款期限","name":"TermDeposit","dictName": "branch","check": "required",  
+                    "headItem":{"label":"","value":"请选择"},"events":[{"event":"onchange","function":""}]  
+                  })
+    	   #combox({"label":"五级分类","name":"TermDeposit","check": "required",  
+    				"items":[{"text":"正常","code":"1"},
+    				 {"text":"异常","code":"2"}] 
+                  })
+    	   #combox({"label":"存款银行","name":"depositBank","check": "required", 
+                    "headItem":{"label":"","value":"请选择"},"editable": false, "events":[{"event":"onchange","function":""}]  
+                  })  
+    	   #textfield({"label":"存款单号","name":"depositNum","check":"required","value":"CK000026"})
+    	   #combox({"label":"投向行业","name":"investmentInstitutions","check": "required",  
+    				"items":[{"text":"行政机构","code":"1"},
+    				 {"text":"纺织机构","code":"2"},
+    				 {"text":"企业机构","code":"3"},
+    				 {"text":"金融机构","code":"4"}] 
+                  })	  
+    	   #combox({"label":"结算方式","name":"settlement","headItem":{"label":"","value":"请选择"},
+    				"items":[{"text":"现金结算","code":"1"},
+    				 {"text":"转帐结算","code":"2"}] 
+                  })
+    	   #textfield({"label":"独占4列","name":"remarkInfo","cols":4})
+        #end
+	#button_panel({"submitLabel":"确定","resetLabel":"重置"})
+#end
+#end

@@ -1,0 +1,9 @@
+#@screen()
+#@panel()
+#textarea({"name":"test1", "label":"校验", "check": "required","emptyText":"校验"})
+#textarea({"name":"test1", "label":"跨列展示","cols":2, "check": "email"})
+#textarea({"name":"test2", "label":"初始值","cols":3,"value":"zhangsan@hundsun.com", "check": "email"})
+#textarea({"name":"test3","readonly":true,"cols":3, "label":"只读","value":"zhangsan@hundsun.com"})
+#textarea({"name":"test4","disabled":true,"cols":3, "label":"禁用","value":"zhangsan@hundsun.com"})
+#end
+#end

@@ -1,0 +1,54 @@
+#@screen()
+    #@case_desc({"title":"绑定数据1"})
+	包含用例（暂缺）<br/>
+	1,编写一个方法，方法中return false。beforeSubmit属性设置为该方法名 
+	<br/>
+    <b>预期：</b>提交表单时前会调用到该方法，但是return false，故form提交被阻止<br/>
+    <span style="color: red; font-weight: bold">并通过获取表单值按钮查看每一步所有表单的值，表单的显示值或者状态是否有跟着变化；</span>
+    #end
+	#@form({"url":"$appServer.get('/test/form/submit.htm')","name":"testForm","postName": false, "beforeSubmit": "beforeSubmit"})
+		#@panel({})
+			#textfield({"label":"textfield", "name":"key1","value":"初始值-textfield","defValue":"默认值-textfield","check":"required"})
+		#end
+	#end
+    #button_panel_ex({"name":"btns","buttons":[
+    	{"label":"返回值为false","event":"returnFalse()"},
+    	{"label":"返回值为字符串","event":"returnString()"},
+    	{"label":"没有返回值","event":"noReturn()"},
+    	{"label":"表单提交","event":"submit()"}
+    ]})
+	<div class="desc-info">
+		<h4>测试结果展示区域</h4>
+        <div id="values"></div>
+    </div>
+#end
+#jscode()
+	var result = 1;
+	
+	function returnFalse() {
+		result = 1;
+	}
+
+	function returnString() {
+		result = 2;
+	}
+	function noReturn() {
+		result = 3;
+	}
+	
+	function beforeSubmit() {
+		if (result == 1) {
+    		alert("返回false来阻止表单提交");
+    		return false;
+		} else if (result == 2) {
+    		alert("返回字符串应该不能阻止表单提交");
+    		return "false";
+		} else {
+			alert("什么都不返回看表单提交");
+		}
+	}
+	
+	function submit() {
+		Horn.getComp("testForm").submit();
+	}
+#end

@@ -1,0 +1,108 @@
+.g-screen:before,
+.g-screen:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.g-screen:after {
+  clear: both;
+}
+.g-screen {
+  padding: 20px 10px 0 10px;
+}
+.g-screen h1 {
+  display: none;
+}
+.g-screen > .g-grid-1, 
+.g-screen > .g-grid-2,
+.g-screen > .g-grid-3,
+.g-screen > .g-grid-4,
+.g-screen > .g-grid-5,
+.g-screen > .g-grid-6,
+.g-screen > .g-grid-7,
+.g-screen > .g-grid-8,
+.g-screen > .g-grid-9,
+.g-screen > .g-grid-10,
+.g-screen > .g-grid-11,
+.g-screen > .g-grid-12,
+.g-row > .g-grid-1, 
+.g-row > .g-grid-2,
+.g-row > .g-grid-3,
+.g-row > .g-grid-4,
+.g-row > .g-grid-5,
+.g-row > .g-grid-6,
+.g-row > .g-grid-7,
+.g-row > .g-grid-8,
+.g-row > .g-grid-9,
+.g-row > .g-grid-10,
+.g-row > .g-grid-11,
+.g-row > .g-grid-12 {
+  padding: 0 10px;
+}
+.g-screen .g-row:before,
+.g-screen .g-row:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.g-screen .g-row:after {
+  clear: both;
+}
+.g-screen .g-row {
+  margin: 0 -10px;
+}
+.hc_hide_div {
+
+}
+.hc_checkboxdiv {
+  width: 160px; 
+  max-height: 120px; 
+  margin-top: 0px; 
+  display: none;
+  overflow-x: hidden; 
+  overflow-y: auto;
+  z-index: 19; 
+  position: absolute; 
+  border: 1px #ccd0d4 solid; 
+  background: #fcfdfd; 
+}
+.hc_checkboxdiv ul {
+  width: 100%; 
+  padding-left: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  -o-text-overflow: ellipsis; 
+  list-style: none;
+}
+.hc_checkboxdiv li {
+  padding: 3px 0; 
+  line-height: 24px; 
+  white-space: nowrap;
+  list-style: none;
+}
+.hc_checkboxdiv li label {
+  height: 24px;
+  padding: 0 0 0 10px; 
+  line-height: 24px;
+  display: block; 
+}
+.hc_checkboxdiv li:hover,
+.hc_checkboxdiv li.h_cur {
+  background: #eee;
+}
+.hc_checkboxdiv li label input {
+  padding: 0; 
+  width: 14px; 
+  height: 14px;
+  margin: 0 5px 0 0;
+  font-size: 10px; 
+  line-height: 24px;
+  vertical-align: middle; 
+  border: 0; 
+  overflow: hidden; 
+  background-image: none; 
+}
+.hc_checkboxdiv .hce_dictlabel {
+
+}

@@ -1,0 +1,149 @@
+#@screen()
+	#@form({"url":"", "name":"testForm"})
+		#set($index = 0)
+	#@tab_panel({"name":"tp1","isFormValidate":true,"position":$position,"height":300})
+    	#set($index = $index + 1)
+    	#@tab_panel_content({"name":"t${index}","title":"页签${index}"})
+			#textfield({"label":"ABCD","check":"required"})
+			#combox({"label":"Combox2","dictName":"country","name":"cb211","buttons":[],"value":"2"})
+			 #textfield({"name":"test1", "label":"校验", "check": "required;","emptyText":"校验"})
+            #textfield({"name":"test5", "label":"跨列展示","cols":2, "check": ""})
+            #textfield({"name":"test2", "label":"初始值","value":"zhangsan@hundsun.com", "check": "email"})
+            #textfield({"name":"test3","readonly":true, "label":"只读","value":"zhangsan@hundsun.com"})
+            #textfield({"name":"test4","disabled":true, "check": "required;", "label":"禁用","value":""})
+		#end
+		#set($index = $index + 1)
+		#@tab_panel_content({"name":"t${index}","title":"页签${index}"})
+			#combox({"label":"Combox3","dictName":"country","name":"cb3","buttons":[]})
+			#@panel({"height":400,"border":true})#end
+		#end
+		#set($index = $index + 1)
+		#@tab_panel_content({"name":"t${index}","title":"页签${index}"})
+			##parse("/screen/test/form/form.vm")
+			##combox({"label":"Combox3","dictName":"country","name":"cb3","buttons":[]})
+			##@panel({"height":400,"border":true})#end
+		#end
+		#set($index = $index + 1)
+    	#@tab_panel_content({"name":"t${index}","title":"页签${index}"})
+			#textfield({"label":"ABCD","check":"required"})
+			#combox({"label":"Combox3","dictName":"country","name":"cb3","buttons":[]})
+		#end
+		#set($index = $index + 1)
+		#@tab_panel_content({"name":"t${index}","title":"页签${index}"})
+			#combox({"label":"Combox3","dictName":"country","name":"cb3","buttons":[]})
+		#end
+		#set($index = $index + 1)
+    	#@tab_panel_content({"name":"t${index}","title":"页签${index}"})
+			#textfield({"label":"ABCD","check":"required"})
+		#end
+		#set($index = $index + 1)
+		#@tab_panel_content({"name":"t${index}","title":"页签${index}"})
+			#combox({"label":"Combox3","dictName":"country","name":"cb3","buttons":[]})
+		#end
+		#set($index = $index + 1)
+    	#@tab_panel_content({"name":"t${index}","title":"页签${index}"})
+			#textfield({"label":"ABCD","check":"required"})
+		#end
+		#set($index = $index + 1)
+		#@tab_panel_content({"name":"t${index}","title":"页签${index}"})
+			#combox({"label":"Combox3","dictName":"country","name":"cb3","buttons":[]})
+		#end
+		#set($index = $index + 1)
+    	#@tab_panel_content({"name":"t${index}","title":"页签${index}"})
+			#textfield({"label":"ABCD","check":"required"})
+		#end
+		#set($index = $index + 1)
+		#@tab_panel_content({"name":"t${index}","title":"页签${index}"})
+			#combox({"label":"Combox3","dictName":"country","name":"cb3","buttons":[]})
+		#end
+		#set($index = $index + 1)
+    	#@tab_panel_content({"name":"t${index}","title":"页签${index}"})
+			#textfield({"label":"ABCD","check":"required"})
+		#end
+		#set($index = $index + 1)
+		#@tab_panel_content({"name":"t${index}","title":"页签${index}"})
+			#combox({"label":"Combox3","dictName":"country","name":"cb3","buttons":[]})
+			#@panel({"height":400,"border":true})#end
+		#end
+		#set($index = $index + 1)
+    	#@tab_panel_content({"name":"t${index}","title":"页签${index}"})
+			#textfield({"label":"ABCD","check":"required"})
+		#end
+		#set($index = $index + 1)
+		#@tab_panel_content({"name":"t${index}","title":"页签${index}","lazy":"${appServer}/test/form/form_prefix.htm"})
+			#combox({"label":"Combox3","dictName":"country","name":"cb3","buttons":[]})
+		#end
+		#set($index = $index + 1)
+    	#@tab_panel_content({"name":"t${index}","title":"页签${index}"})
+			#textfield({"label":"ABCD","check":"required"})
+			##@panel({"height":400,"border":true})#end
+		#end
+		#set($index = $index + 1)
+		#@tab_panel_content({"name":"t${index}","title":"页签${index}","lazy1":"${appServer}/test/form/form.htm"})
+			#combox({"label":"Combox3","dictName":"country","name":"cb3","buttons":[]})
+			##@panel({"height":400,"border":true})#end
+		#end
+		#set($index = $index + 1)
+		#@tab_panel_content({"name":"t${index}","title":"页签${index}","lazy1":"${appServer}/test/form/form.htm"})
+			#combox({"label":"Combox3","dictName":"country","name":"cb3","buttons":[]})
+			##@panel({"height":400,"border":true})#end
+		#end
+    #end
+		
+	#@tab_panel({"name":"tp2","position":"left","height":"300px","isFormValidate":true})
+	    #@tab_panel_content({"name":"tab1","title":"页签1"})  
+            #@panel({})  
+                #textfield({"name":"field1","label":"输入1","check":"required"})  
+				#textfield({"name":"field1","label":"输入1"})  
+				#textfield({"name":"field1","label":"输入1"})  
+				#textfield({"name":"field1","label":"输入1"})  
+				#textfield({"name":"field1","label":"输入1"})
+				    #textfield({"name":"field1","label":"输入1"})  
+				#textfield({"name":"field1","label":"输入1"})  
+				#textfield({"name":"field1","label":"输入1"})  
+				#textfield({"name":"field1","label":"输入1"})  
+				#textfield({"name":"field1","label":"输入1"}) 
+				    #textfield({"name":"field1","label":"输入1"})  
+				#textfield({"name":"field1","label":"输入1"})  
+				#textfield({"name":"field1","label":"输入1"})  
+				#textfield({"name":"field1","label":"输入1"})  
+				#textfield({"name":"field1","label":"输入1"}) 
+				    #textfield({"name":"field1","label":"输入1"})  
+				#textfield({"name":"field1","label":"输入1"})  
+				#textfield({"name":"field1","label":"输入1"})  
+				#textfield({"name":"field1","label":"输入1"})  
+				#textfield({"name":"field1","label":"输入1"}) 
+            #end  
+        #end
+	    #@tab_panel_content({"name":"tab11","title":"页签11"})  
+            #@panel({})  
+                #textfield({"name":"field11","label":"输入11"})  
+				#textfield({"name":"field11","label":"输入11"})  
+				#textfield({"name":"field11","label":"输入11"})  
+				#textfield({"name":"field11","label":"输入11"})  
+				#textfield({"name":"field11","label":"输入11"})  
+            #end  
+        #end
+	    #@tab_panel_content({"name":"tab12","title":"页签12"})  
+            #@panel({})  
+                #textfield({"name":"field12","label":"输入12"})  
+				#textfield({"name":"field12","label":"输入12"})  
+				#textfield({"name":"field12","label":"输入12"})  
+				#textfield({"name":"field12","label":"输入12"})  
+				#textfield({"name":"field12","label":"输入12"})  
+            #end  
+        #end
+      #@tab_panel_content({"name":"tab13","title":"页签13"})  
+            #@panel({})  
+                #textfield({"name":"field13","label":"输入13"})  
+				#textfield({"name":"field13","label":"输入13"})  
+				#textfield({"name":"field13","label":"输入13"})  
+				#textfield({"name":"field13","label":"输入13"})  
+				#textfield({"name":"field13","label":"输入13"})  
+            #end  
+        #end
+    #end
+		
+	
+	#end
+#end

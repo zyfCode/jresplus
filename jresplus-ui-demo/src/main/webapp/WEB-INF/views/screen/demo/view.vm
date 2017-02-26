@@ -1,0 +1,19 @@
+#set($demoUrl="/screen/demo/${demoType}/${demoId}.vm")
+<style>
+	h3{
+		padding:10px;
+		margin-left:5px;
+		background:#e3e3e3;
+	}
+</style>
+#parse($demoUrl)
+<h3>源代码：$!{demoUrl}</h3>
+<style type="text/css">
+	.dp-xml .cdata { color: #ff1493; }.dp-xml .tag, .dp-xml .tag-name { color: #069; font-weight: bold; }.dp-xml .attribute { color: red; }.dp-xml .attribute-value { color: blue; }
+</style>
+<textarea name="code" class="html" style="display: none;">
+#include($demoUrl)
+</textarea>
+<script type="text/javascript">
+			dp.SyntaxHighlighter.HighlightAll('code');
+</script>

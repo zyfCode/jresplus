@@ -1,0 +1,316 @@
+
+@charset "utf-8";
+.f-mask-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20000;
+  overflow: hidden;
+}
+.f-mask-scroll-hide {
+  overflow: hidden !important;
+}
+.f-mask-bg {
+  opacity: 0.5;
+  filter: alpha(opacity = 50);
+  background-color: #ccc;
+}
+.f-mask-img {
+  position: absolute;
+  z-index: 20001;
+  top: 0;
+  left: 0;
+  padding: 2px;
+}
+ .f-mask-img .u-load-icon {
+	width: 50px;
+	height: 50px;
+	position: relative;
+	margin: 0 auto;
+}
+@keyframes u-load-icon {
+	0% {
+		-webkit-transform: scale(1.2);
+		-moz-transform: scale(1.2);
+		-ms-transform: scale(1.2);
+		transform: scale(1.2);
+		opacity: 1;
+	}
+	100% {
+		-webkit-transform: scale(0.3);
+		-moz-transform: scale(0.3);
+		-ms-transform: scale(0.3);
+		transform: scale(0.3);
+		opacity: 0.5;
+	}
+}
+ .f-mask-img .u-load-icon span {
+	display: inline-block;
+	width:10px;
+	height: 10px;
+	position: absolute; 
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	border-radius: 50%;
+	animation: u-load-icon 1.04s  ease infinite;
+	-webkit-animation: u-load-icon 1.04s  ease infinite;
+	-moz-animation: u-load-icon 1.04s  ease infinite;
+	-ms-animation: u-load-icon 1.04s  ease infinite;
+	background: #319adf;
+}
+.u-load-icon span:nth-child(1) {
+	left: 0;
+	top: 20px;
+	opacity: 1;
+	transform: scale(1.2);
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	animation-delay: 0.13s;
+	-webkit-animation-delay: 0.13s;
+	-moz-animation-delay: 0.13s;
+	-ms-animation-delay: 0.13s;
+}
+.u-load-icon span:nth-child(2) {
+	left: 7px;
+	top: 7px;
+	opacity: 0.925;
+	transform: scale(1.09);
+	animation-delay: 0.26s;
+}
+.u-load-icon span:nth-child(3) {
+	left: 20px;
+	top: 0px;
+	opacity: 0.85;
+	transform: scale(0.98);
+	animation-delay: 0.39s;
+}
+.u-load-icon span:nth-child(4) {
+	left: 33px;
+	top: 7px;
+	opacity: 0.775;
+	transform: scale(0.87);
+	animation-delay: 0.52s;
+}
+.u-load-icon span:nth-child(5) {
+	left: 40px;
+	top: 20px;
+	opacity: 0.7;
+	transform: scale(0.65);
+	animation-delay: 0.65s;
+}	
+.u-load-icon span:nth-child(6) {
+	left: 33px;
+	top: 33px;
+	opacity: 0.625;
+	transform: scale(0.54);
+	animation-delay: 0.78s;
+}
+.u-load-icon span:nth-child(7) {
+	left: 20px;
+	top: 40px;
+	opacity: 0.55;
+	transform: scale(0.43);
+	animation-delay: 0.91s;
+}	
+.u-load-icon span:nth-child(8) {
+	left: 7px;
+	top: 33px;
+	opacity: 0.5;
+	transform: scale(0.3);
+	animation-delay: 1.04s;
+}	
+.u-load-con {
+	display: block;
+	height: 24px;
+	margin-top: 10px;
+	padding-left: 10px;
+	text-align: center;
+	
+}
+.u-load-con span{
+	line-height: 24px;
+	font-size: 14px;
+	color: #747474;
+	white-space: nowrap;
+}
+	
+@charset "utf-8";
+.f-message {
+	
+}
+ 
+ .f-message .f-popupMessage-body {
+	border: 0px;
+	background-color: transparent;
+	padding: 10px 10px 5px 10px;
+	overflow: hidden;
+}
+
+.f-message .f-tool-cell {
+	text-align: left;
+}
+
+
+.f-message-header {
+	cursor: move;
+}
+
+
+.f-popupMessage {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 0 0 6px #000000;
+    position: absolute;
+}
+.f-popupMessage-header {
+  height: 25px;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.f-popupMessage-header {
+	color:#FFFFFF;
+    background: none repeat scroll 0 0 #006699;
+    line-height: 200%;
+    margin: 0;
+    padding: 3px 0 3px 3px;
+}
+.f-popupMessage-icon {
+  position: absolute;
+  top: 2px;
+  right: 0px;
+}
+
+.f-popupMessage-body {
+  outline: none;
+  border: 1px solid #99BBE8;
+  background-color: #FFFFFF;
+  overflow: auto;
+  position: relative;
+  font-size:14px;
+}
+/* 弹出层 */
+.f-popupbox {
+	position: absolute;
+	overflow: hidden;
+	zoom: 1;
+	/* 默认不显示 */
+	display: none;
+}
+
+
+.f-btn {
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+/* 20130129 hanyin 删除
+.f-btn{
+	font:normal 11px tahoma, verdana, helvetica;
+}
+*/
+.f-btn .f-btn-text {
+	background: none repeat scroll 0 0 transparent;
+	border: 0 none;
+	cursor: pointer;
+	margin: 0;
+	overflow: visible;
+	padding-left: 3px;
+	padding-right: 3px;
+    padding-top:2px\9;
+	width: auto;
+}
+
+
+
+
+.f-btn button{
+	/* 20130129 hanyin 删除
+    font:normal 11px arial,tahoma,verdana,helvetica;
+    */
+    color:#333;
+}
+
+
+/******************************************************************************************************/
+/***************************   New Simple Button  *****************************************************/
+/******************************************************************************************************/
+
+.f-button {
+	float: left;
+}
+
+.f-button * {
+	cursor : pointer;
+	cursor : hand;
+}
+
+.f-button {
+	border-width: 1px 0;
+	border-color: #c7c7c7;
+	border-style: solid;
+}
+
+
+.f-button-box {
+	height: 22px;
+	overflow : hidden;
+	margin: 0 -1px;
+	background: #dcdcdc;
+	float: left;
+}
+
+.f-button-box {
+	border-width: 0 1px;
+	border-color: #A6A6A6;
+	border-style: solid;
+}
+
+
+.f-button-t {
+	line-height: 10px;
+	background: #f1f1f1;
+	border-bottom: 2px solid #dadada;
+}
+
+.f-button-text {
+	display : block;
+	position: relative;
+	padding : 0;
+	border: 0;
+	line-height: 22px;
+	margin: -12px 0 0 0;
+	clear: both;
+}
+
+.f-button-text {
+	background: transparent;
+	overflow: hidden;
+	vertical-align: bottom;
+	-webkit-appearance: none;
+	text-decoration: none;
+	outline: 0 none;
+}
+
+
+.f-button-text:focus { outline-style:none; }
+
+.f-toolGroup {
+	margin: 0;
+	overflow: hidden;
+	text-align: center;
+}
+
+.f-toolGroup .f-toolGroup-ct {
+	width: 100%;
+}
+.f-toolGroup.f-tools-center .f-toolGroup-ct {
+	margin: 0 auto;
+}
+
+.f-buttonGroup .f-tool-cell {
+	padding: 3px;
+}

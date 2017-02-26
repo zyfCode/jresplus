@@ -1,0 +1,35 @@
+ <table>
+        <tr>
+            <td><label>上传课件：</label></td>
+            <td><label><input type="file" name="uploadify" id="uploadify"/></label>&nbsp;&nbsp;</td>
+            <td><div id="fileQueue"></div></td>
+        </tr>
+   </table>
+	
+#jscode()
+	$(document).ready(function(){
+       $("#uploadify").uploadify({
+            'uploader': '$appServer/plugins/uploadify/uploadify.swf',
+            'script':'$appServer/fileserver/upload',
+            'cancelImg': '$appServer/plugins/uploadify/cancel.png',
+            'queueID': 'fileQueue',
+            'auto': true,
+            'buttonText': 'select',
+            'simUploadLimit' : 20,
+            'queueSizeLimit' : 20,
+			'uploadLimit'    : 99,
+			'multi' :true,
+            'fileExt': '*.jpg;*.gif;*.jpeg;*.png;*.bmp;*.zip;*.rar;*.7z',
+            onComplete: function(event, queueID, fileObj, response, data) {
+                //转换为json对象
+                var dataObj = eval("("+response+")");
+                saveFile(dataObj);
+            },
+            onSelect:function(){
+            },
+            onError: function(event, queueID, fileObj) {
+                alert("文件:" + fileObj.name + "上传失败");
+            }
+        });
+	});
+#end

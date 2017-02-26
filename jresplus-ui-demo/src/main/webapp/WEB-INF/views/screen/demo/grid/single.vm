@@ -1,0 +1,83 @@
+#set($dataT='[{"id":"1","name":"根","pId":""},{"id":"21","name":"sub11111111111111111111111111111111111","pId":"1"},{"id":"22","name":"sub12","pId":"1"},{"id":"212","name":"sub111","pId":"21"},{"id":"221","name":"sub211","pId":"22"},{"id":"212","name":"sub11sas","pId":"21"}]') 
+#@screen({})
+#@form({"name":"testForm","url": "$appServer.get('/demo/grid/single.htm')"})
+    	#@panel({"name":"mainPanel2","cols":3,"expandable":false,"isExpand":false,"title":"查询条件"})
+    		  #select_tree({
+        	        "id":"select_tree",
+        	        "name":"select_tree",
+        			"label":"下拉选择树",
+        			"disabled":false,			
+        			"data":$dataT,
+        			"expandFirst":false,
+        			"checkMode":"checkbox",
+    				"cols":1,
+        			"filterBy":"id",
+        			"check":"required"
+        			})
+    			  #textfield({"label":"客户编号","name":"clientId22","value":"", "check": "required"})
+        		  #combox({"name":"combox22","multiple": true,"value":"","label":"下拉菜单","items":[{"label":"1","value":"上海"},{"label":"2","value":"广州"},{"label":"3","value":"重庆"},{"label":"11","value":"杭州"}], "cols":1,  "check": "required","showLabel":"true","filterBy":"key"})
+        		  #calendar({"label":"日期","id":"birthday","name":"birthday22","value":"20131223","config":"{minDate:'20131223',noToday:true,format:'yyyy-MM-dd'}","readonly":false,"disabled":false, "cols":1})
+        		  #calendar_group({"label":"日期组","name1": "calendargroup22","value1":"","value2":"","name2": "calendargroup222","check": "","hidden":false,"cols":2,"disabled":false,"focusShowCalendar":true})
+				  #button_panel({"submitLabel":"查询","resetLabel":"清空"})
+			#end
+    		
+    #end
+
+  #grid({  
+           "id" : "flowTable1",
+		   "name":"flowTable1",
+	       "title":"Grid的标题",
+	       "titleButtons":[{"label":"添加","cls":"add","event":"add()","disabled":true},
+		   {"label":"修改","cls":"edit","event":"edit()"},
+		   {"label":"删除","cls":"del","event":"del()"}],
+		   "numbercolumn":true,
+		   "selectModel":"single",
+		   "textOverHidden":false,
+		   "rowSelect":"true",
+		   "events" :[
+	         {"event" : "rowclick" , "function" : "testgridrowclick"},
+	         {"event" : "rowdblclick", "function" : "testgridrowdbclick"}
+		   ],
+		   "items":[{"name":"initDate","text":"发生日期","align":"left","dataType":"DATE","format":"yyyy-MM-dd","width":"100"},
+			        {"name":"branchNo", "text":"分支名称","items":[{"value":"杭州总部","label":"8888"},{"value":"b","label":"b1"},{"value":"c","label":"c1"}]},
+			        {"name":"scanType2","text":"扫描类别2","renderer":"domrender"},
+			        {"name":"clientId","text":"客户金额","dataType":"AMOUNT","format":"0,000.0"},
+			        {"name":"clientName","text":"客户名称"},
+			        {"name":"branchNo", "text":"操作1","buttons":[{"label":"设置默认","event":"edit"}]},
+			        {"name":"branchNo", "text":"操作2","buttons":[{"label":"noting","event":"edit"}]}
+			]
+		,"data":$data
+	})
+	#page_bar({"name":"test_page_bar", "pageNo":$page.pageNo,"pageSize":$page.pageSize,"pages":$page.pages,"count":$page.count} {"bindFormName":"testForm"})
+#end
+#jscode()
+	function formQuery(){
+		Horn.getComp("test_page_bar").firstpage();
+	}
+	function domrender(obj){
+		/*
+		var val = obj.val;
+		var handler = function(){
+			alert(val);
+		}
+		var span = $("<span></span>");
+		var a = $("<a href='javascript:void(0)'>aa</a>").click(handler);
+		span.append(a);
+		return span;
+		*/
+		return "<a href='javascript:alert(3)' >"+obj.val+"</a>";
+	}
+
+	function add(){
+	   Horn.Msg.alert("新增","新增一条信息" );
+	};
+	
+	function edit(obj){
+	   Horn.Msg.alert("edit 编辑","修改一条信息" )
+	};
+	
+	function del(obj){
+	   Horn.Msg.alert("del 删除","删除一条信息"); 
+	};
+	
+#end

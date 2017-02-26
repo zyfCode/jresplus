@@ -1,0 +1,64 @@
+#@screen()
+	#panel_start
+    	#button_panel_ex({"buttons":[{"label":"弹出窗口","name":"btnSetTitle","event":"popWindow()"}]})
+		#@window({"title":"编辑窗口", "name":"w1", "width":"800", "height":"320","scroll":true,"buttons":[
+                	{"label":"提交","className":"u-btn-primary","event":"saveData()"},
+                	{"label":"重置","event":"resetDataForm()"}
+                ]})
+        	#@form({"name":"dataForm"})
+    			#@panel({"cols":2})
+    				#set($dataT='[{"id":"1","name":"根","pId":""},{"id":"21","name":"sub11","pId":"1"},{"id":"22","name":"sub12","pId":"1"},{"id":"22","name":"sub12","pId":"1"},{"id":"23","name":"sub12","pId":"1"},{"id":"22","name":"sub12","pId":"1"},{"id":"24","name":"sub12","pId":"1"},{"id":"25","name":"sub12","pId":"1"},{"id":"212","name":"sub111","pId":"21"},{"id":"221","name":"sub211","pId":"22"},{"id":"212","name":"sub11sas","pId":"21"}]') 
+        			  #textfield({"label":"客户编号","name":"clientId22","value":"", "check": "required"})
+                      #textfield({"label":"客户名称","name":"clientName122","value":""})
+            		  #textfield({"label":"客户编号","name":"clientId422","value":""})
+            		  #select({"name":"select22","multiple": true,"value":"1","label":"select22","items":[{"label":"1","value":"上海"},{"label":"2","value":"广州"},{"label":"3","value":"重庆"},{"label":"11","value":"杭州"}], "cols":1,  "check": "required","showLabel":"true","filterBy":"key"})
+            		  #combox({"name":"combox22","multiple": true,"value":"","label":"combox22","items":[{"label":"1","value":"上海"},{"label":"2","value":"广州"},{"label":"3","value":"重庆"},{"label":"11","value":"杭州"}], "cols":1,  "check": "required","showLabel":"true","filterBy":"key"})
+            		  #password({"name":"test11122", "label":"password","value":"", "defValue": "" ,"check": "required","hidden":false, "cols":1})
+            		  #passwordgroup({"name":"passwordgroup22", "label":"passwordgroup" ,"check": "","hidden":false,"maxlength":"5", "cols":1})
+            		  #checkboxGroup({"name":"checkboxGroup22","label":"checkboxGroup","defValue":"0,2","value":"1,3","items":[{"text":"葡萄","code":"0"},{"text":"苹果","code":"1"},{"label":"香蕉","code":"2"},{"label":"桔子","value":"3"}], "cols":1, "check": "","hidden":false})
+            		  #radiogroup({"name":"radiogroup22","label":"性别","defValue":"1","value":"0", "items":[{"label":"男","value":"1"},{"label":"女","value":"0"},{"label":"不男不女","value":"0.5"}], "cols":1, "check": "","hidden":false})
+            		  #calendar({"label":"calendar", "name":"test1622", "defValue": "", "value": "20160406", "cols": 1, "check": "","hidden":false,"focusShowCalendar":false, "cols":1})
+            		  #calendar({"label":"da","id":"birthday","name":"birthday22","value":"20131223","config":"{minDate:'20131223',noToday:true,format:'yyyy-MM-dd'}","readonly":false,"disabled":false, "cols":1})
+            		  #calendar_group({"label":"calendargroup","name1": "calendargroup22","value1":"","value2":"","name2": "calendargroup222","check": "","hidden":false,"cols":2,"disabled":false,"focusShowCalendar":false})
+        			  #textarea({"label":"客户名称","name":"textarea","value":"","maxlength":"10"})
+        			  #typefield({"check": "required","value":"","defValue":"","maxlength":"","id":"t2","name":"typefield2","label":"测试金额测试金额测试金额测试金额测试金额测试金额", "cols":1,"split":",","bigTips":true})
+        			  #biz_targetselect({"label":"targetselect","name":"targetselect","value":{"label":"周智星","key":"09150"},"event":"showWin()","check": "required","afterClear":"isValid()", "cols":1})
+					   #select_tree({
+            	        "id":"select_tree",
+            	        "name":"select_tree",
+            			"label":"select_tree",
+            			"disabled":false,			
+            			"data":$dataT,
+            			"expandFirst":false,
+            			"checkMode":"checkbox",
+        				"cols":1,
+            			"filterBy":"id",
+            			"check":"required"
+            			})
+						#select_tree({
+            	        "id":"select_tree2",
+            	        "name":"select_tree2",
+            			"label":"select_tree2",
+            			"disabled":false,			
+            			"data":$dataT,
+            			"expandFirst":false,
+            			"checkMode":"checkbox",
+        				"cols":1,
+            			"filterBy":"id",
+            			"check":"required"
+            			})
+						#textfield({"name":"field4","label":"投资明细编号","url":"/demo/query_table/myData.json","isSearch":true})
+						#textfield({"name":"field5","label":"投资明细编号5","url":"/demo/query_table/myData.json","isSearch":true})
+    			#end
+    			
+        	#end
+        #end
+    #panel_end
+	
+#end
+
+#jscode()
+	function popWindow(){
+		Horn.getComp("w1").show();
+	}
+#end

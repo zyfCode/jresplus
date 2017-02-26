@@ -1,0 +1,41 @@
+#if($mediaType=='JSON')
+{"exception":"403"，errorInfo:"$!{message}"}
+#elseif($mediaType=='XML')
+<?xml version="1.0" ?>
+<exception>
+	<message>$!{message}</message>
+</exception>
+#elseif($mediaType=='HTML')
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <title>没有权限</title>
+    <style type="text/css">
+    body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr {margin: 0; padding: 0;}
+    .h_403-logo{background:transparent url("$appServer.get('css/horn/img/403.gif')") no-repeat 10px 10px; width:100%; height:100px; line-height:400px; overflow:hidden;}
+    .h_403-img{width:900px; margin:100px auto;}
+    </style>
+    
+    </head>
+    
+    <body>
+    
+        <div class="h_403-img">
+    	<a href="javascript:closeWin()">
+			<img src="$appServer.get('css/horn/img/403.gif')" />
+        </a>
+    </div>
+    <script type="text/javascript">
+		var closeWin = function(){
+			if(top.Horn.TabScreen){
+				top.Horn.TabScreen.close();
+			}else{
+				window.location = "$appServer.get('index.htm')";
+			}
+		}
+	</script>
+    
+    </body>
+    
+    </html>
+#end

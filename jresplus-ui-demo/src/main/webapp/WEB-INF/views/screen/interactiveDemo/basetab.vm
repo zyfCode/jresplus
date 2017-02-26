@@ -1,0 +1,36 @@
+#@screen() 
+  #@form({"url":"$appServer.get('/test/form/submit.htm')", "name":"testForm","beforeSubmit": "beforeSubmit","events":[{"event":"onSubmit","function":"onSubmitFn()"}]})
+	#@panel({"cols":3}) 
+			#textfield({"label":"姓名","name":"eName","check":"required"})
+			#textfield({"label":"年龄","name":"eAge","check":"intege;range(18,60)"}) 
+			#radiogroup({"name":"eSex","label":"性别","items":[{"code":"1","text":"男"},{"code":"2","text":"女"}], "value":1})  
+			#calendar({"label":"出生日期","name":"birthday","check": "required","emptyText":"请输入日期"})
+			#combox({"defValue": "","emptyText":"请选择","label":"所在部门","check": "required","name":"department","disabled":false,"headItem":{"label":"","value":"请选择"},"items":[{"text":"研发中心","code":"0"},  
+					{"text":"测试中心","code":"1"},  
+					{"text":"人力资源","code":"2"}]})
+			#textfield({"label":"邮箱","name":"email","check":"required;email"})
+			#textfield({"label":"联系电话","name":"telphone","check":"required;mobile"})
+			#checkboxGroup({"label":"当前状态","name":"status","cols":1,"items":[    
+			 {"label":"实习","value":"0"},
+			 {"label":"试用","value":"1"},
+			 {"label":"转正","value":"2"} 
+								 ]}) 
+			#combox({"label":"工作地点","defValue": "","emptyText":"请选择","headItem":{"label":"","value":"请选择"},"name":"workPlace","check": "required","dictName": "province"})
+			#calendar_group({"label":"签约日期","check": "required","name1": "date1","name2": "date2","cols":2}) 
+			#textarea({"label":"备注","name":"details","cols":3,"emptyText":"备注信息"})
+     #end 
+	 #button_panel()
+   #end
+#end
+<script>
+	function beforeSubmit(){
+	
+	return false;
+	}
+	function onSubmitFn() 
+{
+alert("event事件提交值时触发");
+return false;}
+
+
+</script>

@@ -1,0 +1,72 @@
+#@screen({})
+	<div class="g-grid-3">
+		#@panel({"name":"panel1","expandable":false,"isExpand":true,"title":"文件目录","cols":"1"})
+        	#set($dataT='[{"id":"1","name":"root"},{"id":"21","name":"sub11","pId":"1"},{"id":"22","name":"sub12","pId":"1"},{"id":"33","name":"sub13","pId":"1"},{"id":"44","name":"sub14","pId":"1"},{"id":"55","name":"sub15","pId":"1"},{"id":"211","name":"sub111","pId":"21"},{"id":"222","name":"sub122","pId":"22"},{"id":"551","name":"sub155","pId":"55"},{"id":"552","name":"sub255","pId":"55"},{"id":"333","name":"sub123","pId":"33"},{"id":"3333","name":"sub1233","pId":"333"}]')  
+            #ztree({  
+            "id":"tree1",  
+            "name":"ztree1",
+        	"toolbar":false,
+        	"filterBy":"id",
+        	"expandFirst":true,
+        	"search":true,
+        	"checkMode":"checkbox",
+         "beforeDblClick":"beforeDblClick",
+         "onDblClick":"onDblClick",
+        
+            "data":$dataT}) 
+			#end
+	</div>
+	
+	<div class="g-grid-6">
+			#datagrid({
+                    	"id":"mainDataGridId",
+                    	"name":"mainDataGrid",
+    					"bindformname":"testForm",
+    					"title":"查询结果",
+                    	"selectModel":"single",
+                    	"autoLoad":true,
+    					"baseparams":{"branchNo":"1"},
+                    	"url":"/demo/query_table/getTableData.json",
+                    	"items":[{"name":"initDate",
+                    		"text":"初始化日期",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		},{
+                    		"name":"clientId",
+                    		"text":"客户ID",
+                    		"hAlign":"center",
+                    		"tAlign":"center",
+    						"hidden":false,
+                    	    "renderer":"domrender"
+                    		},{
+                    		"name":"clientName",
+                    		"text":"客户名称",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		},{
+                    		"name":"scanType",
+                    		"text":"扫描类型",
+                    		"hAlign":"center",
+                    		"tAlign":"center"
+                    		}
+                    	],
+                    	"pageConfig":{"pageSize":10,"pageNo":1},
+                    	"rowSelect":"true",
+                    	"hasPage":"true",
+                        "events":[{"event":"rowClick","function":"testRowClick"},
+            		             {"event":"rowDblclick","function":"testRowDblClick"},
+            					 {"event":"beforeLoad","function":"testbeforeLoad"},
+            					 {"event":"loadSuccess","function":"testloadSuccess"},
+            					 {"event":"loadError","function":"testloadError"}]	
+                    })
+	</div>
+	<div class="g-grid-3">
+		#@panel({"name":"panel","expandable":true,"isExpand":true,"title":"用户信息","cols":"1"})
+		  #textfield({"label":"账号","name":"account","value":"Sue@hundsun.com","readonly":true,"cols":1})
+		  #textfield({"label":"用户名","name":"user","cols":1})
+		  #password({"label":"密码","name":"pwd","value":"1qaz2wsx","check": "required","cols":1})
+		  #textfield({"label":"ID","name":"ID","cols":1})
+		  #button_group({"id":"b1","buttons" : [{"name":"btn2","className":"u-btn-primary","label":"重新登录"}]})
+		#end
+	</div>
+#end

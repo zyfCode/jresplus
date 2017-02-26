@@ -1,0 +1,26 @@
+#@screen()
+	#@form({"url":"$appServer.get('/test/form/submit.htm')","name":"demoForm","postName": false})
+        #@panel()
+            #textfield({"name":"test1", "label":"校验", "check": "required;","emptyText":"校验"})
+            #textfield({"name":"test5", "label":"跨列展示","cols":2, "check": ""})
+            #textfield({"name":"test2", "label":"初始值","value":"zhangsan@hundsun.com", "check": "email"})
+            #textfield({"name":"test3","readonly":true, "label":"只读","value":"zhangsan@hundsun.com"})
+            #textfield({"name":"test4","disabled":true, "check": "required;", "label":"禁用","value":""})
+        #end
+		#button_panel({"buttons":[{"label":"设置禁用","event":"setDisabled(1)"},{"label":"解除禁用","event":"setDisabled(0)"}]})
+    #end
+#end
+
+#jscode()
+	function test(){
+		alert(111);
+	}
+	function setDisabled(disabled){
+    	if(disabled==1){
+			Horn.getComp("test1").setDisabled(true);
+    	}else{
+			Horn.getComp("test1").setDisabled(false);
+    	}
+		
+	}
+#end

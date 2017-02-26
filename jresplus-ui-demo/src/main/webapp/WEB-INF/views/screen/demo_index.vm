@@ -1,0 +1,8 @@
+<html>
+</head>
+<body>
+<script language="javascript" type="text/javascript"> 
+	window.location.href='login.htm';
+</script>
+</body>
+</html>

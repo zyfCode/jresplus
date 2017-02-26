@@ -1,0 +1,23 @@
+
+<h2>UI主题</h2>
+<h3>默认主题</h3>
+<p>
+	默认JRES UI内置的主题方案为深蓝，主色调为深蓝、灰<br/>
+	<img width="600" src="${appServer}/images/home/theme_default.png"/>
+	<br/>收起<br/>
+	<img width="600" src="${appServer}/images/home/theme_default_close.png"/>
+</p>
+<h3>中国红主题</h3>
+<p>
+	JRES UI提供了中国红的主题方案，主色调为红、灰<br/>
+	<img width="600" src="${appServer}/images/home/theme_red.png"/>
+	<br/>收起<br/>
+	<img width="600" src="${appServer}/images/home/theme_red_close.png"/>
+</p>
+<h3>类EXT主题</h3>
+<p>
+	JRES UI提供了类似EXT的主题方案，主色调为浅蓝、灰<br/>
+	<img width="600" src="${appServer}/images/home/theme_ext.png"/>
+	<br/>收起<br/>
+	<img width="600" src="${appServer}/images/home/theme_ext_close.png"/>
+</p>

@@ -1,0 +1,34 @@
+#@screen()
+#combox({"label":"省份","id":"vc_province_no2","name":"vc_province_no2","multiple":true})
+    #button_panel_ex({"buttons":[{"label":"show窗口时设置combox值","name":"btnSetTitle","event":"setTitleFun()"}]})
+    #@window({"name":"w1","title":"原标题","width":"500","height":"600"})
+   #@panel({})
+#combox({"label":"省份","id":"vc_province_no",
+            "name":"vc_province_no","multiple":true})
+				
+#combox({"headItem":{"label":"", "value":"请选择..."},"id":"test1","multiple":true, "name":"test1","label":"combox多选"})</br></br></br> 
+	  #button_panel_ex({"buttons":[{"label":"sh添加值","name":"btnSetTitle1","event":"add()"}]})
+
+#end
+#end
+#end
+
+#jscode()
+$(document).ready(function(){
+	var item=[{code:'10','text':'测试3'},{code:'4','text':'测试4'}];
+	Horn.getComp("vc_province_no2").addItems(item,true);
+})
+function add(clear){
+var item=[{code:'10','text':'测试3'},{code:'4','text':'测试4'}];
+Horn.getCompById("vc_province_no").addItems(item,clear);
+Horn.getCompById("test1").addItems(item,clear);
+}
+	function setTitleFun(){
+	
+		Horn.getComp("w1").show();
+		
+		var item=[{code:'10','text':'测试3'},{code:'4','text':'测试4'}];
+        Horn.getCompById("vc_province_no").addItems(item);
+        Horn.getCompById("test1").addItems(item);
+	}
+#end

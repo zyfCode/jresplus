@@ -1,0 +1,17 @@
+#set($version="1.0.15")
+<h2>获取JRES UI资源</h2>
+<ui>
+	
+	<li><a href="${appServer}/file/jresplus-mvc-dev.doc" target="_blank">jresplus-mvc开发规范</a>----介绍JRESPLUS MVC的环境部署和开发规范</li>
+	<li><a href="${appServer}/file/jresplus-ui-install.doc" target="_blank">jresplus-ui安装部署手册</a>----介绍JRES UI的环境部署</li>
+	<li><a href="${appServer}/file/jresplus-ui-use.doc" target="_blank">jresplus-ui使用手册</a>----介绍JRES UI的体系、环境集成、组件介绍及如何二次开发扩展</li>
+	<li><a href="${appServer}/file/jresplus-ui-dev.docx" target="_blank">jresplus-ui组件开发指南</a>----组件开发指南，只要是针对组件开发人员提供的开发规范指导</li>
+	<li><a href="${appServer}/file/jresplus-ui-frame.docx" target="_blank">jresplus-ui组件框架规范</a>----JRES UI组件开发规范介绍</li>
+	<li><a href="${appServer}/file/components-dev-project.rar" target="_blank">组件开发模板工程</a>----提供组件开发的maven工程，只有针对组件开发人员</li>
+	<li><a href="${appServer}/file/business-dev-project.rar" target="_blank">jres ui业务模板工程</a>----业务模板工程是一个配置完整的maven工程，这个工程依赖了所以jres ui的组件，相当于jresplus-ui-web工程</li>
+	<li><a href="${appServer}/file/jresplus-ui-web-doc.zip" target="_blank">API文档压缩包</a>----可以下载到本地查看</li>
+	<li><a href="${appServer}/file/jresplus-ui-demo.rar" target="_blank">jresplus-ui-demo运行包</a>----主题皮肤框架的war包,环境已经配置，放到服务器运行即可看到效果</li>
+	<li><a href="${appServer}/file/jresplus-ui-demo-src.rar" target="_blank">jresplus-ui-demo源码工程</a>----主题皮肤框架的maven工程，环境已经配置，可以直接用maven导入到eclipse工程中使用</li>
+	<li>更多资源可咨询研发中心客服：<a href="mailto:service.rd@hundsun.com">service.rd@hundsun.com</a></li>
+	<li>JRESPLUS UI交流群 QQ:452129031</li>
+</ui>

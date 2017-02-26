@@ -1,0 +1,166 @@
+#@screen()
+    #@case_desc({"title":"单元测试"})
+	表单基础功能单元测试用例
+    #end
+	#@form({"url":"$appServer.get('/test/form/submit.htm')", "name":"testForm","id":"testForm"})
+		
+    	#panel_start({})
+			#textfield({"name":"test1","id":"test1", "label":"textfield", "defValue": "textfield默认值", "maxlength": 10, "cols": 2, "check": "required"})
+			#textarea({"name":"test2","id":"test2", "label":"textarea", "defValue": "textarea默认值", "cols": 2, "check": "required"})
+			#combox({"selectAll": false,"id":"test3","multiple": true, "name":"test3","label":"combox","defValue":"1", "dictName": "province", "cols":2, "check": "required"})
+			#radiogroup({"name":"test4","id":"test4","label":"radiogroup","defValue":"1", "dictName": "country", "cols":2, "check": "required"})
+			#checkboxGroup({"name":"test5","id":"test5","label":"checkboxGroup","defValue":"1,3","items":[
+                {"text":"葡萄1","code":"0"},
+				{"text":"苹果2","code":"1"},
+                {"label":"香蕉3","code":"2"},
+                {"label":"桔子4","value":"3"}
+            ], "cols":2, "check": "required"})
+            #calendar({"label":"calendar", "id":"test6","name":"test6","cols": 2, "check": "required"})
+			#calendar_group({"label":"calendargroup","id":"test11","name1": "test11","name2": "test12","cols":2,"check": "required"})
+			#select({"label":"select","name":"countryItems","id":"test7","dictName":"country","cols": 2}) 
+			#label({"label":"中国人","name":"test8","id":"test8","cols": 2})
+			#passwordgroup({"label":"密码", "id":"test9","name":"test9","cols": 2})
+			
+    	#panel_end
+	#end
+    #button_panel_ex({"buttons":[
+		{"label":"textfield", "event": "textfield()"},
+    	{"label":"textarea", "event": "textarea()"},
+    	{"label":"combox", "event": "combox()"},
+    	{"label":"radiogroup", "event": "radiogroup()"},
+		{"label":"select", "event": "select()"},
+    	{"label":"calendar", "event": "calendar()"},
+    	{"label":"calendar_group", "event": "calendar_group()"},
+    	{"label":"checkboxGroup", "event": "checkboxGroup()"},
+    	{"label":"label", "event": "label()"},
+    	{"label":"passwordgroup", "event": "passwordgroup()"},
+	   	{"label":"form", "event": "testform()"}
+	]})
+#end
+#jscode()
+var name = "testForm";
+
+
+function textfield() {
+	var textfield1 = $("#test1").comp();
+	var textfield2 = Horn.getCompById("test1");
+	if (console) {
+		console.log("textfield");
+		console.log(textfield1 instanceof Horn.Base);
+		console.log(textfield1.getValue());
+		console.log(textfield2 instanceof Horn.Base);
+		console.log(textfield2.getValue());
+	}
+}
+
+function textarea() {
+	var textarea1 = $("#test2").comp();
+	var textarea2 = Horn.getCompById("test2");
+	if (console) {
+		console.log("textarea");
+		console.log(textarea1 instanceof Horn.Base);
+		console.log(textarea1.getValue());
+		console.log(textarea2 instanceof Horn.Base);
+		console.log(textarea2.getValue());
+	}
+}
+function combox() {
+	var combox1 = $("#test3").comp();
+	var combox2 = Horn.getCompById("test3");
+	if (console) {
+		console.log("combox");
+		console.log(combox1 instanceof Horn.Base);
+		console.log(combox1.getValue());
+		console.log(combox2 instanceof Horn.Base);
+		console.log(combox2.getValue());
+	}
+}
+function radiogroup() {
+	var radiogroup1 = $("#test4").comp();
+	var radiogroup2 = Horn.getCompById("test4");
+	if (console) {
+		console.log("radiogroup");
+		console.log(radiogroup1 instanceof Horn.Base);
+		console.log(radiogroup1.getValue());
+		console.log(radiogroup2 instanceof Horn.Base);
+		console.log(radiogroup2.getValue());
+	}
+}
+function checkboxGroup() {
+	var checkboxGroup1 = $("#test5").comp();
+	var checkboxGroup2 = Horn.getCompById("test5");
+	if (console) {
+		console.log("checkboxGroup");
+		console.log(checkboxGroup1 instanceof Horn.Base);
+		console.log(checkboxGroup1.getValue());
+		console.log(checkboxGroup2 instanceof Horn.Base);
+		console.log(checkboxGroup2.getValue());
+	}
+}
+function calendar() {
+	var calendar1 = $("#test6").comp();
+	var calendar2 = Horn.getCompById("test6");
+	if (console) {
+		console.log("calendar");
+		console.log(calendar1 instanceof Horn.Base);
+		console.log(calendar1.getValue());
+		console.log(calendar2 instanceof Horn.Base);
+		console.log(calendar2.getValue());
+	}
+}
+function calendar_group() {
+	var calendargroup1 = $("#test11").comp();
+	var calendargroup2 = Horn.getCompById("test11");
+	if (console) {
+		console.log("calendargroup");
+		console.log(calendargroup1 instanceof Horn.Base);
+		console.log(calendargroup1.getValue());
+		console.log(calendargroup2 instanceof Horn.Base);
+		console.log(calendargroup2.getValue());
+	}
+}
+function select() {
+	var select1 = $("#test7").comp();
+	var select2 = Horn.getCompById("test7");
+	if (console) {
+		console.log("select");
+		console.log(select1 instanceof Horn.Base);
+		console.log(select1.getValue());
+		console.log(select2 instanceof Horn.Base);
+		console.log(select2.getValue());
+	}
+}
+function label() {
+	var label1 = $("#test8").comp();
+	var label2 = Horn.getCompById("test8");
+	if (console) {
+		console.log("label");
+		console.log(label1 instanceof Horn.Base);
+		console.log(label1.getLabel());
+		console.log(label2 instanceof Horn.Base);
+		console.log(label2.getLabel());
+	}
+}
+function passwordgroup() {
+	var passwordgroup1 = $("#test9").comp();
+	var passwordgroup2 = Horn.getCompById("test9");
+	if (console) {
+		console.log("passwordgroup");
+		console.log(passwordgroup1 instanceof Horn.Base);
+		console.log(passwordgroup1.getValue());
+		console.log(passwordgroup2 instanceof Horn.Base);
+		console.log(passwordgroup2.getValue());
+	}
+}
+function testform() {
+	var form1 = $("#testForm").comp();
+	var form2 = Horn.getCompById("testForm");
+	if (console) {
+		console.log("form");
+		console.log(form1 instanceof Horn.Base);
+		console.log(form1.getValues());
+		console.log(form2 instanceof Horn.Base);
+		console.log(form2.getValues());
+	}
+}
+#end

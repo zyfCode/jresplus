@@ -1,0 +1,22 @@
+#@screen({})
+<table id="data_table_testDataGridId" border="0" cellspacing="0" cellpadding="0" class="hc-datagrid-fixed-table datagrid-table">
+	<tbody id="body_testDataGridId">
+		<tr id="tr_testDataGridId_1" class="">
+			<td style="width:40px;"><div style="TEXT-aLIGN: center;width:40px;" title="1">1</div></td>
+			<td style="width:36px;"><div class="hc-datagrid-cell-check" style="TEXT-aLIGN: center;width:36px;" title=""><input type="checkbox" id="cb_testDataGridId_1"></div></td>
+			<td>#calendar({"label":"日期","id":"birthday","name":"birthday22","value":"20131223","config":"{minDate:'20131223',noToday:true,format:'yyyy-MM-dd'}","readonly":false,"disabled":false, "cols":1,"hiddenLabel":true})</td>
+		</tr>
+	</tbody>
+</table>
+#button_panel_ex({"buttons":[ {"label":"新增行","name":"btnOk","event":"addTr()","className":"u-btn-primary"} ]})
+#end
+
+#jscode()
+	function addTr(){
+    	var  htmlobj=$.ajax({url:"$appServer.get('/zhou/tr.htm')",async:false});
+		var text = htmlobj.responseText;
+		$("#body_testDataGridId").append(text);
+		Horn.regUI("div.hc_calendar",Horn.Calendar) ;
+		Horn.init();
+	}
+#end

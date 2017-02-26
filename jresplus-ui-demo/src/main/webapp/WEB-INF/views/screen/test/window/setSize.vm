@@ -1,0 +1,68 @@
+#@screen()
+    #@case_desc({"title":"设置窗口尺寸"})
+	包含用例（9178,9179,9181）<br/>
+	设置窗口的高度和宽度（默认值、合理值、越界值），进行观测。
+	<br/>
+    <b>预期：</b>正常展示，超过边界后，应当可以自动进行控制。
+    #end
+    #button_panel_ex({"buttons":[
+	{"label":"默认","name":"btnSet","event":"openWin()"}
+	,{"label":"100*100","name":"btnSet","event":"openWin1()"}
+	,{"label":"300*200","name":"btnSet","event":"openWin2()"}
+	,{"label":"500*400","name":"btnSet","event":"openWin3()"}
+	,{"label":"800*600","name":"btnSet","event":"openWin4()"}
+	,{"label":"1024*800","name":"btnSet","event":"openWin5()"}
+	,{"label":"1440*900","name":"btnSet","event":"openWin6()"}
+	]})
+    #@window({"name":"w0","title":"默认窗口"})
+    默认窗口
+    #end
+	#@window({"name":"w1","title":"100*100","width":"100","height":"100"})
+    设置后的窗口
+    #end
+	#@window({"name":"w2","title":"300*200","width":"300","height":"200"})
+    设置后的窗口
+    #end
+	#@window({"name":"w3","title":"500*400","width":"500","height":"400"})
+    设置后的窗口
+    #end
+	#@window({"name":"w4","title":"800*600","width":"800","height":"600"})
+    设置后的窗口
+    #end
+	#@window({"name":"w5","title":"1024*800","width":"1024","height":"800"})
+    设置后的窗口
+    #end
+	#@window({"name":"w6","title":"1440*900","beforeClose":"beforeC()","afterClose":"afterC()","width":"1440","height":"900"})
+    设置后的窗口
+    #end
+#end
+#jscode()
+	function beforeC(){
+		alert(1);
+		return true;
+	}
+	function afterC(){
+		alert(2);
+	}
+	function openWin(){
+		Horn.getComp("w0").show();
+	}
+	function openWin1(){
+		Horn.getComp("w1").show();
+	}
+	function openWin2(){
+		Horn.getComp("w2").show();
+	}
+	function openWin3(){
+		Horn.getComp("w3").show();
+	}
+	function openWin4(){
+		Horn.getComp("w4").show();
+	}
+	function openWin5(){
+		Horn.getComp("w5").show();
+	}
+	function openWin6(){
+		Horn.getComp("w6").show();
+	}
+#end

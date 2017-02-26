@@ -1,0 +1,124 @@
+#@screen()
+    #@case_desc({"title":"绑定数据1"})
+	包含用例（暂缺）<br/>
+	1,宏上不指定value，在后台action上进行数据构造赋值
+	<br/>
+    <b>预期：</b>表单上的值可以正常填充<br/>
+    <span style="color: red; font-weight: bold">通过获取表单值按钮查看每一步所有表单的值</span>
+    #end
+	#@form({"url":"","name":"testForm"})
+		#@panel({})
+			#textfield({"label":"textfield", "name":"key1","defValue":"默认值-textfield"})
+			#hidden({"name":"key2","defValue":"默认值-hidden"})
+			#password({"label":"password", "name":"key3","defValue":"默认值-password"})
+			#passwordgroup({"label":"passwordgroup", "name":"key4","defValue":"默认值-passwordgroup"})
+			#label({"label":"label","hiddenName":"key5","defValue":"默认值-label"})
+            #textarea({"label":"textarea", "name":"key6","defValue":"默认值-textarea"})
+            #calendar({"label":"calendar", "name":"key7","defValue":"20140401"})
+            #calendargroup({"label":"calendargroup", "name1":"key8", "name2":"key9","defValue1":"19861223","defValue2":"19861224"})
+            #select({"label":"select","name":"key10","multiple":false,"dictName": "country","defValue":"2"})
+            #combox({"label":"combox","name":"key11","multiple":true,"dictName": "province","defValue":"4"})
+			#checkbox({"label": "checkbox", "name":"key12", "static":"key12value-checkbox"})
+            #checkboxGroup({"label":"checkboxGroup","name":"key13","items":[  
+                {"label":"游泳","value":"1"},  
+                {"label":"骑马","value":"2"}, 
+                {"label":"网球","value":"3"}],
+            "defValue":"2,3"})
+    		#radiogroup({"label":"radiogroup", "name":"key14", "items":[
+    			{"label":"投机","value":"A"},
+    			{"label":"套保","value":"B"},
+    			{"label":"套利","value":"C"}
+    		],"defValue":"C"})
+			#tooglefield({"label":"tooglefield", "name": "key15","defValue":"1"})
+			#blankcol
+		#end
+	#end
+    #button_panel_ex({"name":"btns","buttons":[
+    	{"label":"获取表单值","event":"getValue()"},
+    	{"label":"重置表单","event":"reset()"},
+    	{"label":"返回","event":"goback()"}
+    ]})
+	<div class="desc-info">
+		<h4>表单值显示区域</h4>
+        <div id="values"></div>
+    </div>
+#end
+#jscode()
+// 组件名称
+var components = ["textfield", "hidden", "password", "passwordgroup", "label", "textarea", "calendar", "calendargroup", "calendargroup", "select", "combox", "checkbox", "checkboxGroup", "radiogroup", "tooglefield"];
+// 表单key值
+var keys = ["key1", "key2", "key3", "key4", "key5", "key6", "key7", "key8", "key9", "key10", "key11", "key12", "key13", "key14", "key15"];
+// 表单初始化值
+var initValues = ["初始值-textfield", "初始值-hidden","初始值-password","初始值-passwordgroup","初始值-label","初始值-textarea","19861223","20140401","20140402","1","3","","1,2","B","0"];
+// 表单默认值
+var defValues = ["默认值-textfield", "默认值-hidden","默认值-password","默认值-passwordgroup","默认值-label","默认值-textarea","20140401","19861223","19861224","2","4","","2,3","C","1"];
+// 表单新值
+var newValues = ["新值-textfield", "新值-hidden","新值-password","新值-passwordgroup","新值-label","新值-textarea","20140403","19861225","19861226","3","5","","2,3","A","0"];
+// 后台绑定值
+var bindValues = ["绑定值-textfield", "绑定值-hidden","绑定值-password","绑定值-passwordgroup","绑定值-label","绑定值-textarea","20140503","19861205","19861206","4","6","","1,3","B","1"];
+
+
+function reset() {
+	Horn.getComp("testForm").reset();
+}
+
+function goback() {
+	window.location.href = "$appServer.get('/test/form/bind_data1.htm')";
+}
+
+function getValue() {
+	var values = Horn.getComp("testForm").getValues();
+	
+	var html = [];
+	html.push("<table width='100%'>");
+	// 头
+	html.push("<th>");
+	html.push("<tr style='font-size: 15px; font-weigth: bold;'>");
+	html.push("<td>");
+	html.push("名称");
+	html.push("</td>");
+	html.push("<td>");
+	html.push("初始值");
+	html.push("</td>");
+	html.push("<td>");
+	html.push("默认值");
+	html.push("</td>");
+	html.push("<td>");
+	html.push("设置新值");
+	html.push("</td>");
+	html.push("<td>");
+	html.push("后台绑定值");
+	html.push("</td>");
+	html.push("<td>");
+	html.push("真实值");
+	html.push("</td>");
+	html.push("</tr>");
+	html.push("</th>");
+	for (var i=0; i<keys.length; i++) {
+		html.push("<tr>");
+		html.push("<td>");
+		html.push(keys[i] + ":" + components[i]);
+		html.push("</td>");
+		html.push("<td>");
+		html.push(initValues[i]);
+		html.push("</td>");
+		html.push("<td>");
+		html.push(defValues[i]);
+		html.push("</td>");
+		html.push("<td>");
+		html.push(newValues[i]);
+		html.push("</td>");
+		html.push("<td>");
+		html.push(bindValues[i]);
+		html.push("</td>");
+		html.push("<td>");
+		html.push(values[keys[i]]);
+		html.push("</td>");
+		html.push("</tr>");
+	}
+	html.push("</table>");
+
+	$("#values").html(html.join(""));
+}
+
+#end

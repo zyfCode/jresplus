@@ -1,0 +1,8 @@
+$contain.get('/contain/head.htm')
+    <div class="h_screen">
+    	$screen_content
+    </div>
+#jscode()
+Horn.Calendar.DEFAULT_FORMAT = 'yyyyMMdd';
+#end
+$contain.get('/contain/end.htm')

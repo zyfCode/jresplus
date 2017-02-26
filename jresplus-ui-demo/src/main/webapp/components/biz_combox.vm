@@ -1,0 +1,216 @@
+#macro(biz_combox $uiComboxConfig)
+	##查看模式
+ 
+    	#set($items=[])
+		#set($pKeyField = "pLabel" ) 
+		#set($keyField = "label" ) 
+        #set($titleField = "value")
+        #if($uiComboxConfig.items)
+        	#set($items = $uiComboxConfig.items)
+        #elseif($dictManager && $uiComboxConfig.dictName)
+            #set($items = $dictManager.getDicts($uiComboxConfig.dictName))
+		#end
+		#foreach($item in $items)
+			#if($item.code)
+				#set($keyField = "code" ) 
+				#set($titleField = "text")
+			#end
+			#break
+		#end
+
+    	##如果有传入参数，则替换掉对应的field
+    	#if($uiComboxConfig.pKeyField) 
+    		#set($pKeyField = $uiComboxConfig.pKeyField ) 
+		#end
+
+    	#if($uiComboxConfig.labelField && $uiComboxConfig.labelField.length() > 0)
+    		#set($keyField = $uiComboxConfig.labelField ) 
+    	#end
+    	#if($uiComboxConfig.codeField && $uiComboxConfig.codeField.length() > 0)
+    		#set($keyField = $uiComboxConfig.codeField ) 
+    	#end
+    	#if($uiComboxConfig.valueField && $uiComboxConfig.valueField.length() > 0) 
+    		#set($titleField = $uiComboxConfig.valueField )
+    	#end
+    	#if($uiComboxConfig.textField && $uiComboxConfig.textField.length() > 0) 
+    		#set($titleField = $uiComboxConfig.textField )
+    	#end
+    	
+    	##设置是否显示标签
+    	#set($showLabel = false)
+    	#if($uiComboxConfig.showLabel&&$uiComboxConfig.showLabel == "true")
+    		#set($showLabel = true)
+    	#end
+        #set($multipleValue="")
+        #if($uiComboxConfig.delimiter)
+            #set($delimiter=$!{uiComboxConfig.delimiter})
+        #else
+            #set($delimiter=",")
+		#end
+		#set($checkStr=$horn.getCheckStr($uiComboxConfig.name,$uiComboxConfig.check))
+        #set($groupStr=$horn.getGroupStr($uiComboxConfig.name,$uiComboxConfig.group))
+		<div class="g-unit-wrap">
+    	<div class="biz_combox g-grid-12" id="$!{uiComboxConfig.id}" $horn.paramsCache($uiComboxConfig)  pKeyField=$!{pKeyField} keyField=$!{keyField} titleField=$!{titleField} showLabel="$!{showLabel}">
+    	#set($curvalue="")
+    	#if($uiComboxConfig.value)
+    		#set($curvalue=$!{uiComboxConfig.value})
+    	#else
+    		#set($curvalue="$horn.getValue($!uiComboxConfig.name)")
+    	#end
+    	<input type="hidden" name="$uiComboxConfig.name" 
+    		#if($uiComboxConfig.alias)
+    			alias="${uiComboxConfig.alias}"
+    		#end
+    	#if($uiComboxConfig.refname)
+    		refname="$uiComboxConfig.refname" 
+    	#end
+    	#if(!$curvalue.equals(""))
+    		value="$curvalue"
+        #else
+        	#if($uiComboxConfig.multiple != true && $items.size()>0)
+    			#set($item = $items.get(0))
+    	        #set($itemLabelCommand="$"+"!"+"{item."+"$keyField"+"}")
+    			#set($itemLabel = "#evaluate($itemLabelCommand)")
+                #if($uiComboxConfig.headItem)
+                    #set($headItem = $uiComboxConfig.headItem)
+                    #set($headItemLabelCommand="$"+"!"+"{headItem."+"$keyField"+"}")
+                    #set($headItemLabel = "#evaluate($headItemLabelCommand)")
+                    value="$headItemLabel"
+                #else
+                    value="$itemLabel"
+                #end
+            #elseif($uiComboxConfig.multiple == true && $items.size()>0 && ($uiComboxConfig.checkAll==true || $uiComboxConfig.selectAll == true))
+                #foreach($item in $items)
+                        #set($itemLabelCommand="$"+"!"+"{item."+"$keyField"+"}")
+                        #set($itemLabel = "#evaluate($itemLabelCommand)")
+                        #if($velocityCount == $items.size())
+                            #set($multipleValue = $multipleValue+$!{itemLabel})
+                        #else
+                            #set($multipleValue = $multipleValue+$!{itemLabel}+$!{delimiter})
+                        #end
+                    #end
+                value = "$!{multipleValue}"
+        	#end
+    	#end
+    	check="$checkStr"
+    	group="$groupStr"
+    	 />
+    	<input multiple="$!{uiComboxConfig.multiple}" selectMode="$!{uiComboxConfig.multiple}" type="text" class="u-select" 
+        	##foreach($event in $uiComboxConfig.events)
+        	##	$event.event = "$event.function" 
+        	##end
+        	#if($uiComboxConfig.dictName && $horn)
+        		#if($uiComboxConfig.multiple == true)
+        		 	ref="${uiComboxConfig.dictName}_m"
+        		#else
+        		 	ref="${uiComboxConfig.dictName}_s"
+        		#end
+        	#end
+        	#if(!$curvalue.equals(""))
+        		#if($uiComboxConfig.multiple == true)
+        			value="$curvalue"
+        		#else
+					#if($dictManager && $uiComboxConfig.dictName)
+						#set($val = $dictManager.getDictEntry($uiComboxConfig.dictName,$curvalue));
+						##14098 combox在数据为数据字典时，若是设置的value值不存在，也能显示
+						#if("$!val"!="")
+							value="$curvalue:$!val.getValue()" 
+						#else
+							value=""
+						#end
+                	#else
+    					#foreach($item in $items)
+        	    			#if($item.label == $curvalue)
+								#if($showLabel)
+									value="$item.label:$item.value" 
+								#else
+									value="$item.value" 
+								#end
+        	    			#end
+						#end
+						
+						
+                		#foreach($item in $items)
+                			#set($itemLabelCommand="$"+"!"+"{item."+"$keyField"+"}")
+                			#set($itemTitleCommand="$"+"!"+"{item."+"$titleField"+"}")
+            				#set($itemLabel = "#evaluate($itemLabelCommand)")
+            				#set($itemTitle = "#evaluate($itemTitleCommand)")
+                			#if($itemLabel == $curvalue)
+            					##如果有设置showLabel，则显示
+                    			value="#if($showLabel)$itemLabel:#end$itemTitle"
+            				#end
+                		#end
+                	#end
+					
+					
+					
+        		#end
+        	#elseif($uiComboxConfig.multiple != true && $items.size()>0)
+        		#set($item = $items.get(0))
+        		##如果有设置showLabel，则显示
+                #set($itemLabelCommand="$"+"!"+"{item."+"$keyField"+"}")
+        		#set($itemTitleCommand="$"+"!"+"{item."+"$titleField"+"}")
+        		#set($itemLabel = "#evaluate($itemLabelCommand)")
+        		#set($itemTitle = "#evaluate($itemTitleCommand)")
+        		##如果有设置showLabel，则显示
+                #if($uiComboxConfig.headItem)
+                    #set($headItem = $uiComboxConfig.headItem)
+                    #set($headItemTitleCommand="$"+"!"+"{headItem."+"$titleField"+"}")
+                    #set($headItemTitle = "#evaluate($headItemTitleCommand)")
+                    value="$headItemTitle"
+                #else
+                    value="#if($showLabel)$itemLabel:#end$itemTitle"
+                #end
+            #elseif($uiComboxConfig.multiple == true && $items.size()>0 && ($uiComboxConfig.checkAll==true || $uiComboxConfig.selectAll == true))
+                value="$!{multipleValue}"
+        	#end
+                delimiter="$!{delimiter}"
+    
+    	/>
+		<i class="fa fa-caret-down u-select-down"></i>
+
+    		#if($uiComboxConfig.dictName && $horn)
+    			#foreach($dicname in $uiComboxConfig.dictName.split(","))
+    				#if($uiComboxConfig.multiple == true)
+            		 	$horn.addGlobal('componentSelects_m',$dicname)
+            		#else
+            		 	$horn.addGlobal('componentSelects_s',$dicname)
+        			#end
+    			#end
+        		
+    		#else
+    			
+    			#if($items)
+    				<div class="hc_checkboxdiv"
+    					#if($uiComboxConfig.multiple == true)
+    						multiple_line="true"
+    					#else
+    						multiple_line="false"
+    					#end
+    				>
+    					<ul>
+    						#foreach($pItem in $items)
+                                ##如果有设置showLabel，则显示
+                                    #set($itemLabelCommand="$"+"!"+"{pItem."+"$keyField"+"}")
+                                    #set($itemTitleCommand="$"+"!"+"{pItem."+"$titleField"+"}")
+                                    #set($pKeyCommand="$"+"!"+"{pItem."+"$pKeyField"+"}")
+                                    #set($itemLabel = "#evaluate($itemLabelCommand)")
+                                    #set($itemTitle = "#evaluate($itemTitleCommand)")
+                                    #set($pKey = "#evaluate($pKeyCommand)")
+
+                                    <li title="$!{itemTitle}" pKeyCommand="$pKeyCommand" pKey="$!{pKey}" key="$!{itemLabel}"><label>
+                                        #if($uiComboxConfig.multiple == true)
+                                            <input type="checkbox" class="combox_input">
+                                        #end
+
+                                        #if($showLabel)<span class="hce_dictlabel" >$!{itemLabel}:</span>#end$!{itemTitle}
+                                    </label></li>
+    						#end
+    					</ul>
+    				</div>
+    			#end
+    		#end	
+    	</div>
+        </div>
+	#set($uiComboxConfig = {})
+#end

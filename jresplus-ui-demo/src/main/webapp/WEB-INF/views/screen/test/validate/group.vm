@@ -1,0 +1,53 @@
+#@screen()
+    #@case_desc({"title":"测试组"})
+	包含用例（暂缺）<br/>
+	1,简单实用
+	<br/>
+    <b>预期：</b>正常使用<br/>
+    #end
+	#panel_start
+	<div id="testArea1">
+		#textfield({"label":"必输", "name": "test1", "check": "required", "group": "group1"})
+		#textfield({"label":"只能数字", "name": "test2", "value":"abcdef", "check": "required;num", "group": "group2"}) ## 只能数字
+		#textfield({"label":"只能中文", "name": "test3", "value":"123456", "check": "chinese;required;"}) ## 只能中文
+		#textfield({"label":"只能英文", "name": "test4", "value":"中文", "check": "letter;required"}) ## 只能英文
+		#textfield({"label":"函数校验", "name": "test5", "value":"中文", "check": "required;myCheck();"}) ## 只能英文
+    </div>
+	#panel_end
+    #button_panel_ex({"buttons":[
+		{"label":"将test3添加到group1", "event": "add2Group1()"},
+    	{"label":"将test3从group1移除", "event": "removeFromGroup1()"},
+		{"label":"将test3添加到group2", "event": "add2Group2()"},
+    	{"label":"将test3从group2移除", "event": "removeFromGroup2()"},
+    	{"label":"校验group1", "event": "validateGroup1()"},
+    	{"label":"校验group2", "event": "validateGroup2()"}
+	]})
+#end
+
+#jscode()
+
+function add2Group1() {
+	Horn.getComp("test3").addGroup("group1");
+}
+
+function removeFromGroup1() {
+	Horn.getComp("test3").removeGroup("group1");
+}
+
+function add2Group2() {
+	Horn.getComp("test3").addGroup("group2");
+}
+
+function removeFromGroup2() {
+	Horn.getComp("test3").removeGroup("group2");
+}
+
+function validateGroup1() {
+	Horn.Validate.validateAreaByGroup($("#testArea1"), "group1");
+}
+
+function validateGroup2() {
+	Horn.Validate.validateAreaByGroup($("#testArea1"), "group2");
+}
+
+#end

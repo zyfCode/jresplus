@@ -1,0 +1,38 @@
+#@screen()
+	#@form({"url":"", "name":"testForm"})
+		#hidden({"name":"test0", "defValue": "hidden默认值"})
+    	#@panel({"cols":3})
+			#combox({"name":"test1","label":"单选","dictName": "province",  "check": "required"})
+			#combox({"name":"test2","label":"多选","multiple": true,  "dictName": "province",  "check": "","selectAll":true})
+			#combox({"name":"test3","label":"单选初始值","value":"1",  "dictName": "province",  "check": "required"})
+			#combox({"name":"test4","label":"多选初始值","multiple": true,"value":"1,2",  "dictName": "province"})
+			#combox({"name":"test12","label":"静态单选","value":"","items":[{"code":"1","text":"上海"},{"code":"2","text":"广州"},{"code":"3","text":"重庆"}],  "check": "required"})
+			#combox({"name":"test13","label":"静态多选","multiple": true,"items":[{"code":"1","text":"上海"},{"code":"2","text":"广州"},{"code":"3","text":"重庆"}],  "check": "required","selectAll":false,"value":"1#2","delimiter":"#","enableFieldSearch":"true"})
+			#combox({"name":"test5","label":"只读","readonly": true,"value":"1", "dictName": "province","cols":1})
+			#combox({"name":"test6","label":"禁用","disabled":true,"value":"1", "dictName": "province"})
+			#combox({"label":"省份","id":"vc_province_no", "name":"vc_province_no","check": "required","showLabel":"true","multiple": true,"value":"10,4","enableFieldSearch":"true"})
+    	#end
+		#button_panel({"submitLabel":"查询","resetLabel":"清空",  
+                "buttons" : [{"label":"赋值","event":"setValue()","className":"u-btn-success"}
+                ]  
+            })  
+	#end
+#end
+
+#jscode()
+	function testCheck(){
+		Horn.getComp("testForm").getValues();
+	}
+ $(function(){
+    	 var item=[{code:'10','text':'测试3'},{code:'4','text':'测试4'}];
+    	 Horn.getCompById("vc_province_no").addItems(item);
+    	 //alert(Horn.getCompById("vc_province_no").getValue());
+     }); 
+    function setValue() {
+		console.info(Horn.getComp("testForm").isValid());
+    	Horn.getComp("test12").setValue("2");
+    }
+	function test(){
+		return "aaa";
+	}
+#end

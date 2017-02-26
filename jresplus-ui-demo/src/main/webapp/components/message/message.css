@@ -1,0 +1,199 @@
+.m-message-bg {
+  width: 100%;
+  height: 1000px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.5;
+  position: absolute;
+  z-index: 51;
+  background-color: #000;
+}
+.m-message-positon {
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  z-index: 52;
+  border-radius: 3px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background: #fff;
+}
+.m-message-header {
+  padding: 10px 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom: 1px solid transparent;
+  color: #fff;
+  background: #7F93AA;
+}
+.m-message-header .m-message-btn {
+  float: right;
+}
+.m-message-header .m-message-btn > a {
+  margin-left: 8px;
+}
+.m-message-header .m-btn-default {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  color: #fff;
+  background: #b6c2c9;
+  border-color: #b6c2c9;
+}
+.m-message-header .m-btn-default i {
+  line-height: 20px;
+}
+.m-message-header .m-btn-close {
+  color: #fff;
+  background: #ff5b57;
+  border-color: #ff5b57;
+}
+.m-message-header .m-btn-close:hover, 
+.m-message-header .m-btn-close:focus {
+  background: #cc4946;
+  border-color: #cc4946;
+}
+.m-message-header .m-message-title {
+  font-size: 12px;
+  line-height: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.m-message-body {
+  padding: 10px;
+  border: 0;
+  background: #fff;
+}
+.m-message-body .m-body-words {
+  font-size: 13px;
+  padding: 20px;
+  text-align: center;
+  color: #666;
+}
+.m-message-body .m-body-words .m-message-icon {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0;
+  margin-right: 5px;
+  margin-bottom: 0;
+  font-size: 30px;
+  font-weight: 300;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  white-space: nowrap;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  color: #fff;
+}
+.m-message-body .m-body-words .m-message-icon i {
+  line-height: 30px;
+}
+.m-message-body .m-body-words .m-message-icon.m-message-error {
+  color: #fff;
+  background: #ff5b57;
+  border-color: #ff5b57;
+}
+.m-message-body .m-body-words .m-message-icon.m-message-info {
+  color: #fff;
+  background: #24cabc;
+  border-color: #24cabc;
+}
+.m-message-body .m-body-words .m-message-icon.m-message-warning {
+  color: #fff;
+  background: #f39c12;
+  border-color: #f39c12;
+}
+.m-message-body .m-body-words .m-message-icon.m-message-warning i {
+  margin-top: 2px;
+}
+.m-message-body .m-body-words .m-message-icon.m-message-success {
+  color: #fff;
+  background: #2ecc71;
+  border-color: #2ecc71;
+}
+.m-message-footer {
+  padding: 8px;
+  text-align: center;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  background: #f6f6f6;
+}
+.m-message-footer .u-btn {
+  display: inline-block;
+  padding: 4px 20px;
+  margin-bottom: 0;
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+.m-message-footer .u-btn:hover,
+.m-message-footer .u-btn:focus,
+.m-message-footer .u-btn.focus {
+  color: #fff;
+  text-decoration: none;
+}
+.m-message-footer .u-btn:active,
+.m-message-footer .u-btn.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+.m-message-footer .u-btn.u-btn-default {
+  color: #fff;
+  background: #b6c2c9;
+  border-color: #b6c2c9;
+}
+.m-message-footer .u-btn-default:hover, 
+.m-message-footer .u-btn-default:focus, 
+.m-message-footer .u-btn-default:active, 
+.m-message-footer .u-btn-default.active {
+  background: #929ba1;
+  border-color: #929ba1;
+}
+.m-message-footer .u-btn.u-btn-primary {
+  color: #fff;
+  background-color: #348fe2;
+  border-color: #348fe2;
+}
+.m-message-footer .u-btn-primary:hover, 
+.m-message-footer .u-btn-primary:focus, 
+.m-message-footer .u-btn-primary:active, 
+.m-message-footer .u-btn-primary.active {
+  background: #2a72b5;
+  border-color: #2a72b5;
+}

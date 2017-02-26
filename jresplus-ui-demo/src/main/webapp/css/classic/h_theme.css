@@ -1,0 +1,277 @@
+body{background:#fff;}
+
+.h-header{
+	background: #256fa6;
+}
+.h-menu{ 
+    background: #e6e5ea;
+}
+.h-menu-con{
+	background: #e6e5ea;
+}
+.h-menu-con > ul > li > a {
+    color: #4a4a4a;
+}
+.h-menu-con > ul > li.expand > a,
+.h-menu-con > ul > li > a:hover,
+.h-menu-con > ul > li > a:focus {
+    color: #4a4a4a;
+}
+.h-menu-body > ul > li > a {
+  color: #4a4a4a;
+}
+.h-menu-body > ul > li.expand > a,
+.h-menu-body > ul > li > a:hover,
+.h-menu-body > ul > li > a:focus {
+  background: #256fa6;
+  color: #fff;
+}
+.h-nav-mini-btn {
+    background: #7cb0d6;
+}
+.h-menu-header a:hover,
+.h-menu-header a:focus {
+    background: #fff;
+}
+.h-menu-con .h-menu-header > span {
+    color: #8a8a8a;
+}
+.h-menu-con > ul > li.active > a, 
+.h-menu-con > ul > li.active > a:hover, 
+.h-menu-con > ul > li.active > a:focus {
+    background: #256fa6;
+}
+.h-menu-body > ul > li.active > a, 
+.h-menu-body > ul > li.active > a:hover, 
+.h-menu-body > ul > li.active > a:focus {
+    background: #256fa6;
+}
+.h-menu-con .h_sub-menu:before {
+    background:#d1d4de;
+}
+.h-menu-con .h_sub-menu {
+    background: #d1d4de;
+}
+.h-menu-con .h_sub-menu > li > a {
+    color: #4a4a4a;
+}
+.h-menu-con .h_sub-menu > li > a:hover, 
+.h-menu-con .h_sub-menu > li > a:focus, 
+.h-menu-con .h_sub-menu > li.active > a, 
+.h-menu-con .h_sub-menu > li.active > a:hover, 
+.h-menu-con .h_sub-menu > li.active > a:focus {
+    color: #256fa6;
+}
+/*左侧收缩 start*/
+.h-menu-collapsed .h-menu-con .h-menu-body > ul li.h_has-sub > .h_sub-menu {
+  background: #256fa6;
+}
+.h-menu-collapsed .h-menu-con .h-menu-body > ul > li.h_has-sub:hover > a,
+.h-menu-collapsed .h-menu-con .h-menu-body > ul > li.h_has-sub:focus > a {
+  background: #256fa6;
+}
+.h-menu-collapsed .h-menu-float {
+    background: #d1d4de;
+}
+.h-menu-collapsed .h-menu-float:before {
+    background: #d1d4de;
+}
+.h-menu-collapsed .h-menu-float > li > a:before {
+    color: #889097;
+}
+.h-menu-collapsed .h-menu-float > li > a:hover, 
+.h-menu-collapsed .h-menu-float > li > a:focus, 
+.h-menu-collapsed .h-menu-float > li.active > a, 
+.h-menu-collapsed .h-menu-float > li.active > a:hover, 
+.h-menu-collapsed .h-menu-float > li.active > a:focus {
+    color: #256fa6;
+    background: #d1d4de;
+}
+.h-menu-collapsed .h-menu-float > li > a {
+     color: #4a4a4a;
+}
+/*左侧收缩 end*/
+
+
+/* 2.0 @VM */
+/* 2.1 @Base */
+/* 2.2 @Screen */
+/* 2.3 @Panel */
+.g-panel {
+  border: 1px solid #dbdee0;
+  border-radius: 4px;
+}
+.g-panel.f-border-none {
+  border: 0;
+}
+.m-panel-header {
+  border-bottom: 1px solid #DBDEE0;
+  color: #666;
+  background: #efefef;
+}
+.m-panel-header h4 {
+  font-weight: 400;
+}
+.m-panel-box {
+  background: #fff;
+  border-bottom: 1px solid #e6e5ea;
+}
+.m-panel-box .m-btn-default {
+  color: #999;
+  background: #fff;
+  border:1px solid #ddd;
+}
+.m-panel-box .m-btn-default:hover,
+.m-panel-box .m-btn-default:focus {
+  color:#666;
+  background: #fff;
+  border:1px solid #ccc;
+}
+.m-panel-body {
+  background: #fff;
+}
+/* View Model begin */
+.g-view .g-unit-wrap {
+  background: #f4f4f4;
+}
+/* View Model end */
+
+/* 3.0 @Components */
+/* 3.1 @textfield */
+/* 3.2 @textarea */
+/* 3.3 @password */
+/* 3.4 @password-group */
+/* 3.5 @radio */
+/* 3.6 @password */
+/* 3.7 @checkbox */
+/* 3.8 @typefield */
+/* 3.9 @select */
+/* 3.10 @button */
+/* 3.11 @menu */
+/* 3.12 @message */
+.m-message-header {
+  border: 1px solid #DBDEE0;
+  color: #666;
+  background: #efefef;
+}
+.m-message-body {
+  border-left: 1px solid #DBDEE0;
+  border-right: 1px solid #DBDEE0;
+}
+.m-message-footer {
+  border-left: 1px solid #DBDEE0;
+  border-right: 1px solid #DBDEE0;
+  border-bottom: 1px solid #DBDEE0;
+}
+/* 3.13 @tip */
+/* 3.14 @pagebar */
+
+/* 3.16 @calendar */
+/* 3.17 @calendar-group */
+/* 3.18 @datagrid */
+.u-datagrid-header {
+	border-top: 1px solid #DBDEE0;
+  border-bottom: 1px solid #DBDEE0;
+  border-radius: 0; 
+  color: #666;
+  background: #efefef;
+}
+/* 3.19 @ztree */
+/* 3.20 @verify */
+
+
+
+/* 3.15 @tab */
+.h_tabpanel-wrap-li:hover {
+	margin-top: 3px;
+  border-radius: 6px 6px 0 0;
+}
+.h_tabpanel-wrap-li.h_cur {
+	margin-top: 3px;
+  border-radius: 6px 6px 0 0;
+}
+
+.h_tabs-pos-left .h_tabpanel-wrap-li.h_cur {
+	border-radius: 0 0 0 0;
+}
+.h_tabs-pos-left .h_tabpanel-wrap-li:hover {
+	border-radius: 0 0 0 0;
+}
+.h_tabs-pos-right .h_tabpanel-wrap-li.h_cur {
+	border-radius: 0 0 0 0;
+}
+.h_tabs-pos-right .h_tabpanel-wrap-li:hover {
+	border-radius: 0 0 0 0;
+}
+.u-tab-left,
+.u-tab-right {
+  background: #e6e5ea;
+}
+
+.u-tab-left:hover,
+.u-tab-right:hover, 
+.u-tab-left:focus,
+.u-tab-right:focus {
+  background: #ecebf0;
+}
+.u-tab-top,
+.u-tab-bottom {
+  background: #e6e5ea;
+} 
+.u-tab-top:hover,
+.u-tab-bottom:hover, 
+.u-tab-top:focus,
+.u-tab-bottom:focus {
+  background: #ecebf0;
+}
+.u-tab-nav {
+  background: #e6e5ea;
+}
+.u-tab-nav > li > a {
+  color: #6e7179;
+}
+.u-tab-nav > li > a:hover,
+.u-tab-nav > li > a:focus {
+  background-color: #fff;
+}
+.u-tab-nav > li.active > a,
+.u-tab-nav > li.active > a:hover,
+.u-tab-nav > li.active > a:focus {
+  background-color: #fff;
+}
+.u-tab-cnt {
+  background: #fff;
+  border-left: 1px solid #e0e6e8;
+  border-right: 1px solid #e0e6e8;
+  border-bottom: 1px solid #e0e6e8;
+}
+.g-tab-left .u-tab-cnt {
+  border-top: 1px solid #e0e6e8;
+  border-right: 1px solid #e0e6e8;
+  border-bottom: 1px solid #e0e6e8;
+}
+.g-tab-right .u-tab-cnt {
+  border-radius: 3px 0 0 3px;
+  border-left: 1px solid #e0e6e8;
+  border-top: 1px solid #e0e6e8;
+  border-right: 0;
+  border-bottom: 1px solid #e0e6e8;
+}
+
+/*fieldset*/
+fieldset {
+  border: 1px solid #e6e5ea;
+  background: #fff;
+  margin-bottom: 5px;
+}
+/*calendar*/
+.datetimepicker-days{
+	padding-left: 15px;
+}
+.u-tab-cnt {
+    margin-bottom: 10px;
+    padding: 1px;
+}
+.h-screen-tab .h-screen-tab-con ul li.active {
+    background-color: #fff;
+}

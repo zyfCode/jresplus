@@ -1,0 +1,40 @@
+#@window({"scroll":true,"id":"window","name":"w0","title":"窗口","height":300,"width":500,"isDrag":true,"buttons":[ {"label":"确定","name":"btnOk","event":"cancle()","className":"u-btn-primary"},{"label":"取消","name":"btnCancel","event":"cancle()"} ]})
+        #@panel({"name":"mainPanel"})
+		#set($dataT='[{"id":"1","name":"根","pId":""},{"id":"21","name":"sub11","pId":"1"},{"id":"22","name":"sub12","pId":"1"},{"id":"212","name":"sub111","pId":"21"},{"id":"221","name":"sub211","pId":"22"},{"id":"212","name":"sub11sas","pId":"21"}]')
+				#ztree({  
+                "id":"tree2",  
+                "name":"ztree2",
+            	"onClick":"nodeClick",
+				"toolbar":false,
+				"expandFirst":false,
+                "data":$dataT})
+	 
+        #end
+#end
+#@screen()
+#@panel()
+
+#targetselect({"label":"targetselect","name":"targetselect1","value":"","event":"showWin(1)","check": "required"})
+#targetselect({"label":"targetselect","name":"targetselect","value":{"label":"周智星","key":"09150"},"event":"showWin(2)","check": "","afterClear":"isValid","disabled":false})
+#targetselect({"label":"targetselect","name":"targetselect3","value":"","event":"showWin(3)","check": "required"})
+#end
+#end
+
+#jscode()
+var compName = ""
+	function isValid(){
+  		Horn.getComp("targetselect").validate();
+  		alert(Horn.getComp("targetselect").isValid());
+  	  }
+	  function nodeClick(event, treeId, treeNode){
+		Horn.getComp(compName).setValue({"label":""+treeNode.name+"","key":""+treeNode.id+""});
+		Horn.getComp("w0").hide();
+	}
+ function showWin(flag){
+   compName = "targetselect"+flag;
+	Horn.getComp("w0").show();
+ }
+  function cancle(){
+	Horn.getComp("w0").hide();
+ }
+#end

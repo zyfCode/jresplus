@@ -1,0 +1,20 @@
+#@screen({})
+	
+		#@form({"url":"$appServer/workflow/manage/design/createForm.htm","enctype":"multipart/form-data" , "name":"testForm"})   
+	    	#@panel({"cols":2,"title":"基本信息"})
+					#textfield({"label":"流程分类","name":"typeId","value":""})
+				   	#textfield({"label":"流程编码","name":"hsBpmKey","value":""})
+				   	#textfield({"label":"流程名称","name":"hsBpmName","value":""})
+				   	#textarea({"label":"流程描述","name":"description","value":""})
+			#end
+			#@panel({"cols":2,"title":"流程属性"})
+					#combox({"name":"canHumanStart","label":"发起模式","cols":2,"items":[{"code":"true","text":"人工发起"},{"code":"false","text":"系统发起"}]})
+				   	#radiogroup({"name":"radioLaunchPerson","label":"指定发起人","cols":2,"items":[{"code":"0","text":"所有人可发起"},{"code":"1","text":"指定发起人"}],"value":"0"})
+				   	#radiogroup({"name":"ignoreExistUser","label":"排除参与人","cols":2,"items":[{"code":"0","text":"不排除"},{"code":"1","text":"相邻节点不可重复"},{"code":"2","text":"所有节点不可重复"}],"value":"0"})
+				   	#radiogroup({"name":"cancelBeforeEnd","label":"发起人终止设置","cols":2,"items":[{"code":"0","text":"发起后未处理可终止"},{"code":"1","text":"流程结束前可终止"},{"code":"2","text":"回到发起环节可终止"}],"value":"0"})
+			
+			#end
+	    #end  
+#end  	
+
+##parse("/screen/workflow/js/createInformation_js.vm")

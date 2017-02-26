@@ -1,0 +1,6 @@
+</body>
+#jscode()
+Horn.Frame=Horn.Frame||{};
+Horn.Frame.params=Horn.Frame.params||{};
+$.extend(Horn.Frame.params,$!horn.printParamCaches()||{});
+#end

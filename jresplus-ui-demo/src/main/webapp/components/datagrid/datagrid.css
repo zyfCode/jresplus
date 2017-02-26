@@ -1,0 +1,176 @@
+.g-datagrid-wrap {
+  border-right: 1px solid #e2e7eb;
+  border-left: 1px solid #e2e7eb;
+}
+.u-datagrid-header {
+  padding: 10px 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom: 1px solid transparent;
+  color: #fff;
+  background: #7F93AA;
+}
+.u-datagrid-header .u-datagrid-title {
+  font-size: 12px;
+  line-height: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: inherit;
+}
+.u-datagrid-toolbar {
+  padding: 10px;
+  background: #fff;
+}
+.u-datagrid-btn {
+  display: inline-block;
+  padding-left: 0;
+  margin: 0;
+}
+.u-datagrid-btn > li {
+  display: inline;
+}
+.u-datagrid-btn > li > a {
+  font-size: 12px;
+  position: relative;
+  float: left;
+  padding: 8px 12px;
+  line-height: 1.42857143;
+  text-decoration: none;
+  margin-right: 15px;
+  -webkit-border-radius: 3px !important;
+  -moz-border-radius: 3px !important;
+  border-radius: 3px !important;
+  color: #666;
+  background-color: #fff;
+  border: 1px solid #BFC9D4;
+}
+.u-datagrid-btn > li > a > i{
+  margin-right: 5px;
+  font-size: 14px;
+  color: #8aa3b7;
+}
+.u-datagrid-btn > li > a:hover,
+.u-datagrid-btn > li > a:focus,
+.u-datagrid-btn > li > a:hover > i,
+.u-datagrid-btn > li > a:focus > i {
+  color: #242a30;
+  background: #e2e7eb;
+  border-color: #BFC9D4;
+}
+.u-datagrid-btn > .disabled > a,
+.u-datagrid-btn > .disabled > a:hover,
+.u-datagrid-btn > .disabled > a:focus {
+  color: #777;
+  background-color: #fff;
+  border-color: #ddd;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+.u-datagrid-freeze{
+  position: absolute;
+  height: 422px;
+}
+.table {
+  width: 100%;
+  background: #fff;
+}
+.table > tbody > tr > th,
+.table > tbody > tr > td {
+  padding: 10px 15px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border-top: 1px solid #e2e7eb;
+}
+.table > tbody > tr > th > div,
+.table > tbody > tr > td > div {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.table > tbody > tr > th {
+  text-align: left;
+  vertical-align: bottom;
+  font-weight: 600;
+  color: #242a30;
+  border-bottom: 2px solid #e2e7eb !important;
+}
+.table > tbody > tr > td {
+  vertical-align: middle;
+  border-top: 1px solid #e2e7eb;
+}
+.table-bordered {
+  border: 1px solid #e2e7eb;
+}
+.table-bordered > tbody > tr > td,
+.table-bordered > tbody > tr > th {
+  border: 1px solid #e2e7eb;
+}
+table td[class*="g-grid-"],
+table th[class*="g-grid-"] {
+  position: static;
+  display: table-cell;
+  float: none; /* use g-grid-6 or the other gird for set the width of percent */
+}
+.u-datagrid {
+  width: 100%;
+  height: 438px;
+  overflow: auto;
+  background: #fff;
+}
+.u-table-number {
+  width: 40px; /* 50px for thousand numbers */
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  text-align: center;
+}
+.u-table-check {
+  width: 40px;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  text-align: center;
+}
+.u-table-time {
+  width: 70px;
+}
+.u-table-bg > td {
+  background: #f0f3f5;
+}
+.u-table-hover > td {
+  background: #e8ecf1 !important;
+}
+.u-table-selected > td {
+  background: #c0cad6 !important;
+}
+.u-datagrid-page {
+  padding: 5px 10px 10px 10px;
+  border-bottom: 1px solid #e2e7eb;
+  background: #fff;
+}
+/* pagebar bottom css begin */
+.g-datagrid-wrap-bottom {
+  border-right: 1px solid #e2e7eb;
+  border-left: 1px solid #e2e7eb;
+  border-bottom: 1px solid #e2e7eb;
+  border-radius: 0 0 5px 5px;
+}
+.u-datagrid-page-bottom {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  border: 1px solid #e2e7eb;
+  background: #fff;
+  z-index: 1;
+}
+/* pagebar bottom css end */
+/* freeze right css begin */
+.u-datagrid-freeze-right {
+  position: absolute;
+  right: 10px;
+  height: 422px;
+}
+/* freeze right css end */

@@ -1,0 +1,22 @@
+#@form({"url":"$appServer.get('/test/form/submitForm.htm')", 
+"name":"testForm"})
+    #hidden({ "name":"key1","value":"1"})
+    #@panel({})
+        #textfield({"label":"文本输入项", "key2":"username"})
+        ##更多录入项
+    #end
+    #button_panel({“buttons”:[{“label”:”异步提交”,”event”:”submitForm()”}]})
+#end
+#jscode
+function submitForm(){
+    var isValid= Horn.getComp(“testForm”).isValid();
+    if(isValid){
+        var submitUrl="$appServer.get('/test/form/submit.json')";
+        var submitParams=Horn.getComp(“testForm”).getValues();
+        $.post("$appServer.get(submitUrl,submitParam,submitCallback);
+}
+}
+function submitCallback(result){
+    //todo
+}
+#end

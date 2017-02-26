@@ -1,0 +1,81 @@
+#@screen({})
+#button_panel({"submitLabel":"查询","resetLabel":"清空",
+            	"buttons" : [
+					{"label":"新增","event":"addNode()","className":"add"},
+					{"label":"获取节点","event":"getSelectNode()"}
+            	]
+            })
+    #set($dataT='[
+			{ "id":1, "pId":0, "name":"父节点 1", "open":false},
+			{ "id":11, "pId":1, "name":"叶子节点 1-1"},
+			{ "id":12, "pId":1, "name":"叶子节点 1-2"},
+			{ "id":13, "pId":1, "name":"叶子节点 1-3"},
+			{ "id":2, "pId":0, "name":"父节点 2", "open":false},
+			{ "id":21, "pId":2, "name":"叶子节点 2-1"},
+			{ "id":22, "pId":2, "name":"叶子节点 2-2"},
+			{ "id":23, "pId":2, "name":"叶子节点 2-3"},
+			{ "id":3, "pId":0, "name":"父节点 3", "open":false},
+			{ "id":31, "pId":3, "name":"叶子节点 3-1"},
+			{ "id":32, "pId":3,  "name":"叶子节点 3-2"},
+			{ "id":33, "pId":3, "name":"叶子节点 3-3"}
+		]')  
+   #@panel({})
+	        #ztree({  
+                "id":"tree1",  
+                "name":"ztree1",
+            	"checkMode":"checkbox",
+				"toolbar":true,
+				"search":true,
+				"expandFirst":false,
+                "data":$dataT}) 
+				
+	#end 
+	#end
+
+#jscode()
+
+	function getSelectNode(){
+	var treeObj = Horn.getComp("ztree1");
+	treeObj.reAsyncChildNodes(null, "refresh",false);
+        var nodes = treeObj.getSelectedNodes();
+        if (nodes.length>0) {
+        	//treeObj.reAsyncChildNodes(nodes[0], "refresh",true);
+        }
+		//console.log(Horn.getComp("ztree1").getCheckedNodes(true));
+	}
+	function addNode(){
+		
+	        var zTree = Horn.getComp("ztree1").getTreeObj(),
+			isParent = true,
+			nodes = zTree.getSelectedNodes(),
+			treeNode = nodes[0];
+			var newCount = 1;
+			if (treeNode) {
+				treeNode = Horn.getComp("ztree1").addNodes(treeNode, {id:(100 + newCount), pId:treeNode.id, isParent:isParent, name:"new node" + (newCount++)});
+			} else {
+				treeNode = Horn.getComp("ztree1").addNodes(null, {id:(100 + newCount), pId:0, isParent:isParent, name:"new node" + (newCount++)});
+			}
+			
+
+	}
+	function onExpand(event, treeId, treeNode){
+		$("#"+treeId).children("li").children("ul").removeAttr("style"); ;
+	}
+		
+	function nodeClick(event, treeId, treeNode){
+    	alert(treeNode.tId + ", " + treeNode.name);
+	}
+	function getSelectedData(){
+		var nodes=Horn.getComp("ztree1").getCheckedNodes();
+		var nodeStr="";
+		for(var node in nodes){
+			nodeStr+=Horn.Util.encode(node);
+		}
+		Horn.getComp("dataArea").setValue(nodeStr);
+	}
+	function doTreeObj(){
+		var tree=Horn.getComp("ztree1").getTreeObj();
+		tree.expandAll(true); 
+		tree.expandAll(false); 
+	}
+#end

@@ -1,0 +1,21 @@
+	<div class="h_logo">hundsun</div>
+	<div class="h_top-right">
+		<div class="h_top-selectsystem">
+			<ul >
+				<li class="h_top-ss-contract" onclick="Horn.header.jump('contract')"><span>合同</span></li>
+				<li class="h_top-ss-image" onclick="Horn.header.jump('image')"><span>影像</span></li>
+				<li class="h_top-ss-futures h_cur" onclick="Horn.header.jump('futures')"><span>期货帐户</span></li>
+				<li class="h_top-ss-manage" onclick="Horn.header.jump('manage')"><span>经营管理</span></li>
+			</ul>
+		</div>
+	</div>
+#jscode()
+	Horn.header = {};
+	Horn.header.jump = function(uri){
+		if(uri.indexOf('http://') == -1){
+			window.location = context_path.substr(0,context_path.lastIndexOf('/')+1) + uri;
+		}else{
+			window.location = uri;
+		}
+	}
+#end

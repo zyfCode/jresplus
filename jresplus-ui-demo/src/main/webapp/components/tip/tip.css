@@ -1,0 +1,23 @@
+.m-tip-box {
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.m-tip-box i {
+  font-size: 18px;
+}
+.m-tip-box.m-tip-success {
+  color: #3c763d;
+  background: #7cdda7;
+}
+.m-tip-box.m-tip-warning {
+  color: #8a6d3b;
+  background: #ffead0;
+}
+.m-tip-box.m-tip-error {
+  color: #a94442;
+  background: #f8b2b2;
+}

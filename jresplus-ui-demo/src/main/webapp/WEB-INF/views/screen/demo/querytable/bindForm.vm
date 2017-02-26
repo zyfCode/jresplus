@@ -1,0 +1,41 @@
+#@screen()
+	#@form({"name":"paramform"})
+    	查询条件：
+    	#@panel({})
+    		#combox({"label":"机构","name":"branchNo","dictName": "branch",
+    			"headItem":{"label":"","value":"请选择"},"events":[{"event":"onchange","function":""}]
+    		})
+			#button_group({"buttons":[
+            	{"label":"查询","event":"queryData()"}
+            ]})
+    	#end
+    #end
+    #@panel({"name":"mainPanel"})
+    	#query_table({"name":"dataTable","url":"/demo/query_table/getTableData.htm?format=json",
+            "rowSelect" : true,
+            "cols" : 20,
+            "title":"查询列表",
+            "position_str":"position_str",
+            "requestMethod":"post",
+            "selectModel":"single",
+            "bindformname":"paramform",
+            "request_num":"10",
+            "autoLoad":true,
+            "hasPage":true,
+            "items":[
+                {"name":"initDate","text":"发生日期"},
+                {"name":"branchNo", "text":"机构（静态字典）","items":[{"label":"杭州总部","value":"1"},{"label":"宁波总部","value":"2"},{"label":"温州总部","value":"3"}]},
+                {"name":"branchNo", "dictName":"branch", "text":"机构（动态字典）"},
+                {"name":"clientId","text":"客户编号","renderer" : "clientIdRender" },
+                {"name":"clientName","text":"客户名称"},
+                {"name":"taskStatus","text":"任务状态"},
+                {"name":"taskFlag","text":"任务标志"}
+            ]})
+    #end
+#end
+
+#jscode()
+	function queryData() {
+		Horn.getComp("dataTable").loadByForm();
+	}
+#end

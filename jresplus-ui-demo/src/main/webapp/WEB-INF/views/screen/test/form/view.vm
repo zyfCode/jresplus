@@ -1,0 +1,18 @@
+#@screen()
+	<div class="desc-info">
+		<h4>表单提交之后的值</h4>
+        <div id="values">
+		#foreach($data in $keys.entrySet())
+			$data.key : [$data.value[0]] <br/>
+		#end
+		</div>
+    </div>
+    #button_panel_ex({"name":"btns","buttons":[
+    	{"label":"返回","event":"goback()"}
+    ]})
+#end
+#jscode()
+	function goback() {
+	window.location.href = "$appServer.get('/test/form/bind_data1.htm')";
+	}
+#end

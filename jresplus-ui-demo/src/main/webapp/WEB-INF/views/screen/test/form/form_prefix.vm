@@ -1,0 +1,92 @@
+#@screen()
+    #@case_desc({"title":"单元测试"})
+	表单基础功能单元测试用例
+    #end
+	#@form({"url":"$appServer.get('/test/form/submit.htm')", "name":"testForm"})
+		#hidden({"name":"obj.test0", "defValue": "hidden默认值"})
+    	#panel_start({})
+			#textfield({"name":"obj.test1", "label":"textfield", "defValue": "textfield默认值", "maxlength": 10, "cols": 2, "check": "required"})
+			#textarea({"name":"obj.test2", "label":"textarea", "defValue": "textarea默认值", "cols": 2, "check": "required"})
+			#combox({"selectAll": false,"multiple": true, "name":"obj.test3","label":"combox","defValue":"1", "dictName": "province", "cols":2, "check": "required"})
+			#radiogroup({"name":"obj.test4","label":"radiogroup","defValue":"1", "dictName": "country", "cols":2, "check": "required"})
+            #checkboxGroup({"name":"obj.test5","label":"checkboxGroup","defValue":"1,3","items":[
+                {"text":"葡萄1","code":"0"},
+				{"text":"苹果2","code":"1"},
+                {"label":"香蕉3","code":"2"},
+                {"label":"桔子4","value":"3"}
+            ], "cols":2, "check": "required"})
+			#calendar({"label":"calendar", "name":"obj.test6", "defValue": "20140404", "cols": 2, "check": "required"})
+    	#panel_end
+	#end
+    #button_panel_ex({"buttons":[
+		{"label":"submit", "event": "submit()"},
+    	{"label":"getFieldComps", "event": "getFieldComps()"},
+
+    	{"label":"getValues", "event": "getValues()"},
+    	{"label":"setValues", "event": "setValues()"},
+    	{"label":"reset", "event": "reset()"},
+
+    	{"label":"isValid", "event": "isValid()"},
+    	{"label":"serializeArray", "event": "serializeArray()"},
+    	{"label":"serialize", "event": "serialize()"}
+	]})
+#end
+#jscode()
+var name = "testForm";
+
+function submit() {
+	Horn.getComp(name).submit();
+}
+
+function getFieldComps() {
+	var result = Horn.getComp(name).getFieldComps();
+	if (console) {
+		console.log(result);
+	}
+}
+
+function getValues() {
+	var result = Horn.getComp(name).getValues();
+	if (console) {
+		console.log(result);
+	}
+}
+
+function setValues() {
+	var values = {};
+	values["test0"] = "新值0";
+	values["test1"] = "新值1";
+	values["test2"] = "新值2";
+	values["test3"] = "2";
+	values["test4"] = "2";
+	values["test5"] = "2,0";
+	values["test6"] = "20140402";
+	Horn.getComp(name).setValues(values, "obj.");
+}
+
+function reset() {
+	Horn.getComp(name).reset();
+}
+
+function isValid() {
+	var result = Horn.getComp(name).isValid();
+	if (result === true) {
+		console.log("校验成功");
+	} else if (result === false) {
+		console.log("校验失败！");
+	} else {
+		console.log("校验结果未知：[" + result + "]");
+	}
+}
+
+function serializeArray() {
+	var result = Horn.getComp(name).serializeArray();
+	console.log(result);
+}
+
+function serialize() {
+	var result = Horn.getComp(name).serialize();
+	console.log(result);
+}
+
+#end

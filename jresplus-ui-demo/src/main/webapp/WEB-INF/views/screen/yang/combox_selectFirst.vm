@@ -1,0 +1,43 @@
+#set($view=false)
+#@screen({})  
+	#combox({"multiple":true,"label":"字典项为province","name":"test1","defValue":"2","placeholder":true,"dictName": "province"})		  
+    #combox({"multiple":true,"codeField": "idCode", "textField": "desc", "name":"test2","label":"combox","items":[  
+    {"desc":"葡萄","idCode":"0"},  
+    {"desc":"苹果","idCode":"1"},  
+    {"desc":"香蕉","idCode":"2"},  
+    {"desc":"桔子","idCode":"3"}  
+]})  
+    #combox({"headItem":{"label":"", "value":"请选择..."},"name":"test3","label":"字典项为country","dictName": "country"})</br></br></br> 
+     #combox({"headItem":{"label":"", "value":"请选择..."},"codeField": "idCode", "textField": "desc", "name":"test4","label":"combox","items":[  
+    {"desc":"葡萄","idCode":"0"},  
+    {"desc":"苹果","idCode":"1"},  
+    {"desc":"香蕉","idCode":"2"},  
+    {"desc":"桔子","idCode":"3"}  
+]}) 
+    #combox({"headItem":{"label":"", "value":"请选择..."},"name":"test5","label":"combox","items":[  
+        {"text":"葡萄","code":"0"},  
+        {"text":"苹果","code":"1"},  
+        {"text":"香蕉","code":"2"},  
+        {"text":"桔子","code":"3"}  
+    ]})  
+#end
+
+<button  type="button"  name="ee" onclick="selectFirst()">选取第一个</button>
+<button  type="button"  name="ee" onclick="getListData()">getListData</button>
+<script>
+	function selectFirst() {
+	    Horn.getComp("test1").selectFirst();
+		Horn.getComp("test2").selectFirst();
+		Horn.getComp("test3").selectFirst();
+		Horn.getComp("test4").selectFirst();
+		Horn.getComp("test5").selectFirst();
+	}
+	function getListData() {
+       console.log( Horn.getComp("test1").getListData());
+       console.log( Horn.getComp("test2").getListData());
+       console.log( Horn.getComp("test3").getListData());
+       console.log( Horn.getComp("test4").getListData());
+       console.log( Horn.getComp("test5").getListData());
+    }
+
+</script>

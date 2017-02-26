@@ -1,0 +1,142 @@
+#@screen({})
+<!-- 上下结构  datagrid 有序列号 单选框 固定一列  有查询条件交互-->
+	<!-- top begin -->
+    <div class="g-grid-12">
+		#@form({"name":"testForm","postName": false})
+        	#@panel({"title":"查询","expandable":true,"isExpand":true})
+				#textfield({"label":"客户名称", "name":"clientName"})
+				#calendar({"label":"初始化日期","name":"initDate","emptyText":"请输入日期"})
+        		#textfield({"label":"分支类型", "name":"branchNo"})
+				#textfield({"label":"客户ID", "name":"clientId","cols":2})
+				#checkboxGroup({"label":"当前状态","name":"status","value":"0,1","cols":1,"items":[    
+				{"label":"实习","value":"0"},
+				{"label":"试用","value":"1"},
+				{"label":"转正","value":"2"} 
+								 ]}) 
+        		#button_group({"buttons":[
+                	{"label":"查询","event":"formQuery()"}
+                ]})
+        	#end
+        #end
+	</div>
+	<!-- bottom begin -->
+    <div class="g-grid-12">
+		##<a name="aa" href="JavaScript:void(0)" class="hc-datagrid-a hc_datagrid-alink" refmenu="test11">aaa</a>
+		#datagrid({
+        	"id":"mainDataGridId",
+        	"name":"mainDataGrid",
+			"bindFormName":"testForm",
+			"title":"查询列表",
+        	"selectModel":"multi",
+        	"autoLoad":true,
+			"baseparams":{"branchNo":"1"},
+        	"url":"/demo/query_table/getTableData.json","buttons":[{"label":"新增","cls":"add","event":"showWin()"},
+		              {"label":"修改","cls":"edit","event":"showWin()","disabled":true},
+					  {"label":"删除","cls":"del","event":"showWin()"},
+					  {"label":"保存","cls":"save","event":"showWin()"},
+					  {"label":"查询","cls":"query","event":"showWin()"},
+					  {"label":"刷新","cls":"refresh","event":"showWin()"},
+					  {"label":"操作","cls":"open","refmenu":"test11","disabled":false}
+					  ],
+        	"items":[{
+        		"name":"operation",
+        		"text":"操作",
+        		"hAlign":"center",
+        		"tAlign":"center",
+				"hidden":false,
+				"width":"150",
+				"buttons":[{"label":"新增","event":"add"},{"label":"修改","event":"edit"},{"label":"删除","event":"del"}]
+        		},{
+        		"name":"branchNo",
+        		"text":"分支代码",
+        		"hAlign":"center",
+        		"tAlign":"center",
+        	    "renderer":"domrender",
+				"width":"60"
+        		},{"name":"initDate",
+        		"text":"初始化日期",
+        		"hAlign":"center",
+        		"tAlign":"center",
+				"width":"80"
+        		},{
+        		"name":"scanType",
+        		"text":"扫描类型",
+        		"hAlign":"center",
+        		"tAlign":"center",
+				"width":"60"
+        		},{
+        		"name":"clientId",
+        		"text":"客户ID",
+        		"hAlign":"center",
+        		"tAlign":"center",
+				"hidden":false,
+        		"width":"80"
+        		},{
+        		"name":"clientName",
+        		"text":"客户名称",
+        		"hAlign":"center",
+        		"tAlign":"center"
+        		},{
+        		"name":"desc",
+        		"text":"描述",
+        		"hAlign":"center",
+        		"tAlign":"center",
+				"hidden":false,
+        		"width":600
+        		}
+        	],
+        	"numbercolumn":"true",
+        	"pageConfig":{"pageSize":10,"pageNo":1},
+        	"rowSelect":"false",
+        	"hasPage":"true",
+			"frozen":["operation"]
+        })
+	</div>
+	#menu({  "id":"test11",
+         "opendir":"R",
+         "items":[
+		   {"label":"test","hasLine":true,"icon":"http://www.baidu.com/img/bdlogo.png",
+		      "items":[{"label":"test"},
+			           {"label":"test",
+					    "items":[{"label":"test"},
+						         {"label":"test"},
+								 {"label":"test"}]},
+								 {"label":"test"}]
+						},
+			{"label":"test2","items":[{"label":"test"}]},
+						{"label":"test"}]
+			})
+#end
+#jscode()
+	$(function(){
+		comp = Horn.getComp("mainDataGrid");
+	});
+	function formQuery(){
+		//console.log(Horn.getComp("mainDataGrid").getSelecteds());
+		Horn.getComp("mainDataGrid").load();  
+	}
+	function domrender(obj){
+		console.info(obj);
+    	var clientId = obj.rowdata.branchNo;
+    	//console.log(clientId);
+	   return obj.val;
+	}
+	function add(obj){
+		console.info(obj);
+	   Horn.Msg.alert("新增","新增一条信息" );
+	};
+	
+	function edit(obj){
+		//console.info(obj);
+    	var clientId = obj.rowdata.branchNo;
+    	//console.log(clientId);
+	   //Horn.Msg.alert("edit 编辑","修改一条信息" );
+	};
+	
+	function del(obj){
+	   Horn.Msg.alert("del 删除","删除一条信息"); 
+	};
+	function testRowDblClick(){
+		 Horn.Msg.alert("查看明细","查看明细信息" );
+	}
+#end

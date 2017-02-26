@@ -1,0 +1,880 @@
+#macro(getDictItemList $params)
+	#if($params.dictEntry)
+		#set($dictData=	$!dictUtil.getSysDictItemList($params.dictEntry))
+	#end
+#end
+
+#macro(getDictData $params)
+	#if($params.dictEntry)
+		#set($dictName = $!dictUtil.getSysDictData($params.dictEntry, $params.dictItem))
+	#end
+#end
+
+## 返回按钮点击响应JS
+#macro(detectBackurl $url $target)
+#if($stringUtils.isEmpty($!url))
+javascript:history.back(-1);#else
+#set($tar="window")
+#if($target)
+#set($tar=$target)
+#end
+${tar}.location.href='$appServer.get($url)';#end
+#end
+
+
+#macro(biz_screen $params) ##modify by zhangsu 增加1列、2列布局判断，并增加其样式
+#if($params.cols)
+	#set($cols = $params.cols)
+	#if($cols == 1)
+	#elseif($cols == 2)
+	#end	
+#end
+#screen_start({"columns":$params.cols, "title":"$params.title"})
+$bodyContent
+#screen_end
+#end
+
+#macro(biz_screen_start $params)  ##modify by zhangsu 增加1列、2列布局判断，并增加其样式
+#if($params.cols)
+	#set($cols = $params.cols)
+	#if($cols == 1)
+	#elseif($cols == 2)
+	#end		
+#end	
+	
+#screen_start({"columns":$!params.cols ,"title":"$!params.title"})
+#end
+
+#macro(biz_screen_end $params)
+#screen_end
+#end
+
+#macro(biz_input $params)
+	#textfield($params)
+#end
+
+#macro(biz_label $params)
+	#label($params)
+#end
+
+#macro(biz_textarea $params)
+	#textarea($params)
+#end
+
+#macro(biz_dict $params)
+	#combox($params)
+#end;
+
+#macro(biz_dict1 $params)
+	#getDictItemList({"dictEntry": "$!params.dictName"})
+	
+	#*set($dict_items = [])
+	#foreach($option in $dictData)
+		#set($dict_item = {})
+		#set($dict_item.label = $option.dictItemCode)
+		#set($dict_item.value = $option.dictItemName)
+		#if($dict_items.add($dict_item)) 
+		#end
+	#end
+	#combox({"label":"$!params.label", "name":"$!params.name", "items": $!dict_items, "value":"$!params.value"})
+	*#
+	## 这要鄙视这里的空if语句，不信你试试？！
+	##combox({"label":"$!params.label", "name":"$!params.name", "items": $!dict_items})
+	
+	<li class="hc_panel-li #if($params.cols)h_licols-$!{params.cols}#end">
+		<span ref="$!params.name" title="$!params.label">
+        	#set($checkStr=$PageUtils.getCheckStr($!params.name,$!params.check))
+        	#set($groupStr=$PageUtils.getGroupStr($!params.name,$!params.group))
+        	#if($checkStr.indexOf("required")>-1)
+        		<b class="hc_red">*</b>
+        	#end
+        	$params.label
+		</span>
+    	<div class="hc_textfield">
+			<select name="$!params.name" id="$!params.id"  style="width: 200px"
+				#if($!{params.disabled})
+                    disabled="disabled"
+                #end
+                #if($!{params.readonly})
+                    readonly="readonly"
+                #end
+        		#foreach($event in $params.events)
+        			$event.event = "$event.function" 
+				#end
+				>
+        		#if ($dictData)
+        			#if($!params.needBlank)
+        				<option value=""></option>
+        			#end
+                    #foreach($option in $dictData)
+        				#set($dict_items_selected = "")
+        				#if($params.value == $option.dictItemCode)
+        					#set($dict_items_selected = "selected")
+        				#end
+                        <option value="${option.dictItemCode}" $dict_items_selected>${option.dictItemName}</option>
+            		#end
+        		#end
+            </select>
+		</div>
+	</li>
+#end
+
+#macro(biz_calendar $params)
+	#calendar($params)
+#end
+
+#macro(biz_calendar_group $params)
+	#calendargroup($params)
+#end
+
+#macro(biz_password $params)
+	#password($params)
+#end
+
+#macro(biz_hidden $params)
+	#hidden($params)
+#end
+
+#macro(biz_combox $params)
+	#combox($params)
+#end
+
+#macro(biz_btn_submit $params)
+	#parse("/screen/biz_layouts/wf_button.vm")
+#end
+
+##这里重置按钮修改成清空所在表单下所有控件的值，by tianzhong 20140731
+#macro(biz_btn_reset $params)
+	#if($view !="true")
+		<button type="button" class="h_btn-cencel" name="button_reset" onclick="Horn.getComp(this.form.name).clearValue();">#if($params.label)$!{params.label}#else 重置#end</button>
+	#end
+#end
+
+#macro(biz_btn_button $params)
+<button type="button" >#if($params.label)$!{params.label}#else 按钮#end</button>
+#end
+
+#macro(biz_btn_backward $params)
+<button type="button" onclick="#detectBackurl($!backurl)" class="backward">#if($params.label)$!{params.label}#else 返回#end</button>
+#end
+
+#macro(biz_btn $params)
+<button type="button" onclick="$!{params.event}">#if($params.label)$!{params.label}#else 按钮#end</button>
+#end
+
+#macro(biz_button_group $buttons)
+	#if($buttons)
+		#parse("/screen/biz_layouts/parseworkflow.vm")
+		##工作流中查看已办任务－是不是只展示页面不显示按钮
+		#if(!$justViewNoButton)		
+			#@button_panel_bar({})
+				#foreach($button in $buttons)
+					#set($type=$button.type)
+	                ##增加按钮权操作限控制
+	                #if(!$button.authCode||$authorizeUtil.checkRight($!button.authCode, ${session.getAttribute("bizframe_curr_user_dtp").userId}))
+	    				#if($type == "submit")
+	    					#biz_btn_submit($button)
+	    				#elseif($type == "reset")
+	    					#biz_btn_reset($button)
+	    				#elseif($type == "backward")
+	    					#biz_btn_backward($button)
+	    				#else
+	    					#biz_btn($button)
+	                    #end
+	                #end
+				#end
+			#end
+		#end
+	#else
+		##button_panel
+	#end
+#end
+
+#**
+ * 增加新的工具栏图标IconFont风格，参数enableIconFont=true表示启用，其他情况默认不启用
+**#
+#macro(biz_grid $grid)
+	#set($titleButtons = [])
+	#set($autoHeight = true)
+	#if("$!autoHeight"=="false")
+		#set($autoHeight = false)
+	#end
+	#foreach($tool in $!grid.toolbar)
+		##对toolbar的每个配置增加一个visible属性，此属性只有设置为false或者"false"的时候，此按钮才不显示，此配置优先级高于authCode属性
+		#if( $!{tool.visible} != false && $!{tool.visible} != "false" )
+	        ##增加按钮权操作限控制
+	        #if(!$tool.authCode||$authorizeUtil.checkRight($!tool.authCode, ${session.getAttribute("bizframe_curr_user_dtp").userId}))			
+	           #if($titleButtons.add($tool))
+	           #end
+	        #end
+	    #end
+	#end
+	#if(!$!grid.rowSelect || "$!grid.rowSelect" == "false")
+		#if($!{grid.enableIconFont} == true)
+			#if($titleButtons != [])
+				#biz_grid_toolbar({"titleButtons": $titleButtons})
+			#end
+			#grid({
+				"title":"$!grid.title",
+	    		"name":"$!grid.name",
+	    		"numbercolumn":$!grid.numberColumn,
+	    		"items":$!grid.columns,
+	    		"selectModel":$!grid.selectModel,
+	    		"rowSelect":"false",
+	    		"data":$!grid.data,
+				"events": $!grid.events,
+				"autoHeight":$autoHeight
+			})
+		#else
+			#grid({
+				"title":"$!grid.title",
+	    		"name":"$!grid.name",
+	    		"numbercolumn":$!grid.numberColumn,
+	    		"titleButtons":$titleButtons,
+	    		"items":$!grid.columns,
+	    		"selectModel":$!grid.selectModel,
+	    		"title":"",
+	    		"rowSelect":"false",
+	    		"data":$!grid.data,
+				"events": $!grid.events,
+				"autoHeight":$autoHeight
+			})
+		#end
+	#else
+		#if($!{grid.enableIconFont} == true)
+			#if($titleButtons != [])
+				#biz_grid_toolbar({"titleButtons": $titleButtons})
+			#end
+			#grid({
+				"title":"$!grid.title",
+	    		"name":"$!grid.name",
+	    		"numbercolumn":$!grid.numberColumn,
+	    		"items":$!grid.columns,
+	    		"selectModel":$!grid.selectModel,
+	    		"rowSelect":"true",
+	    		"data":$!grid.data,
+				"events": $!grid.events,
+				"autoHeight":$autoHeight
+			})
+		#else
+			#grid({
+				"title":"$!grid.title",
+	    		"name":"$!grid.name",
+	    		"numbercolumn":$!grid.numberColumn,
+	    		"titleButtons":$titleButtons,
+	    		"items":$!grid.columns,
+	    		"selectModel":$!grid.selectModel,
+	    		"title":"",
+	    		"rowSelect":"true",
+	    		"data":$!grid.data,
+				"events": $!grid.events,
+				"autoHeight":$autoHeight
+			})
+		#end
+	#end
+	
+	#if($grid.paging)
+		#page_bar($page {"bindFormName" : $!{grid.bindForm}})  ##modify by zhangsu  绑定的表单，把form参数带过去
+	#end
+#end
+
+#**
+ * IconFont风格的Grid组件上面的工具栏
+ * 参数的titleButtons属性是一个button数组，每一个元素都有一个cls属性，表示IocnFont的样式类
+**#
+#macro(biz_grid_toolbar $params)
+	#if($params.titleButtons != [])
+		##这里之所以使用一个block显示模式的span模拟div，是为了屏蔽jresui会将div.h_formgridtitle注册为一个FormGrid组件从而导致后续的grid组件无法显示的问题
+		<span class="h_formgridtitle" style="display: block;">
+			<div class="hc_btn_location">  ##修正此处的按钮默认从右往左排布的问题
+			#foreach($button in $params.titleButtons)
+				<a class="IconFontButton" href="javascript:void(0)" onclick="$!{button.event}">
+					<i class="fa $!{button.cls} fa-lg"></i> 
+					$!{button.label}
+				</a>
+			#end
+		  	</div>
+		</span>
+	#end
+#end
+
+#macro(biz1_grid $grid)
+ ## grid数据加载
+ #set($grid_data = $!data)
+ #if ($grid.data)
+  #set($grid_data = $grid.data)
+ #end
+ 
+ <div id="$!grid.name" class="listBox">
+	#if($grid.toolbar)
+		#set($toolbar = $grid.toolbar)
+		<div class="h_formgridtitle toolbar">
+			#foreach($tool in $toolbar)
+                ##增加按钮权操作限控制
+                #if(!$tool.authCode||$authorizeUtil.checkRight($!tool.authCode, ${session.getAttribute("bizframe_curr_user_dtp").userId}))
+    				#if ($tool.url)
+    				<a #if($tool.type)class="icon icon-$tool.type"#end href="$tool.url"> $tool.label</a>
+    				#else
+    				<a #if($tool.type)class="icon icon-$tool.type"#end href="javascript:void(0)" onclick="$tool.event"> $tool.label</a>
+					#end
+				#else
+					<a #if($tool.type)class="icon icon-$tool.type"#end href="javascript:void(0)" onclick="$tool.event"> $tool.label</a>
+                #end
+			#end
+        </div>
+	#end
+  <table style="width:100%;">
+      <tr>
+    #if($grid.numberColumn)
+                    <th></th>
+       #end
+    #foreach($col in $grid.columns)
+     <th #if($col.headerAlign) style="text-align: $col.headerAlign;" #end >$!col.text</th>
+    #end
+      </tr>
+   #if ($grid_data && $grid_data.size()>0 && $grid_data!="")
+      #foreach($item in $!{grid_data})
+       <tr #if($velocityCount%2==1) class="bg" #end >
+			## 是否显示序号列
+           #if($grid.numberColumn)
+				<td>$velocityCount</td>
+           #end
+     #foreach($col in $grid.columns)
+      #set($col_value = "")
+      #set($col_render = '$col_value')
+      #if ($stringUtils.isNotEmpty($!{col.render}))
+       #set($col_render = "${col.render}")
+	  #end
+	  ## 列格式化
+      #if (${col.type} == "date")
+       #set($v_format = "yyyy-MM-dd")
+       #if ($global_date_format)
+        #set($v_format = $global_date_format)
+       #end
+       #if($stringUtils.isNotEmpty($!col.format))
+        #set($v_format = $col.format)
+       #end
+       #set($col_value = $dateUtil.parseDate2String($item, ${col.name}, $v_format))
+      #else
+       #set($v_str = '$!{item.' + "$!col.name" + "}")
+       #set($col_value = "#evaluate($v_str)")
+      #end
+	  ## 数据词典
+	  #if($stringUtils.isNotEmpty($!{col.dictName}))
+		#getDictData({"dictEntry": "${col.dictName}", "dictItem": "$col_value"})
+		#if($stringUtils.isNotEmpty($dictName))
+			#set($col_value = $dictName)
+		#end
+	  #end
+      <td #if($col.align) style="text-align: $col.align;" #end >
+		## 操作列
+       #if ($col.buttons)
+        #foreach($bnt in $col.buttons)
+          ##增加按钮权操作限控制
+          #if(!$bnt.authCode||$authorizeUtil.checkRight($!bnt.authCode, ${session.getAttribute("bizframe_curr_user_dtp").userId}))
+             #set($url = "$bnt.url" + "?" + "$col.name" + "=" + $col_value)
+             <a href="$url" title="$!bnt.label">$!bnt.label</a>
+         #end
+		#end
+	   #elseif($col.url)
+          ##增加按钮权操作限控制
+          #if(!$col.authCode||$authorizeUtil.checkRight($!col.authCode, ${session.getAttribute("bizframe_curr_user_dtp").userId}))
+             #set($url = "$col.url" + "?" + "$col.name" + "=" + $col_value)
+             <a href="$url" title="#evaluate($col_render)">#evaluate($col_render)</a>
+		  #else
+			#evaluate($col_render)
+         #end
+       #else
+        #evaluate($col_render)
+       #end
+      </td>
+     #end
+       </tr>
+   #end
+   #else
+    <tr>
+     #set($size =$!{grid.columns.size()} ) 
+     #if($params.numberColumn)
+                        #set($size = $size+1 )
+           #end
+           #if($params.selectModel)
+                        #set($size = $size+1 )
+     #end	 
+     <td colspan="$size" style="border: 0;border-bottom: 1px #eee solid;padding: 5px;">
+      <p style="padding:30px;">#springMessage('TempCanNotDisplayData')</p>
+     </td>
+    </tr>
+   #end
+  </table>	
+    </div>
+
+ ## 分页信息
+ #if($grid.paging == "true" || $grid.paging == true)
+  #if ($stringUtils.isNotEmpty($grid.bindForm))
+      ## 暂缺
+  #end
+ #end
+#end
+
+#macro(printNumberWithoutZreo $value)
+	#if(0==${value})- #else ${value} #end
+#end
+
+##业务分页  2014.1.21 add by 周智星
+#macro(biz_page_bar $params)
+	#if($params)
+	    #jscode()
+			var pageTotal = $params.count;
+			function turnPage(pageId){
+				if(pageId>pageTotal){
+					pageId = pageTotal;
+				}
+				$("#pageid").val(pageId);
+				
+				if(window.queryAction){
+					queryAction();
+				}else{
+					alert("not queryAction function！");
+				}
+			}
+			function turnPrePage(val){
+				turnPage(val-2);
+			}
+		#end
+		#if($params.pages>0)
+			<div class="pagination">
+			 #if($params.pageNo ==0)   
+			    #set($pageNo=$params.pageNo+1) ##当前页码
+			 #else
+			    #set($pageNo=$params.pageNo) ##当前页码
+			 #end 
+			    
+		     #set($pageSum=$params.pages) ##总页数 
+		     #set($pagePrev=$pageNo-1) ##上一页    
+		     #set($pageNext=$pageNo+1) ##下一页 
+			<span class="red">$pageNo</span>/<span class="red">$params.pages</span>#springMessage('page')
+		         
+		         #set($liststep = 6)                ##显示分页页数   
+		               
+		         #if($pageNo < 1)   
+		             $pageNo = 1     ##如果分页变量小于１,则将分页变量设为１   
+		         #end   
+		               
+		            #set($bar = $liststep/2)   
+		               
+		            #if(($pageNo - $bar) < 1)   
+		            #set($listbegin = 1)   
+		            #else  
+		            #set($listbegin = $pageNo - $bar)   ##分页信息开始显示到第几页   
+		            #end   
+		               
+		            #set($listend = $pageNo + $bar)     ##分页信息结束显示到第几页   
+		               
+		            #if($listend > $pageSum)   
+		            #set($listend = $pageSum)           ##分页信息结束显示超过了总页数处理    
+		            #end   
+		               
+		            #if($pageNo > 1)                 ##显示上一页处理   
+		                 <a title="上一页"  
+		                    href="javascript:turnPrePage($!pageNext)">#springMessage('previousPage')</a>   
+		            #end   
+		            #if($listbegin > 1)                  ##第一页控制   
+		            <span class="pageindex"><A href="javascript:turnPage(1)" class="link">1</A></span><SPAN class="link">…</SPAN>   
+		            #end   
+		               
+		               
+		            #foreach($i in [$listbegin..$listend])   
+		            ##if($i <= $pageSum)             ##分页码的显示   
+		                #if($i != $pageNo)   
+		                <A href="javascript:turnPage($i)" class="link">$i</A>   
+		                #else  
+		                <SPAN class="red">$i</SPAN>   
+		                #end   
+		            ##end   
+		               
+		            #end   
+		               
+		            #if($listend < $pageSum)         ##最后一页的处理   
+		            <SPAN>…</SPAN><a href="javascript:turnPage($pageSum)" >$pageSum</a>   
+		               
+		            #end   
+		            #if($pageNo != $pageSum)            ##显示下一页处理   
+		            <a title="下一页"  
+		                    href="javascript:turnPage($!pageNext)">#springMessage('nextPage')</a>   
+		            #end
+			
+			 
+			<input name="pageNo" type="hidden" id="pageid" size="1" value="$pageNo" class="page_num"/> 
+			<input type="hidden" name="pageSize" class="page_num" value="$params.pageSize"  >
+			</div>
+		#end
+	#end
+#end
+
+##弹出窗口方式的修改页面里的修改按钮和重置按钮 2014-2-21 add by 周智星
+#macro(biz_modify_button_panel $params)
+	<div id="$!{params.id}" $horn.paramsCache($params)  class="h_btndiv" name="$!{params.name}">
+		<button type="submit" class="h_btn-submit" name="button_submit">#if($params.submitLabel)$!{params.submitLabel}#else #springMessage('modify')#end</button>
+		<button type="button" class="h_btn-cencel" name="button_reset" onclick="update()">#if($params.resetLabel)$!{params.resetLabel}#else #springMessage('reset')#end</button>
+		#if($params.buttons)
+			#foreach($button in $params.buttons)
+				<button type="button" class="$!{button.className}" name="$!{button.name}" onclick="$!{button.event}">${button.label}</button>
+			#end
+		#end
+    </div>
+#end
+
+##按钮组 2014-2-24 add by 周智星
+#macro(biz_button_groups $params)
+	<div id="$!{params.id}"   class="h_btndiv" name="$!{params.name}">
+		#if($params.buttons)
+			#foreach($button in $params.buttons)
+				<button type="button" class="#if("$!button.classType"=="1")h_btn-submit#else h_btn-cencel#end" name="$!{button.name}" onclick="$!{button.event}">${button.label}</button>
+			#end
+		#end
+    </div>
+#end
+
+#macro(biz_search_button_panel $params)
+	<div id="$!{params.id}" $horn.paramsCache($params)  class="h_btndiv" name="$!{params.name}">
+		<button type="submit" class="h_btn-submit" name="button_submit">#if($params.submitLabel)$!{params.submitLabel}#else #springMessage('search')#end</button>
+		<button type="reset" class="h_btn-cencel" name="button_reset">#if($params.resetLabel)$!{params.resetLabel}#else #springMessage('reset')#end</button>
+    </div>
+#end		
+
+#macro(biz_checkbox $params)
+    #set($val = "")
+    #set($val = $params.value)
+    #if(!$val || $val =="" && $params.name )
+        #set($val =  "#getValue($!params.name)")
+    #end
+	##查看模式
+    #if($view)
+		<li class="hc_panel-li #if($params.cols)h_licols-$!{params.cols}#end">
+    		<span ref="$!params.name">
+				$params.label 
+			</span>
+            <span> #if($val) √#end </span>
+    	</li>
+	#else
+    	<li class="hc_panel-li #if($params.cols)h_licols-$!{params.cols}#end" ><span style="visibility:hidden" title="$params.label">
+    	#set($checkStr=$horn.getCheckStr($params.name,$params.check))
+        #set($groupStr=$horn.getGroupStr($params.name,$params.group))
+    	#if($checkStr.indexOf("required")>-1)
+    		<b class="hc_red">*</b>
+    	#end
+    	$params.label</span>
+    	<div class="hc_checkbox" id="$!{params.id}" $horn.paramsCache($params) >
+    		<label >
+    		<input type="checkbox" name="$params.name" #if($params.disabled) disabled="disabled" #end
+    			#if($params.alias)
+    				alias="${params.alias}"
+    			#end
+    			#foreach($event in $params.events)
+    				$event.event = "$event.function" 
+    			#end
+    			#if(($params.checked && $params.checked==true) || ($val && $params.static && $val==$params.static))
+    				checked="checked"
+    			#end
+    			value=#if($params.static)"$!{params.static}"#else"$val"#end
+    			check="$checkStr"
+    			group="$groupStr"
+    			/>$params.label
+            </label>
+    	</div>
+    	</li>
+	#end
+#end
+
+##iframe 2014-2-26 add by 周智星
+#macro(biz_iframe $params)
+	<iframe src="$!{params.src}" name="$!{params.name}" id="$!{params.id}" frameBorder="0" scrolling="no" width="100%"></iframe>
+	#if("$!{params.isFactor}"=="true")
+		#jscode()
+			window.parent.isJsLoad = true;//isJsLoad参数在main.vm
+			##要素加载完成后回调函数【factor.js中调用】
+			function factorCompleteFun(){
+				 var iframe = document.getElementById("$!{params.id}");
+				 if(iframe==null) return;
+				 try{
+			            var bHeight = iframe.contentWindow.document.body.scrollHeight;
+			            var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+			            var height = Math.max(bHeight, dHeight); //取最大高度兼容两个值不同
+			            iframe.height =  height;
+			            window.parent.isComplete = true;//isComplete参数在main.vm
+					}catch (ex){
+					}
+			}
+		
+		#end
+	#else
+		#jscode()
+			function loadIframe_$!{params.id}(){
+				$("#$!{params.id}").load(function(){  
+					var ifm = document.getElementById("$!{params.id}"); 
+					var subWeb = document.frames ? document.frames["$!{params.id}"].document : ifm.contentDocument; 
+					if(ifm != null && subWeb != null) { 
+						var innerBodyHeight = $(subWeb.body).outerHeight(true);
+						
+						if (innerBodyHeight < 500) {
+							innerBodyHeight = 500;
+						}
+						ifm.height = innerBodyHeight;
+					}
+		    	});
+			}
+			loadIframe_$!{params.id}();
+		#end
+	#end
+#end
+
+##目标选择空间
+
+
+
+##用户渲染器，模糊搜索
+#macro(biz_userSelector_textfield $params)
+    #set($val = "")
+    #set($val = $params.value)
+    #if(!$val || $val =="" && $params.name )
+        #set($val =  "#getValue($!params.name)")
+    #end
+	 #if($params.value)
+		#set($name = $!params.value.name)
+  		#set($id = $!params.value.id)
+	#end
+	#if($view || "$!{params.readonly}"=="true")
+		<li class="hc_panel-li #if($params.cols)h_licols-$!{params.cols}#end">
+    		<span ref="$!params.name">
+				$params.label
+			</span>
+    		<div name="$!{params.name}" class="hc_label"  $horn.paramsCache($params) >$name</div>
+    		<input name="$!params.name" type="hidden" value="$id"/>
+    	</li>
+	#else
+    	<li class="hc_panel-li #if($params.cols)h_licols-$!{params.cols}#end"><span ref="$!params.name" title="$!params.label">
+    	#set($checkStr=$horn.getCheckStr($!params.name,$!params.check))
+    	#if($checkStr.indexOf("required")>-1)
+    		<b class="hc_red">*</b>
+    	#end
+    	$!params.label</span>
+        	<div  $horn.paramsCache($params)  class="hc_inputsearch">
+            	<input name="$!params.name" id="$!params.id" value="$!id" type="hidden" check="$!checkStr"/>
+            	<input type="text" name="view_$params.name" id="view_$!{params.id}" maxlength="$!{params.maxlength}" value="$!name" onBlur="onBlurFn(this)"
+            		#if($params.alias)
+            			alias="${params.alias}"
+            		#end
+                    #if(${params.disabled})
+                        disabled="disabled"
+                    #end
+                    #if(${params.readonly})
+                        readonly="readonly"
+                    #end
+            		#foreach($event in $params.events)
+            			$event.event = "$event.function" 
+            		#end
+            		check="$!checkStr"
+            	/>
+    		</div>
+    	</li>
+	#end
+	<script>
+	function onBlurFn(obj){
+		var val = obj.value;
+		var targetId = "$!{params.id}";
+		if(val==""){
+			$("#"+targetId).val('');
+		}
+	}
+	$(document).ready(function(){
+			var targetId = "$!{params.id}";
+			$("#view_$!{params.id}").autocomplete("$appServer.get('/bizframe/selector/userSelectorByName.htm')",{
+			width: 200,
+			scrollHeight: 210,
+			selectFunction: function(data){
+				$("#"+targetId).val('');
+				$("#"+targetId).val(data);
+			}
+			,
+			formatResult: function(data, value){
+				return value.split("-")[1];
+			},
+			minChars:0,
+			max:10
+			});
+	});
+	</script>
+#end
+
+##消息收件箱分页(只有上一条和下一条按钮)  2014.7.11 add by 周智星
+#macro(biz_page_bar_message $params)
+	#if($params)
+	    #jscode()
+			var pageTotal = $params.count;
+			function turnPage(pageId){
+				if(pageId>pageTotal){
+					pageId = pageTotal;
+				}
+				$("#pageid").val(pageId);
+				
+				if(window.queryAction){
+					queryAction();
+				}else{
+					alert("你没有编写queryAction函数！");
+				}
+			}
+			function turnPrePage(val){
+				turnPage(val-2);
+			}
+		#end
+		#if($params.pages>0)
+			<div class="pagination">
+			 #if($params.pageNo ==0)   
+			    #set($pageNo=$params.pageNo+1) ##当前页码
+			 #else
+			    #set($pageNo=$params.pageNo) ##当前页码
+			 #end 
+			    
+		     #set($pageSum=$params.pages) ##总页数 
+		     #set($pagePrev=$pageNo-1) ##上一页    
+		     #set($pageNext=$pageNo+1) ##下一页 
+			##共<span class="red">$params.count</span>条
+		         
+		         #set($liststep = 6)                ##显示分页页数   
+		               
+		         #if($pageNo < 1)   
+		             $pageNo = 1     ##如果分页变量小于１,则将分页变量设为１   
+		         #end   
+		               
+		            #set($bar = $liststep/2)   
+		               
+		            #if(($pageNo - $bar) < 1)   
+		            #set($listbegin = 1)   
+		            #else  
+		            #set($listbegin = $pageNo - $bar)   ##分页信息开始显示到第几页   
+		            #end   
+		               
+		            #set($listend = $pageNo + $bar)     ##分页信息结束显示到第几页   
+		               
+		            #if($listend > $pageSum)   
+		            #set($listend = $pageSum)           ##分页信息结束显示超过了总页数处理    
+		            #end   
+		               
+		            ##if($pageNo > 1)                 ##显示上一页处理   
+		                ## <a title="上一条"   href="javascript:turnPrePage($!pageNext)">上一条</a>   
+		            ##end   
+		             
+		            #if($pageNo != $pageSum)            ##显示下一页处理   
+		           <center >
+					<a title="下一条"  href="javascript:turnPage($!pageNext)">下一条</a> 
+                   </center>   
+		            #end
+			
+			<input name="pageNo" type="hidden" id="pageid" size="1" value="$pageNo" class="page_num"/> 
+			<input type="hidden" name="pageSize" class="page_num" value="$params.pageSize"  >
+			</div>
+		#end
+	#end
+#end
+
+#macro(handle_result $params )
+	<p style="text-align: center; font-size:14px; color: blue; height: 100px; line-height: 100px;">
+		$params.result
+		&nbsp;&nbsp;
+		<a href="$appServer.get($params.backurl)">返回</a>
+	</p>
+#end
+
+
+##操作提醒控件 peiyf 
+#macro(handle_tip $params)
+	#jscode()
+		$(function(){
+    		#if($params.tiptype =="success")
+    			Horn.Tip.success("$!params.tipinfo");
+    		#elseif($params.tiptype =="fail")
+    			Horn.Tip.warn("$!params.tipinfo");
+    		#end
+		}
+		);
+    #end
+#end
+
+##pe按钮面板
+#macro(pe_button_panel $params)
+	<div class="$!{params.className}" id="$!{params.id}" name="$!{params.name}">
+		#if($params.buttons)
+			#foreach($button in $params.buttons)
+				<button type="button" name="$!{button.name}"
+				#if($!button.className)
+				    class="$!{button.className}"
+				#end 
+				onclick="$!{button.event}">$!{button.label}</button>
+			#end
+		#end
+    </div>
+	#jscode()
+		##返回事件
+		function goBack(url){
+    		if(url!=null && url!=''){
+    			window.location.href = url;
+    		}else{
+    			history.go(-1);
+    		}
+		}
+	#end
+#end
+
+##模板要素Iframe,自适应
+#macro(factor_iframe $params)
+	<iframe src="$!{params.src}" name="$!{params.name}" id="$!{params.id}" frameBorder="0" scrolling="no" width="100%" onLoad="$!{params.onLoad}"></iframe>
+	#jscode()
+	##要素加载完成后回调函数【factor.js中调用】说明：pid为父Iframe的id，目前为【iframe-{menuCode}】
+	function factorCompleteFun(){
+		 var iframe = document.getElementById("$!{params.id}");
+		 var piframe = parent.document.getElementById("$!{params.pid}");
+		 if(resizeIframe(iframe)){
+			resizeIframe(piframe);
+		 }
+	}
+	
+	##重新设置Iframe的大小
+	function resizeIframe(iframe,flag){
+		if(iframe==null) return false;
+		try{
+            var bHeight = iframe.contentWindow.document.body.scrollHeight;
+            var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+            var height = Math.max(bHeight, dHeight); //取最大高度兼容两个值不同
+            iframe.height =  height;
+			##alert("bHeight:" + bHeight + ", dHeight:" + dHeight + ", height:" + height);
+			return true;
+			}catch (ex){
+			return false;
+			}
+	}
+	#end
+#end
+
+#macro(parse_fields $fields)
+	#parse("/screen/biz_layouts/parse_fields.vm")
+#end
+
+#macro(parse_form $form)
+	#parse("/screen/biz_layouts/parse_form.vm")
+#end
+
+#macro(parse_grid $grid)
+	#parse("/screen/biz_layouts/parse_grid.vm")
+#end
+
+#macro(func_form_page $params)
+	#parse("/screen/biz_layouts/func_form_page.vm")
+#end
+
+#macro(func_form_grid_page $params) ##modify by zhangsu  将clos修改为可配置
+	#parse("/screen/biz_layouts/func_form_grid_page.vm")
+#end
+
+#macro(func_form_2grid_page $params)  ##modify by zhangsu  将clos修改为可配置
+	#parse("/screen/biz_layouts/func_form_2grid_page.vm")
+#end

@@ -1,0 +1,72 @@
+#set($view=false)
+#@screen({})  
+          #radiogroup({"label":"check同时为必填函数","name":"test1","id":"test1","check": "required;yy.test.testtest","items":[
+                {"label":"游泳","value":"1"},  
+                {"label":"骑马","value":"0"}, 
+                {"label":"网球","value":"3"}]})
+		  #radiogroup({"label":"check为必填","name":"test2","check": "required","items":[
+                {"label":"游泳","value":"1"},  
+                {"label":"骑马","value":"0"}, 
+                {"label":"网球","value":"3"}]})
+		  #radiogroup({"label":"check为函数","name":"test3","check": "test","items":[
+                {"label":"游泳","value":"1"},  
+                {"label":"骑马","value":"0"}, 
+                {"label":"网球","value":"3"}]})
+		  #radiogroup({"label":"测试添加校验","name":"test4","items":[
+                {"label":"游泳","value":"1"},  
+                {"label":"骑马","value":"0"}, 
+                {"label":"网球","value":"3"}]})		  
+         
+#end
+<button  type="button"  name="aa" onclick="addRule()">添加校验规则</button>
+<button  type="button"  name="bb" onclick="removeRule()">删除校验规则</button>
+<button  type="button"  name="cc" onclick="setRequired(true)">设置必填</button>
+<button  type="button"  name="ccc" onclick="setRequired(false)">设置非必填</button>
+<button  type="button"  name="dd" onclick="setDisabled(true)">设置禁用</button>
+<button  type="button"  name="ddd" onclick="setDisabled(false)">设置可用</button>
+<button  type="button"  name="ee" onclick="setReadonly(true)">设置只读</button>
+<button  type="button"  name="eee" onclick="setReadonly(false)">设置非只读</button>
+<button  type="button"  name="ff" onclick="isValid()">是否校验通过</button>
+<button  type="button"  name="gg" onclick="validate()">校验</button>
+<script>
+
+function test(){
+	console.log(111);
+	return "aaaa";
+}
+
+yy = {
+    test : {
+	testtest : function(){
+    alert(123);
+return false;
+}}
+};
+
+	function addRule() {
+		Horn.getComp("test4").addRule("required");
+	}
+	
+		function removeRule() {
+		Horn.getComp("test4").removeRule("required");
+	}
+	
+		function setRequired(Required) {
+		Horn.getComp("test4").setRequired(Required);
+	}
+
+	function setDisabled(Disabled) {
+		Horn.getComp("test4").setDisabled(Disabled);
+	}
+		function setReadonly(Readonly) {
+		Horn.getComp("test4").setReadonly(Readonly);
+	}
+	
+	function isValid() {
+		alert(Horn.getComp("test4").isValid());
+	}
+
+	function validate() {
+		Horn.getComp("test4").validate();
+	}
+</script>

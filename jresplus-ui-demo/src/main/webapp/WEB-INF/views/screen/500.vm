@@ -1,0 +1,36 @@
+<style type="text/css">
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr {margin: 0; padding: 0;}
+.h_503-logo{background:transparent url('$appServer.get("css/horn/img/h_logo.gif")') no-repeat 10px 10px; width:100%; height:100px; line-height:400px; overflow:hidden;}
+.h_503-img{width:872px; margin:80px auto 0; background:#fff url('$appServer.get("css/horn/img/500.gif")') no-repeat; min-height:165px;}
+.h_503-img p{padding:100px 0 0 280px;}
+.h_503-p{width:830px; margin:10px auto; line-height:200%; color:#999; border:1px #ccc dotted; padding:20px;}
+.h_503-p ol{margin-left:60px;}
+</style>
+
+<div class="h_503-img">
+	#if($devModel)
+		<p><a href="javascript:showwin()">查看异常原因</a></p>
+	#end
+</div>
+<div class="h_503-p">
+	<ol>
+		<li>$!errorInfo</li>
+	</ol>
+</div>
+#if($devModel)
+	#@window({"name":"errWin","title":"错误栈信息","width":"800","height":"500"})
+			<div class="h_503-p" style="autoscroll:true">
+            	<ol>
+        	    #foreach($err in $errorStrack)
+            		<li>$err</li>
+        		#end
+            	</ol>
+            </div>
+	#end
+#end
+#jscode()
+	function showwin(){
+		Horn.getComp("errWin").show();
+	}
+#end
+

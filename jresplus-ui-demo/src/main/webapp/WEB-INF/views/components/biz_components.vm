@@ -1,0 +1,71 @@
+#**   
+ * @author huling   
+ * @class
+ * @name textfield
+ * @param cols {String} 跨列数
+ * @param name {String} 名称
+ * @param id {String} 唯一标识
+ * @param alias {String} 别名
+ * @param value {String} 值
+ * @param defValue {String} 如果设置了defValue的值，重置成的defValue值，否则重置成初始值
+ * @param label {String} 单选框组件显示值
+ * @param check {String} 验证串
+ * @param disabled {String} 是否禁用
+ * @param readonly {String} 是否只读
+ * @param maxlength {String} 最大长度
+ * @param events {[Json]} 事件，json数组
+ * @description textfield组件，文本框组件
+ * @see The <a href="huling@hundsun.com">huling</a >.   
+ * @example \#textfield({"id":"userName","label":"名称","name":"name","cols":"1","maxlength":"20","check":"required","events":[{"event":"onclick","function":"getDom(this)"},{"event":"onblur","function":"getName(this.name)"}]})
+ * @since version 0.1
+ *#	
+#**
+ * @lends textfield
+ *#
+#macro(uploadfile $uiUploadFileConfig)
+    #set($val = "")
+    #set($val = $uiUploadFileConfig.value)
+    #if((!$val || $val =="") && $uiUploadFileConfig.name )
+        #set($val =  "$horn.getValue($!uiUploadFileConfig.name)")
+    #end
+	#if($view)
+		<li class="hc_panel-li #if($uiUploadFileConfig.cols)h_licols-$!{uiUploadFileConfig.cols}#end">
+    		<span ref="$!uiUploadFileConfig.name" title="$!{uiUploadFileConfig.label}">
+				$!{uiUploadFileConfig.label}
+			</span>
+    		<div name="$!{uiUploadFileConfig.name}" class="hc_label"  $horn.paramsCache($uiUploadFileConfig) 
+        		#if($uiUploadFileConfig.alias)
+        			alias="$!{uiUploadFileConfig.alias}"
+        		#end
+    			>$!val</div>
+    	</li>
+	#else
+    	<li class="hc_panel-li #if($uiUploadFileConfig.cols)h_licols-$!{uiUploadFileConfig.cols}#end"><span ref="$!uiUploadFileConfig.name" title="$!uiUploadFileConfig.label">
+    	#set($checkStr=$horn.getCheckStr($!uiUploadFileConfig.name,$!uiUploadFileConfig.check))
+    	#set($groupStr=$horn.getGroupStr($!uiUploadFileConfig.name,$!uiUploadFileConfig.group))
+    	#if($checkStr.indexOf("required")>-1)
+    		<b class="hc_red">*</b>
+    	#end
+    	$!uiUploadFileConfig.label</span>
+        	<div id="$!{uiUploadFileConfig.id}" $horn.paramsCache($uiUploadFileConfig) name="$uiUploadFileConfig.name" class="hc_uploadfile">
+            	<input type="file" name="$uiUploadFileConfig.name" maxlength="$!{uiUploadFileConfig.maxlength}" value="$!val"
+            		#if($uiUploadFileConfig.alias)
+            			alias="${uiUploadFileConfig.alias}"
+            		#end
+                    #if(${uiUploadFileConfig.disabled})
+                        disabled="disabled"
+                    #end
+                    #if(${uiUploadFileConfig.readonly})
+                        readonly="readonly"
+                    #end
+            		##foreach($event in $uiUploadFileConfig.events)
+            		##	$event.event = "$event.function" 
+            		##end
+            		check="$!{checkStr}"
+        			group="$!{groupStr}"
+            	/>
+    		</div>
+    	</li>
+	#end
+	#set($uiUploadFileConfig = {})
+#end

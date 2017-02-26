@@ -1,0 +1,16 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>$!title</title>
+	<!-- meta content="IE=7" http-equiv="X-UA-Compatible" /-->
+    <meta content="text/html; charset=${outCharset}" http-equiv="Content-Type" />
+#resource_include()
+    <script type="text/javascript">
+		var context_path = "$appServer.get('')" ;
+		if(context_path.lastIndexOf("/")==context_path.length-1){
+			context_path = context_path.substr(0,context_path.length-1) ;
+		}
+	</script>
+</head>
+
+<body>

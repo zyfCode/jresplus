@@ -1,0 +1,55 @@
+#@screen()
+    #@case_desc({"title":"校验规则"})
+	包含用例（暂缺）<br/>
+	1,简单实用
+	<br/>
+    <b>预期：</b>正常使用<br/>
+    #end
+	#panel_start
+		#textfield({"label":"必输", "name": "test1", "check": "required"})
+		#textfield({"label":"只能数字", "name": "test2", "value":"abcdef", "check": "required;num"}) ## 只能数字
+		#textfield({"label":"只能中文", "name": "test3", "value":"123456", "check": "chinese;required;"}) ## 只能中文
+		#textfield({"label":"只能英文", "name": "test4", "value":"中文", "check": "letter;required"}) ## 只能英文
+		#textfield({"label":"函数校验", "name": "test4", "value":"中文", "check": "required;myCheck();"}) ## 只能英文
+	#panel_end
+    #button_panel_ex({"buttons":[
+		{"label":"移除必输校验", "event": "removeRequired()"},
+		{"label":"移除不存在的校验规则", "event": "removeOther()"},
+    	{"label":"添加必输校验", "event": "addRequired"},
+    	{"label":"表单重置", "event": "reset()"}
+	]})
+#end
+
+#jscode()
+
+function removeRequired() {
+	Horn.getComp("test1").removeRule("required");
+	Horn.getComp("test2").removeRule("required");
+	Horn.getComp("test3").removeRule("required");
+	Horn.getComp("test4").removeRule("required");
+}
+
+function addRequired() {
+	Horn.getComp("test1").addRule("required");
+	Horn.getComp("test2").addRule("required");
+	Horn.getComp("test3").addRule("required");
+	Horn.getComp("test4").addRule("required");
+}
+
+function removeOther() {
+	Horn.getComp("test1").removeRule("qq");
+	Horn.getComp("test2").removeRule("qq");
+	Horn.getComp("test3").removeRule("qq");
+	Horn.getComp("test4").removeRule("qq");
+}
+
+function myCheck(){
+    var value = Horn.getComp("test4").getValue();
+    if(!("你好"==value)){
+        return "内容必需为你好";
+    }else{
+        return true;
+    }
+}
+
+#end

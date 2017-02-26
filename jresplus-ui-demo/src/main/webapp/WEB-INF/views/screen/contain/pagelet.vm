@@ -1,0 +1,21 @@
+#jscode()
+	#if($redirect)
+		#if($globalRedirect)
+			top.location = '$redirect';
+		#else
+    		Horn.TabScreen.renderTab('$appServer.get($redirect)','$pagelet')
+    	#end
+	#else
+		#if($ToBackField)
+    		#foreach($backFild in $ToBackField)
+    			Horn.Validate.addError("$backFild.label","$backFild.value");
+    		#end
+		#end
+		#if($tipMessages)
+			Horn.Tip.clear() ;
+			#foreach($tipMessage in $tipMessages)
+				Horn.Tip.addTip("$tipMessage.type","$tipMessage.message") ;
+			#end
+		#end
+	#end
+#end

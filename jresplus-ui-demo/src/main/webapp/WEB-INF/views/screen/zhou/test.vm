@@ -1,0 +1,14 @@
+aaaaa
+
+userId: $!user.userId
+
+#js("$appServer.get('/script/frame/frame.js')")
+
+##parse("/screen/zhou/add.vm")
+$contain.get("/zhou/add.htm")
+
+#if($stringUtils.isBlank($!user.userId))
+	bbb
+#else
+	aaa
+#end

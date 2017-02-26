@@ -1,0 +1,22 @@
+<h2>JRES UI介绍</h4>
+<p>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ JRES UI是一套velocity语法编写的宏UI组件，应用在JRESPLUS-MVC的视图开发中，提供通用基础的UI组件和UI扩展体系。<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ JRES UI属于服务端DOM输出组件，UI组件展示所需的DOM结构在服务端完成，可有效缓解像传统UI组件那样（通过js创建展示所需DOM带来的额外重绘和回流操作）页面展示慢浏览器负荷重的问题。
+</p>
+<ul>
+ <li>JRES UI使用jquery做为javascript框架，可以很好的和其他jquery插件运行在一起。</li>
+ <li>JRES UI提供了较为通用和基础的UI组件（表单录入、窗口、消息提示、数据列表等）。</li>
+ <li>JRES UI提供DOM规范和CSS规范，基于这些规范可以扩展和定制自己的UI组件。</li>
+</ul>
+<h2>JRES UI使用</h4>
+<ul>
+ <li>在菜单【主页】下，可找到如何获取JRES UI以及UI相关的介绍。</li>
+ <li>在菜单【DEMO】下，可以找到JRES UI已经提供的各个组件示例及代码。</li>
+ <li>在菜单【API】下，可以找到JRES UI每一个组件的属性、函数、事件说明。</li>
+</ul>
+<h2>联系我们</h2>
+<p>
+研发中心客服：<a href="mailto:service.rd@hundsun.com">service.rd@hundsun.com</a>
+</p>

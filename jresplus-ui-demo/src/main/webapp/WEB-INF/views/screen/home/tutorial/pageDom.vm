@@ -1,0 +1,121 @@
+<h2>页面结构详解</h2>
+<h3>LOGO与标题</h3>
+<p>
+	LOGO一般是企业的图腾，是企业的象征，不同的企业的LOGO不一样<br/>
+	在jresplus-ui的页面结构中，LOGO使用图片来描述，要求LOGO的缩放比例达到高度为75px;<br/>
+	标题一般是当前系统的标示，如：某某交易管理系统等，简短的文字，这里要求LOGO的宽度加上标题的宽度不要超过300建议控制在250到290区间；<br/>
+	<img src="${appServer}/images/home/logo_title.png"/>
+	<br/>
+	<pre>
+	展示LOGO和标题所需的数据结构如下：
+	"logo":{"title":"JRES快速开发平台","img":"${imageServer}/css/${theme}/img/logo.png"}
+	</pre>
+</p>
+<h3>系统导航</h3>
+<p>
+	系统导航用于多个子系统或较大的模块间切换<br/>
+	通过子系统或大模块的切分，可以有效的缓解菜单多的问题和多个站点集成的问题<br/>
+	默认系统导航中的边界容量为5，即超过5个后会出现两侧的滑动方向按钮，通过点击滑动方向按钮可以展示被隐藏的子系统或大模块项<br/>
+	建议不要放置太多的子系统和大模块，控制在2到8个是合理的；<br/>
+	<img src="${appServer}/images/home/nav.png"/>
+	<pre>
+	展示系统导航所需的数据结构如下：
+	"navigation":{"items":[
+		{"id":"30","title":"主页","icon":"home"}
+		,{"id":"10","title":"DEMO","icon":"th-large"}
+		,{"id":"20","title":"API","icon":"folder-close"}
+	]}
+	</pre>
+</p>
+<h3>用户工具栏</h3>
+<p>
+	用户工具栏中，放置的是与用户状态和用户事件相关的按钮<br/>
+	目前支持3中按钮，带图标按钮、带图标和数字的按钮以及带下拉项的按钮<br/>
+	建议数量不宜过多，控制在2到5个之间是合理的<br/>
+<img src="${appServer}/images/home/user.png"/>
+<pre>
+展示用户工具栏所需的数据结构如下：
+	"toolbar":{"items":[
+		{"title":"admin","icon":"user","onclick":"","items":[
+			{"title":"修改昵称","onclick":""}
+			,{"title":"修改密码","onclick":""}
+		]}
+		,{"title":"收件箱","icon":"message","onclick":"","num":5}
+		,{"title":"锁屏","icon":"lock","onclick":""}
+		,{"title":"退出","icon":"logout","onclick":""}
+	]}
+	</pre>
+</p>
+<h3>菜单</h3>
+<p>
+	菜单，是业务操作界面的引导<br/>
+	在jresplus-ui中，每一个子系统或模块下可以有多组菜单，每组菜单下可以有多个子菜单<br/>
+	菜单的深度从子系统开始算，子系统为一级菜单、子系统下的各个菜单组为二级菜单、各个菜单组下的子菜单为三级菜单<br/>
+	一级菜单的id必须和系统导航的子项id相等，才能触发点击子系统是切换菜单<br/>
+	只有二级菜单的图标是被显示的<br/>
+	建议：一级菜单的子项不要超过屏幕可视范围的三分之二（2到10），因为菜单的子项太多用户查找和定位时更易产生视觉疲劳<br/>
+<img src="${appServer}/images/home/menu.png"/>
+<pre>
+展示菜单所需的数据结构如下：
+	"menu":{"items":[
+		{"id":"30","title":"主页","items":[
+			{"id":"301","title":"使用UI","icon":"file","items":[
+				{"id":"30101","title":"获取UI","icon":"inbox","url":"${appServer}/home/use/getUI.htm"}
+			]}
+			,{"id":"302","title":"UI介绍","icon":"inbox","items":[
+				{"id":"30201","title":"UI体系介绍","icon":"inbox","url":"${appServer}/home/tutorial/overview.htm"}
+				,{"id":"30204","title":"UI主题","icon":"inbox","url":"${appServer}/home/use/custom.htm"}
+			]}
+		]}
+		,{"id":"10","title":"DEMO","items":[
+			{"id":"101","title":"基础应用","icon":"user","items":[
+				{"id":"10101","title":"查询列表","url":"${appServer}/demo/view/app/queryList.htm"}
+				,{"id":"10102","title":"多标签页表单","url":"${appServer}/demo/view/app/tabForm.htm"}
+				,{"id":"10103","title":"弹出窗口","url":"${appServer}/demo/view/app/window.htm"}
+			]}
+			,{"id":"102","title":"表单应用","icon":"th-list","items":[
+				{"id":"10201","title":"表单与校验","url":"${appServer}/demo/view/form/validForm.htm"}
+				,{"id":"10208","title":"分组表单","url":"${appServer}/demo/view/form/tabForm.htm"}
+			]}
+		]}
+		,{"id":"20","title":"API","items":[
+			{"id":"201","title":"基础与辅助","icon":"file","items":[
+				{"id":"20101","title":"基础Horn","url":"${appServer}/doc/symbols/Horn.html"}
+				,{"id":"20102","title":"校验Validate","url":"${appServer}/doc/symbols/Horn.Validate.html"}
+			]}
+			,{"id":"202","title":"容器","icon":"inbox","items":[
+				{"id":"20201","title":"面板Panel","url":"${appServer}/doc/symbols/Horn.Panel.html"}
+				,{"id":"20202","title":"标签面板TabPanel","url":"${appServer}/doc/symbols/Horn.TabPanel.html"}
+				,{"id":"20203","title":"窗口Window","url":"${appServer}/doc/symbols/Horn.Window.html"}
+			]}
+		]}
+	]}
+	</pre>
+</p>
+<h3>工作区</h3>
+<p>
+	工作区，用于业务操作界面的展示区域<br/>
+	在jresplus-ui中使用多标签页展示工作区，及处理工作区的多个视图切换场景<br/>
+	多标签页支持主页特性，主页是不可被关闭的<br/>
+	多个标签页中仅有当前工作视图对应的标签时激活状态的，点击其他标签页可触发其他标签页的激活及相应的工作视图展示，每一个标签页被激活后其他的标签页变为非激活状态，非激活状态的工作视图会被隐藏<br/>
+	如果标签页的数量较多时，超出了可视范围，可以通过点击两侧的滑动方向按钮，来触发被遮挡的标签滑动到可视范围<br/>
+	
+	<img src="${appServer}/images/home/tab.png"/>
+	<pre>
+	展示主页所需的数据结构如下：
+	"screen":{
+		"homePage":{"title":"欢迎使用","icon":"home","url":"${appServer}/home/index.htm"}
+	}
+	</pre>
+	<br/>
+	点击标签页栏的最右侧的按钮<img src="${appServer}/images/home/tab_tool_btn.png"/>，可触发标签页的工具栏，工具栏中默认提供了关闭标签页的功能，同时也可扩展业务相关的全局操作<br/>
+	<img src="${appServer}/images/home/tab_tool.png"/>
+</p>
+<h2>页面结构的数据结构示例</h2>
+<p>
+	页面结构的展示需要数据的支持<br/>
+	jresplus-ui的页面结构约定了数据源对象为'$frame',示例如下：<br/>
+	<pre>
+	#include("/screen/index.vm")
+	</pre>
+</p>

@@ -1,0 +1,33 @@
+
+#@screen()
+
+#combox({"label":"省份","id":"vc_province_no",
+            "name":"vc_province_no","multiple":true,"items":[
+                {"code":"0","text":"葡萄"},
+				{"code":"1","text":"苹果"},
+                {"code":"2","text":"桔子"},
+                {"code":"3","text":"香蕉"}]})
+				
+#combox({"headItem":{"label":"", "value":"请选择..."},"id":"test1","multiple":true, "name":"test1","label":"combox多选","dictName": "country"})</br></br></br> 
+<button  type="button"  name="aa" onclick="add()">添加additem</button></br>
+<button  type="button"  name="bb" onclick="add(true)">清空原数据添加additem</button></br>
+<button  type="button"  name="cc" onclick="add(false)">不清空原数据添加additem</button></br>
+
+<button  type="button"  name="dd" onclick="add1(true)">清空原数据添加additem(非法值添加失败)</button></br>
+<button  type="button"  name="ee" onclick="add1(false)">不清空原数据添加additem(非法值添加失败)</button></br>
+
+#end
+#jscode()
+
+
+function add(clear){
+var item=[{'code':'10','text':'测试3'},{'code':'4','text':'测试4'}];
+Horn.getCompById("vc_province_no").addItems(item,clear);
+Horn.getCompById("test1").addItems(item,clear);
+}
+
+function add1(clear){
+Horn.getCompById("vc_province_no").addItems(123,clear);
+Horn.getCompById("test1").addItems(123,clear);
+}
+#end

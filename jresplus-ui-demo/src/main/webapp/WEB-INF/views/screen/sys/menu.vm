@@ -1,0 +1,87 @@
+<div>
+	<ul id="treeMenu" class="ztree showIcon " style="-moz-user-select: -moz-none;"></ul>
+</div>
+#jscode()
+			var menus = ",0#foreach($id in $menuIds),${id}#end,";
+		
+			var menu_setting = {
+				data: {
+					simpleData: {
+						enable: true
+					},
+					key:{
+						name:'name',
+						title:'title'
+					}
+				},
+				view: {
+					nameIsHTML: true,
+					showLine: false,
+					showIcon: false,
+					selectedMulti: false,
+					dblClickExpand: false,
+					addDiyDom: addDiyDom
+				},
+				callback: {
+					beforeClick: beforeClick,
+					onClick : zTreeOnClick
+				}
+			};
+
+			function addDiyDom(treeId, treeNode) {
+				var spaceWidth = 5;
+				var switchObj = $("#" + treeNode.tId + "_switch"),
+				icoObj = $("#" + treeNode.tId + "_ico");
+				switchObj.remove();
+				icoObj.before(switchObj);
+	
+				if (treeNode.level > 1) {
+					var spaceStr = "<span style='display: inline-block;width:" + (spaceWidth * treeNode.level)+ "px'></span>";
+					switchObj.before(spaceStr);
+				}
+			}
+			
+			
+			function zTreeOnClick(event, treeId, treeNode) {
+				var url = context_path + (treeNode.address.indexOf('?') === -1 ? treeNode.address+'?' : treeNode.address);
+				Horn.TabScreen.create({"title":treeNode.name,"url":url});
+			}
+	
+			function beforeClick(treeId, treeNode) {
+				if (treeNode.isParent) {
+					var zTree = $.fn.zTree.getZTreeObj("treeMenu");
+					zTree.expandNode(treeNode);
+					return false;
+				}
+				return true;
+			}
+			
+			function hideNodes(treeObj, id) {
+				var node = treeObj.getNodeByTId(id);
+				zTree.hideNodes(node);
+			}
+			
+			function filter(node) {
+			    return (node.level == 2 && menus.indexOf(","+node.id+",") < 0);
+			}
+			setTimeout(function(){
+    			$.get("$appServer.get('/cache/menus.cache')", function(result){
+    				var treeObj = $("#treeMenu");
+    				$(result).each(function(idx,item){
+    					item.title = item.name;
+    					if(item.name.length>8){
+    						item.name = item.name.substr(0,6) + "...";
+    					}
+    				});
+    				$.fn.zTree.init(treeObj, menu_setting, result);
+    				#if($menuId)
+    				zTree_Menu = $.fn.zTree.getZTreeObj("treeMenu");
+    				curMenu = zTree_Menu.getNodeByParam("id","$!{menuId}",null);
+    				zTree_Menu.expandNode(curMenu.getParentNode());
+    				#end
+    				//var nodes = zTree_Menu.getNodesByFilter(filter);
+    				//zTree_Menu.hideNodes(nodes);
+    				
+    			}, "json");
+			},100);
+#end

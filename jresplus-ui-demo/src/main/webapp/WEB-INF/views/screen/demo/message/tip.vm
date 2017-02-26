@@ -1,0 +1,17 @@
+#@screen()
+	#button_panel_ex({"buttons":[
+	{"label":"普通信息","event":"show1()"}
+	,{"label":"警告信息","event":"show2()"}
+	,{"label":"成功信息","event":"show3()"}]})
+#end
+#jscode()
+	function show1(){
+		Horn.Tip.info("这是一条普通信息");
+	}
+	function show2(){
+		Horn.Tip.warn("这是一条警告信息");
+	}
+	function show3(){
+		Horn.Tip.success("这是一条成功信息");
+	}
+#end

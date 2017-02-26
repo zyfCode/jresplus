@@ -1,0 +1,114 @@
+#@screen({})
+	<!-- 两个grid -->
+	<!-- left begin -->
+	<div class="g-grid-3">
+		#@panel({"name":"mainPanel","title":"树展示"})
+        #set($dataT='[{"id":"1","name":"浙江省"},{"id":"21","name":"杭州市","pId":"1"},{"id":"22","name":"宁波市","pId":"1"},{"id":"33","name":"温州市","pId":"1"},
+		{"id":"44","name":"嘉兴市","pId":"1"},{"id":"55","name":"湖州市","pId":"1"},{"id":"66","name":"绍兴市","pId":"1"},{"id":"77","name":"金华市","pId":"1"},
+		{"id":"211","name":"西湖区","pId":"21"},{"id":"212","name":"滨江区","pId":"21"},
+		{"id":"213","name":"上城区","pId":"21"},{"id":"214","name":"下城区","pId":"21"},{"id":"222","name":"宁海县","pId":"22"},{"id":"333","name":"鹿城区","pId":"33"},
+		{"id":"3333","name":"莲池街道","pId":"333"},{"id":"3334","name":"南门街道","pId":"333"},{"id":"444","name":"南湖区","pId":"44"},{"id":"445","name":"秀州区","pId":"44"},
+		{"id":"555","name":"南浔区","pId":"55"},{"id":"556","name":"吴兴区","pId":"55"},{"id":"666","name":"越城区（市区）","pId":"66"},{"id":"667","name":"上虞市","pId":"66"},
+		{"id":"668","name":"新昌县","pId":"66"},{"id":"669","name":"诸暨市","pId":"66"},{"id":"777","name":"义乌市","pId":"77"}]')  
+            #ztree({  
+            "id":"tree1",  
+            "name":"ztree1",
+        	"toolbar":true,
+        	"filterBy":"id",
+        	"expandFirst":true,
+        	"search":true,
+        	"checkMode":"checkbox",
+         "beforeDblClick":"beforeDblClick",
+         "onDblClick":"onDblClick",
+        "data":$dataT})  
+		#end
+	</div>
+	<!-- right begin -->
+	<div class="g-grid-9">
+		<!-- right top begin-->
+		#@form({"name":"testForm","postName": false})
+        	#@panel({"title":"查询"})
+        		#textfield({"label":"客户名称", "name":"clientName"})
+        		#button_group({"buttons":[
+                	{"label":"查询","event":"formQuery()"}
+                ]})
+        	#end
+        #end
+		<!-- right bottom begin -->
+		<div class="g-row">
+			<!-- right bottom left begin -->
+			<div class="g-grid-6">
+				#datagrid({
+                	"id":"mainDataGridId",
+                	"name":"mainDataGrid",
+					"bindformname":"testForm",
+					"title":"查询列表",
+                	"selectModel":"single",
+                	"autoLoad":true,
+					"baseparams":{"branchNo":"1"},
+                	"url":"/demo/query_table/getTableData.json",
+                	"items":[{"name":"initDate",
+                		"text":"初始化日期",
+                		"hAlign":"center",
+                		"tAlign":"center"
+                		},{
+                		"name":"clientId",
+                		"text":"客户ID",
+                		"hAlign":"center",
+                		"tAlign":"center",
+						"hidden":false,
+                	    "renderer":"domrender"
+                		},{
+                		"name":"clientName",
+                		"text":"客户名称",
+                		"hAlign":"center",
+                		"tAlign":"center"
+                		},{
+                		"name":"scanType",
+                		"text":"扫描类型",
+                		"hAlign":"center",
+                		"tAlign":"center"
+                		}
+                	],
+					"events":[{"event":"rowClick","function":"testRowClick"} ],
+                	"pageConfig":{"pageSize":10,"pageNo":1},
+                	"rowSelect":"true",
+                	"hasPage":"true"	
+                })
+			</div>
+			<!-- right bottom right begin -->
+			<div class="g-grid-6">
+				
+				
+			#@panel({"title":"详细信息","cols":"1","expandable":false,"isExpand":true})
+        		#textfield({"label":"初始化日期", "name":"rowDate"})
+				#textfield({"label":"客户ID", "name":"rowId"})
+				#textfield({"label":"客户名称", "name":"rowName"})
+				#textfield({"label":"扫描类型", "name":"rowType"})
+				#checkboxGroup({"label":"当前状态","value":"1","name":"status$index","cols":1,"items":[    
+			 {"label":"已确认","value":"0"},
+			 {"label":"待确认","value":"1"},
+			 {"label":"其他","value":"2"} ]}) 
+				#textfield({"label":"别名", "name":"alis","readonly":true,"value":"Alias"})
+				#textarea({"label":"备注","name":"details","cols":1,"emptyText":"备注信息","rows":5})
+				
+				#button_group({"cols":1,"id":"b1","buttons" : [{"name":"btn2","className":"u-btn-success","label":"保存"},
+				{"name":"btn3","className":"u-btn-warning","label":"清空列表信息"}]})
+        	#end
+				
+			</div>
+		</div>
+	</div>
+#end
+#jscode()
+	function queryData(){
+		Horn.getComp("dataTable").loadByForm();
+	}
+	function testRowClick(data){
+    	Horn.getComp("rowDate").setValue(data.initDate);
+    	Horn.getComp("rowId").setValue(data.clientId);
+    	Horn.getComp("rowName").setValue(data.clientName);
+    	Horn.getComp("rowType").setValue(data.scanType);
+	
+	}
+#end

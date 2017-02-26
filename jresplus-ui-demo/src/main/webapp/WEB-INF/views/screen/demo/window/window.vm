@@ -1,0 +1,20 @@
+#@window({"scroll":true,"id":"window","name":"w0","title":"窗口","height":300,"width":900,"isDrag":true,"buttons":[ {"label":"确定","name":"btnOk","event":"todo()","className":"u-btn-primary"},{"label":"取消","name":"btnCancel","event":"cancle()"} ]})
+       #parse("/screen/demo/window/add.vm")
+#end
+#@screen()
+#@window({"title":"窗口1","name":"win","id":"addWin","buttons":[{"label":"确定","event":""},{"label":"取消","event":""}],"width":"500","height":"300"})  
+这是窗口的内容  
+#end
+#@window({"title":"窗口2","name":"win2","buttons":[{"label":"确定","event":""},{"label":"取消","event":""}],"width":"500","height":"300"})  
+这是窗口的内容  
+#end
+#button_panel_ex({"buttons":[{"label":"弹出","event":"showWin()"},{"label":"弹出2","event":"showWin2()"}]})
+#end
+#jscode()
+function showWin(){
+Horn.getComp("w0").show();
+}
+function showWin2(){
+Horn.getComp("win2").show();
+}
+#end

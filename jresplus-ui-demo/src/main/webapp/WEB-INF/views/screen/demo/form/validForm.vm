@@ -1,0 +1,19 @@
+#@screen()
+	#@form({"url":"", "name":"testForm"})
+		#hidden({"name":"test0", "defValue": "hidden默认值"})
+    	#@panel({})
+			#textfield({"name":"test1", "label":"textfield", "check": "required"})
+			#combox({"selectAll": false,"multiple": true, "name":"test3","label":"combox","defValue":"1", "dictName": "province",  "check": "required"})
+			#calendar({"label":"calendar", "name":"test6", "check": "required"})
+			#textarea({"name":"test2", "label":"textarea",  "check": "required"})
+			#radiogroup({"name":"test4","label":"radiogroup","dictName": "country", "value":1})
+            #checkboxGroup({"name":"test5","label":"checkboxGroup","items":[
+                {"text":"葡萄1","code":"0"},
+				{"text":"苹果2","code":"1"},
+                {"label":"香蕉3","code":"2"},
+                {"label":"桔子4","value":"3"}
+            ], "cols":2, "check": "required"})
+    	#end
+		#button_panel()
+	#end
+#end

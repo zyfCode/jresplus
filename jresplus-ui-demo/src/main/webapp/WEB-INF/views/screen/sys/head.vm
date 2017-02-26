@@ -1,0 +1,21 @@
+<div class="h_site-nav">
+	<div>
+		<div class="h_site-nav-info">
+        	<span class="h_top-welcome">$!oper.getNick()</span>
+        	<a href="$appServer.get('/logout.htm')" class="h_top-exit">退出</a>
+        </div>
+		<div class="h_site-nav-cutover"><a href="$appServer.get('/tab/index.htm')" class="h_snc-tabs" title="标签模式">&nbsp;</a> <a href="$appServer.get('/index.htm')" class="h_snc-nomal h_cur" title="普通模式">&nbsp;</a></div>
+    </div>
+</div>
+#if(!$_fullscreen)
+    <div id="h_top_div" class="h_top">
+    #parse('/screen/sys/title.vm')
+    </div>
+#else
+<div class="h_totalwidth">
+    <div id="h_top_div" class="h_top">
+    #parse('/screen/sys/title.vm')
+    </div>
+</div>
+#end
+<div class="h_tips"></div>

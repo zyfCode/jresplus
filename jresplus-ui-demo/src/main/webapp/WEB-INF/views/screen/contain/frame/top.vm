@@ -1,0 +1,62 @@
+<div class="h-header" region="north">
+	<div class="h-wrap">
+		#if($frame.logo)
+		<div class="h-logo f-fl"  $horn.paramsCache($frame.logo)>
+			<a #if(${frame.logo.url}) href="$!{frame.logo.url}" #else href="#" #end>
+						#if($frame.logo.img)
+						<img src="$!{frame.logo.img}" height="31" style="float: left;padding-right: 10px;"/>
+						#end
+						<h1>${frame.logo.title}</h1>
+			</a>
+		</div>
+		#end
+		#if($frame.navigation)
+		<div class="h-nav m-top-nav f-fl" $horn.paramsCache($frame.navigation)>
+    		#if($frame.navigation.items)
+              <ul class="nav-header">
+				#set($count =0)
+				#set($menuList = "")
+                #foreach($navigationItem in $frame.navigation.items)
+					#if($count<=5)
+    					<li #if($navigationItem.selected == true) class="selected" #end><a title="$!{navigationItem.title}" #if($navigationItem.url)href="$!{navigationItem.url}" #else href="javascript:Horn.Frame.switchMenu($!{navigationItem.id})"  #end>${navigationItem.title}</a></li>
+					#else
+						#set($temp = "<li><a title='$!{navigationItem.title}' #if($navigationItem.url)href='$!{navigationItem.url}' #else href='javascript:Horn.Frame.switchMenu($!{navigationItem.id})'  #end>${navigationItem.title}</a></li>")
+						#set($menuList = $menuList+$temp)
+					#end
+					#set($count =$count+1)
+				#end
+				
+				#if("$!menuList"!="")
+                <li class="more-con"><a href="#">...</a>
+                  <ul class="m-nav-more" style="display: none">
+                    $!menuList
+                  </ul>
+                </li>
+				#end
+              </ul>
+    		#end
+        </div>
+		#end
+		#if($frame.toolbar)
+		<div class="h-toolbar f-fr"  $horn.paramsCache($frame.toolbar)>
+			<a href="#"><i class="h-i-user"></i><span>用户中心</span><b class="h-caret"></b></a>
+	    	<ul>
+				#foreach($toolbarItem in $frame.toolbar.items)
+					<li>
+						<a #if($toolbarItem.url)href="$!{toolbarItem.url}" #else href="javascript:void(0)" #end #if($toolbarItem.onclick) onclick="$toolbarItem.onclick" #end title="$!{toolbarItem.title}">#if($toolbarItem.icon)<i class="fa fa-$!{toolbarItem.icon}"></i>#end<span>${toolbarItem.title}</span>#if($toolbarItem.num)<span class="h-number">$!{toolbarItem.num}</span>#end#if($toolbarItem.items)<b class="h-caret"></b>#end</a>
+						#if($toolbarItem.items)
+						<ol class="m-info-admin" style="display: none">
+							#foreach($toolbarSubItem in $toolbarItem.items)
+								<li><a #if($toolbarSubItem.url)href="$!{toolbarSubItem.url}" #else href="javascript:void(0)" #end  #if($toolbarSubItem.onclick) onclick="$toolbarSubItem.onclick" #end title="$!{toolbarSubItem.title}">$!{toolbarSubItem.title}</a></li>
+							#end
+						</ol>
+						#end
+					</li>
+				#end
+	        </ul>
+	    </div>
+		#end
+	</div>
+	
+	
+</div>

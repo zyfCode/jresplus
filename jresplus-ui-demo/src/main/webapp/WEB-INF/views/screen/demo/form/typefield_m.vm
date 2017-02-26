@@ -1,0 +1,8 @@
+#@screen({})
+   #@panel({})
+		   #typefield({"id":"t1","name":"typefield1","label":"金额(显示大写)","integerNum":2,"suffixNum":3,"inputType":"money","split":",","bigTips":true,"emptyText":"金额"})
+		   #typefield({"id":"t1","name":"typefield4","label":"金额(不显示大写)","integerNum":2,"suffixNum":3,"inputType":"money","split":",","bigTips":false,"emptyText":"金额"})
+		   #typefield({"id":"t1","name":"typefield2","label":"金额","inputType":"money","split":",","bigTips":true,"emptyText":"只读","readonly":true}) 
+		   #typefield({"id":"t1","name":"typefield3","label":"金额","inputType":"money","split":",","bigTips":true,"emptyText":"禁用","disabled":true}) 
+   #end
+#end
