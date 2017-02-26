@@ -12,21 +12,18 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.5.6</version>
 		</dependency>
-		<!--<dependency> <groupId>com.hundsun.jresplus</groupId> <artifactId>jresplus-ui-web</artifactId> 
-			<version>1.0.28</version> <classifier>demodoc</classifier> <type>war</type> 
-			</dependency> -->
-		<dependency>
-			<groupId>com.hundsun.jresplus</groupId>
-			<artifactId>jresplus-mvc</artifactId>
-			<version>1.0.10</version>
-			<scope>compile</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.servlet</groupId>
-					<artifactId>servlet-api</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.hundsun.jresplus</groupId> -->
+<!-- 			<artifactId>jresplus-mvc</artifactId> -->
+<!-- 			<version>1.0.10</version> -->
+<!-- 			<scope>compile</scope> -->
+<!-- 			<exclusions> -->
+<!-- 				<exclusion> -->
+<!-- 					<groupId>javax.servlet</groupId> -->
+<!-- 					<artifactId>servlet-api</artifactId> -->
+<!-- 				</exclusion> -->
+<!-- 			</exclusions> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -37,12 +34,12 @@
 			<groupId>com.hundsun.jresplus</groupId>
 			<artifactId>jresplus-ui-runtime</artifactId>
 			<version>2.0.6-SNAPSHOT</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>jresplus-mvc</artifactId>
-					<groupId>com.hundsun.jresplus</groupId>
-				</exclusion>
-			</exclusions>
+<!-- 			<exclusions> -->
+<!-- 				<exclusion> -->
+<!-- 					<artifactId>jresplus-mvc</artifactId> -->
+<!-- 					<groupId>com.hundsun.jresplus</groupId> -->
+<!-- 				</exclusion> -->
+<!-- 			</exclusions> -->
 		</dependency>
 	</dependencies>
 </project>
